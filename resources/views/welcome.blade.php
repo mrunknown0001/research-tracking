@@ -8,7 +8,10 @@
 
   <!-- Site Properties -->
   <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/reset.css') }}">
+
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/semantic.min.css') }}">
+
+{{--   <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/reset.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/site.css') }}">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/container.css') }}">
@@ -26,14 +29,14 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/message.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/icon.css') }}">
 
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/modal.min.css') }}"> --}}
 
-  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/modal.min.css') }}">
+  <script src="{{ asset('dist/semantic.min.js') }}"></script>
 
   <script src="{{ asset('dist/library/jquery.min.js') }}"></script>
   <script src="{{ asset('/dist/components/form.js') }}"></script>
   <script src="{{ asset('dist/components/transition.js') }}"></script>
 
-  <script src="{{ asset('dist/components/modal.min.js') }}"></script>
 
   <style type="text/css">
     body {
@@ -89,7 +92,8 @@
 <div class="ui middle aligned center aligned grid">
   <div class="column">
 
-    <form action="#" method="POST" class="ui large form" autocomplete="off">
+    <form action="{{ route('login.post') }}" method="POST" class="ui large form" autocomplete="off">
+      {{ csrf_field() }}
       <div class="ui stacked segment">
         <h2 class="ui black image header">
           <img src="{{ asset('logo/tsu_logo.png') }}" class="image">
