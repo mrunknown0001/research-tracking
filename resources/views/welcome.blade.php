@@ -1,95 +1,126 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-        <title>Laravel</title>
+  <!-- Site Properties -->
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/reset.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/site.css') }}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/container.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/grid.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/header.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/image.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/menu.css') }}">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/divider.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/segment.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/form.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/input.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/button.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/list.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/message.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/icon.css') }}">
+
+
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/components/modal.min.css') }}">
+
+  <script src="{{ asset('dist/library/jquery.min.js') }}"></script>
+  <script src="{{ asset('/dist/components/form.js') }}"></script>
+  <script src="{{ asset('dist/components/transition.js') }}"></script>
+
+  <script src="{{ asset('dist/components/modal.min.js') }}"></script>
+
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+  <script>
+  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            email: {
+              identifier  : 'id_number',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your ID Number'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your password'
+                },
+                {
+                  type   : 'length[6]',
+                  prompt : 'Your password must be at least 6 characters'
+                }
+              ]
             }
+          }
+        })
+      ;
+    })
+  ;
+  </script>
+</head>
+<body>
 
-            .full-height {
-                height: 100vh;
-            }
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+    <form action="#" method="POST" class="ui large form" autocomplete="off">
+      <div class="ui stacked segment">
+        <h2 class="ui black image header">
+          <img src="{{ asset('logo/tsu_logo.png') }}" class="image">
+          <br>
+          <div class="content">
+            TSU - Research Office
+          </div>
+        </h2>
+        <p>Faculty Research Monitoring and Tracking</p>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="id_number" placeholder="ID Number">
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+          </div>
         </div>
-    </body>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="ui fluid large purple submit button">Login</div>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+  </div>
+</div>
+
+</body>
+
 </html>
