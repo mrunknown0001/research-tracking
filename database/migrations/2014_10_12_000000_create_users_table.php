@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('id_number')->unique();
             $table->tinyInteger('user_type');
             $table->string('password', 80);
+            $table->tinyInteger('agreed')->default(0);
+            $table->tinyInteger('password_changed')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

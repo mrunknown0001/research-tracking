@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AuditTrail extends Model
+class Agenda extends Model
 {
     protected $fillable = [
-        'user_id', 'transaction',
+        'name',
     ];
 }
