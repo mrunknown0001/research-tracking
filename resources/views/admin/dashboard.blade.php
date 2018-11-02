@@ -39,7 +39,7 @@
                   <tbody>
                     @foreach($logs as $l)
                       <tr>
-                        <td class="text-center">{{ $l->user->firstname . ' ' . $l->user->lastname }}</td>
+                        <td class="text-center">{{ ucwords($l->user->firstname . ' ' . $l->user->lastname) }}</td>
                         <td class="text-center">
                           @if($l->user->user_type == 1)
                             Admin

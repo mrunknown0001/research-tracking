@@ -41,6 +41,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
  
 
 // start of office clerk route group
+Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.history']], function () {
+	Route::get('/', 'OfficeClerkController@dashboard')->name('oc.dashboard');
+
+
+	// route to logout fr
+	Route::get('/logout', 'OfficeClerkController@logout')->name('oc.logout');
+});
 
 
 // start of college clerk route group

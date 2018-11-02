@@ -20,6 +20,13 @@ class UsersTableSeeder extends Seeder
         		'password' => bcrypt('password')
         	],
             [
+                'firstname' => 'oc',
+                'lastname' => 'oc',
+                'id_number' => '18-22222',
+                'user_type' => 2,
+                'password' => bcrypt('password')
+            ],
+            [
                 'firstname' => 'Fr',
                 'lastname' => 'Fr',
                 'id_number' => '18-88888',

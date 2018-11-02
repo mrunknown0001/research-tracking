@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
         'prevent.back.history' => \App\Http\Middleware\PreventBackHistory::class,
         'check.admin' => \App\Http\Middleware\CheckAdmin::class,
         'check.fr' => \App\Http\Middleware\CheckFr::class,
+        'check.oc' => \App\Http\Middleware\CheckOfficeClerk::class,
     ];
 }
