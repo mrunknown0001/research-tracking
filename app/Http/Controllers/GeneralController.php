@@ -22,6 +22,16 @@ class GeneralController extends Controller
     // return to intended dashboard 
     public static function auth_check()
     {
+            // check if user is agreed with terms and condition
+            if(Auth::user()->agreed != 1) {
+                return redirect()->route('privacy.statement.agree');
+            }
+
+            // check if user changes its default password
+            if(Auth::user()->password_changed != 1) {
+                return redirect()->route('change.default.password');
+            }
+
     	if(Auth::user()->user_type == 1) {
 			return redirect()->route('admin.dashboard');
 		}
@@ -39,9 +49,6 @@ class GeneralController extends Controller
     	if(!Auth::check()) {
     		return redirect()->route('login');
     	}
-        else {
-            return $this->auth_check();
-        }
 
     	// show privacy statement
     	return view('privacy-statement');

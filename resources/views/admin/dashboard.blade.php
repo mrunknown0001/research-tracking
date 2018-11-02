@@ -43,6 +43,8 @@
                         <td class="text-center">
                           @if($l->user->user_type == 1)
                             Admin
+                          @elseif($l->user->user_type == 8)
+                            Faculty Researcher
                           @else
                             Unknown
                           @endif

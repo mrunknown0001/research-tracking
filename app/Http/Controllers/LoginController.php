@@ -41,17 +41,6 @@ class LoginController extends Controller
 			$action = 'Login';
 			GeneralController::log($action);
 
-			// check if user is agreed with terms and condition
-			if(Auth::user()->agreed == 0) {
-				return redirect()->route('privacy.statement.agree');
-			}
-
-			// check if user changes its default password
-			if(Auth::user()->password_changed == 0) {
-				return redirect()->route('change.default.password');
-			}
-
-
     		return GeneralController::auth_check();
     	}
 

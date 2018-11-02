@@ -1,4 +1,4 @@
-    <div class="sidebar" data-color="success" data-background-color="black" data-image="">
+    <div class="sidebar" data-color="green" data-background-color="black" data-image="">
 
       <div class="logo">
         <a href="javascript:void(0)" class="simple-text logo-normal">
