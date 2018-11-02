@@ -15,7 +15,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
+                  {{-- <span class="notification">1</span> --}}
                   <p class="d-lg-none d-md-block">
                     Some Actions
                   </p>

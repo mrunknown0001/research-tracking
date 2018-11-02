@@ -13,6 +13,36 @@
               <p>Dashboard</p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">
+              <i class="material-icons">vertical_align_bottom</i>
+              <p>Incoming Research</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">
+              <i class="material-icons">vertical_align_top</i>
+              <p>Outgoing Research</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">
+              <i class="material-icons">file_copy</i>
+              <p>Forms</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">
+              <i class="material-icons">description</i>
+              <p>Research</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">
+              <i class="material-icons">account_box</i>
+              <p>Accounts</p>
+            </a>
+          </li>
 {{--           <li class="nav-item ">
             <a class="nav-link" href="">
               <i class="material-icons"></i>

@@ -17,32 +17,38 @@
           <div class="card">
             <div class="card-header card-header-primary">
               <h4 class="card-title ">Audit Trail</h4>
-              <p class="card-category"> Audit Trail </p>
+              <p class="card-category"> Logs </p>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-primary">
-                    <th>
+                    <th class="text-center">
                       User
                     </th>
-                    <th>
+                    <th class="text-center">
                       User Type
                     </th>
-                    <th>
+                    <th class="text-center">
                       Transaction
                     </th>
-                    <th>
+                    <th class="text-center">
                       Date &amp; Time
                     </th>
                   </thead>
                   <tbody>
                     @foreach($logs as $l)
                       <tr>
-                        <td>{{ $l->user->firstname . ' ' . $l->user->lastname }}</td>
-                        <td>{{ $l->user->user_type }}</td>
-                        <td>{{ $l->transaction }}</td>
-                        <td>{{ $l->created_at }}</td>
+                        <td class="text-center">{{ $l->user->firstname . ' ' . $l->user->lastname }}</td>
+                        <td class="text-center">
+                          @if($l->user->user_type == 1)
+                            Admin
+                          @else
+                            Unknown
+                          @endif
+                        </td>
+                        <td class="text-center">{{ $l->transaction }}</td>
+                        <td class="text-center">{{ date('l, F j, Y g:i:s a', strtotime($l->created_at)) }}</td>
                       </tr>
                     @endforeach
                   </tbody>
@@ -54,8 +60,8 @@
 
           <div class="card">
             <div class="card-header card-header-primary">
-              <h4 class="card-title ">Incomming Research</h4>
-              <p class="card-category"> Incomming </p>
+              <h4 class="card-title ">Ingoing Request Forms/Forms From Researchers</h4>
+              <p class="card-category">  </p>
             </div>
             <div class="card-body">
               <div class="table-responsive">
