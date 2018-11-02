@@ -43,12 +43,6 @@
               <p>Notifications</p>
             </a>
           </li> --}}
-          <li class="nav-item ">
-            <a class="nav-link" href="">
-              <i class="material-icons">history</i>
-              <p>Audit Trail</p>
-            </a>
-          </li>
         </ul>
       </div>
     </div>

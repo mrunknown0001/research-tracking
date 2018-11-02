@@ -18,7 +18,7 @@
                   <div class="text-center">
                     <img src="{{ asset('logo/tsu_logo.png') }}" class="img" width="80px">
                     <h3>TSU - Research Office</h3>
-                    <p>Faculty Research Management and Training</p>
+                    <p>Faculty Research Management and Tracking System</p>
                   </div>
                   
                   @include('includes.all')
