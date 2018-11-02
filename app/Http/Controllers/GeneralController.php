@@ -25,6 +25,9 @@ class GeneralController extends Controller
     	if(Auth::user()->user_type == 1) {
 			return redirect()->route('admin.dashboard');
 		}
+        else if(Auth::user()->user_type == 8) {
+            return redirect()->route('fr.dashboard');
+        }
     }
 
 
@@ -105,7 +108,7 @@ class GeneralController extends Controller
     	$action = 'Change Default Password';
     	GeneralController::log($action);
 
-    	// return to its intended dashbaord
+    	// return to its intended dashboard
     	return $this->auth_check();
 
     }

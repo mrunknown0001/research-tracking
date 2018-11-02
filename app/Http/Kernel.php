@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'prevent.back.history' => \App\Http\Middleware\PreventBackHistory::class,
         'check.admin' => \App\Http\Middleware\CheckAdmin::class,
+        'check.fr' => \App\Http\Middleware\CheckFr::class,
     ];
 }

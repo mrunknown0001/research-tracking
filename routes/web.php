@@ -38,3 +38,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 });
 
 // end of admin route group
+ 
+
+// start of office clerk route group
+
+
+// start of college clerk route group
+
+
+// start of department research chairperson route group
+
+
+// start of faculty researcher route group
+Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.history']], function () {
+	Route::get('/', 'FacultyResearcherController@dashboard')->name('fr.dashboard');
+
+
+	// route to logout fr
+	Route::get('/logout', 'FacultyResearcherController@logout')->name('fr.logout');
+});
