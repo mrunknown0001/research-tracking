@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class CheckAdmin
 {
@@ -15,6 +16,15 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::user()) {
+            if(Auth::user()->user_type != 1) {
+                return abort(403, 'Unauthorize Access');
+            }
+        }
+        else {
+            return redirect()->route('login')->with('error', 'Login First!');
+        }
+
         return $next($request);
     }
 }

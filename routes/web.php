@@ -1,12 +1,40 @@
 <?php
 
-Route::get('/', function () {
-    return view('login');
-})->name('login');
+Route::group(['middleware' => 'prevent.back.history'], function () {
+	Route::get('/', 'LoginController@login')->name('login');
 
-Route::get('/login', function () {
-	return redirect()->route('login');
+	Route::get('/login', function () {
+		return redirect()->route('login');
+	});
+
+	Route::post('/login', 'LoginController@postLogin')->name('login.post');
+
+	// route to agree with privacy statement
+	Route::get('/privacy-statement/proceed', 'GeneralController@privacyStatementAgree')->name('privacy.statement.agree');
+
+	// route to decline privacy statement
+	Route::get('/privacy-statement/declined', 'GeneralController@declinedPrivacyStatement')->name('declined.privacy.statement');
+
+	// route use to agree with privacy statement
+	Route::post('/privacy-statement/agreed', 'GeneralController@postAgreedPrivacyStatement')->name('agreed.privacy.statement.post');
+
+	// route to change default password
+	Route::get('/change-default-password', 'GeneralController@changeDefaultPassword')->name('change.default.password');
+
+	Route::post('/change-default-password', 'GeneralController@postChangeDefaultPassword')->name('change.default.password.post');
 });
 
-Route::post('/login', 'LoginController@postLogin')->name('login.post');
 
+Route::get('/logout', 'LoginController@logout')->name('logout');
+
+
+///////////////////////////////
+//start of admin route group //
+///////////////////////////////
+Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back.history']], function () {
+	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
+
+	Route::get('/logout', 'AdminController@logout')->name('admin.logout');
+});
+
+// end of admin route group

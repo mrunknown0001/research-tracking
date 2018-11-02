@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title') Login @endsection
+@section('title') Change Default Password @endsection
 
 @section('content')
 
@@ -22,24 +22,22 @@
                   </div>
                   
                   @include('includes.all')
-
-                  <form action="{{ route('login.post') }}" method="POST" class="form" autocomplete="off">
+                  <p>User: <b>{{ ucwords(Auth::user()->firstname . ' '  . Auth::user()->lastname) }}</b></p>
+                  <form action="{{ route('change.default.password.post') }}" method="POST" class="form" autocomplete="off">
                     {{ csrf_field() }}
                     <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">ID Number</label>
-                          <input type="text" name="id_number" id="id_number" class="form-control" required>
-                        </div>
-                      </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Password</label>
                           <input type="password" name="password" id="password" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Retype Password</label>
+                          <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
+                        </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Login</button>
+                    <button type="submit" class="btn btn-primary pull-right">Change Default Password</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
