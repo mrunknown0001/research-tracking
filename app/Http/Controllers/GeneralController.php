@@ -117,6 +117,10 @@ class GeneralController extends Controller
 
     	$password = $request['password'];
 
+        if($password == 'password') {
+            return redirect()->back()->with('error', 'Please Choose Another Password!');
+        }
+
     	Auth::user()->password = bcrypt($password);
     	Auth::user()->password_changed = 1;
     	Auth::user()->save();

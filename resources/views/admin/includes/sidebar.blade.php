@@ -37,8 +37,8 @@
               <p>Research</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
+          <li class="nav-item {{ route('admin.accounts') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.accounts') }}">
               <i class="material-icons">account_box</i>
               <p>Accounts</p>
             </a>

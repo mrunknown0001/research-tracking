@@ -8,6 +8,7 @@ use App\Http\Controllers\GeneralController;
 
 use App\AuditTrail;
 use App\College;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -48,6 +49,15 @@ class AdminController extends Controller
 		$colleges = College::get();
 
 		return view('admin.research', ['colleges' => $colleges]);
+	}
+
+
+	// method use to go to accounts
+	public function accounts()
+	{
+		$accounts = User::orderBy('id_number', 'asc')->paginate(10);
+
+		return view('admin.accounts', ['accounts' => $accounts]);
 	}
 
 
