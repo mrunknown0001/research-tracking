@@ -14,4 +14,9 @@ class CollegeDepartment extends Model
     {
     	return $this->belongsTo('App\College', 'college_id');
     }
+
+    public function assigned_fr()
+    {
+    	return $this->hasMany('App\FrAssignment', 'department_id');
+    }
 }

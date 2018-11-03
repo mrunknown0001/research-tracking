@@ -13,8 +13,8 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
+          <li class="nav-item {{ route('cc.add.account') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('cc.add.account') }}">
               <i class="material-icons">person_add</i>
               <p>Add Account</p>
             </a>

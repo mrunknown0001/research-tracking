@@ -69,6 +69,9 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.history']], function () {
 	Route::get('/', 'CollegeClerkController@dashboard')->name('cc.dashboard');
 
+	// route to go to add account
+	Route::get('/add-account', 'CollegeClerkController@addAccount')->name('cc.add.account');
+
 
 	// route to logout fr
 	Route::get('/logout', 'CollegeClerkController@logout')->name('cc.logout');

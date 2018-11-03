@@ -15,4 +15,9 @@ class FrAssignment extends Model
     {
     	return $this->belongsTo('App\CollegeDepartment', 'department_id');
     }
+
+    public function researcher()
+    {
+    	return $this->belongsTo('App\User', 'fr_id');
+    }
 }
