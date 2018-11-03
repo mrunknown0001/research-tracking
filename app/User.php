@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\DrcAssignment', 'drc_id');
     }
+
+    public function frAssignment()
+    {
+        return $this->hasOne('App\FrAssignment', 'fr_id');
+    }
 }
