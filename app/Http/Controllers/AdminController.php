@@ -7,6 +7,7 @@ use Auth;
 use App\Http\Controllers\GeneralController;
 
 use App\AuditTrail;
+use App\College;
 
 class AdminController extends Controller
 {
@@ -37,6 +38,16 @@ class AdminController extends Controller
 	public function forms()
 	{
 		return view('admin.forms');
+	}
+
+
+	// method use to go to research
+	public function research()
+	{
+		// get all colleges
+		$colleges = College::get();
+
+		return view('admin.research', ['colleges' => $colleges]);
 	}
 
 

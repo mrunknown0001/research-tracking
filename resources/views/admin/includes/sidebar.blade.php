@@ -31,8 +31,8 @@
               <p>Forms</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
+          <li class="nav-item {{ route('admin.research') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.research') }}">
               <i class="material-icons">description</i>
               <p>Research</p>
             </a>
