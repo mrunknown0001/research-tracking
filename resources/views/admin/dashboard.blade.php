@@ -44,7 +44,13 @@
                           @if($l->user->user_type == 1)
                             Admin
                           @elseif($l->user->user_type == 8)
-                            Faculty Researcher
+                            Researcher
+                          @elseif($l->user->user_type == 7)
+                            DRC
+                          @elseif($l->user->user_type == 6)
+                            College Clerk
+                          @elseif($l->user->user_type == 2)
+                            Office Clerk
                           @else
                             Unknown
                           @endif
