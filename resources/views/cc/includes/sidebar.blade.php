@@ -13,6 +13,12 @@
               <p>Dashboard</p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <i class="material-icons">person_add</i>
+              <p>Add Account</p>
+            </a>
+          </li>
 
 
         </ul>

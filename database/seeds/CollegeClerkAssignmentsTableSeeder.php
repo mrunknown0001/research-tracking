@@ -11,7 +11,7 @@ class CollegeClerkAssignmentsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('college_clerk_assignment')->insert([
+        DB::table('college_clerk_assignments')->insert([
         	[
         		'clerk_id' => 3,
         		'college_id' => 1

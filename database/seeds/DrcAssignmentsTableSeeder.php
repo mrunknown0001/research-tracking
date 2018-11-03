@@ -11,7 +11,7 @@ class DrcAssignmentsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('drc_assignment')->insert([
+        DB::table('drc_assignments')->insert([
         	[
         		'drc_id' => 4,
         		'college_id' => 1,
