@@ -37,6 +37,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to go to incomming research
 	Route::get('/research/incoming', 'AdminController@incomingResearch')->name('admin.incoming.research');
 
+	// route to go to outgoing research
+	Route::get('/research/outgoing', 'AdminController@outgoingResearch')->name('admin.outgoing.research');
+
 	Route::get('/logout', 'AdminController@logout')->name('admin.logout');
 });
 

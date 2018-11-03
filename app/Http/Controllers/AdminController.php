@@ -26,6 +26,13 @@ class AdminController extends Controller
 	}
 
 
+	// method use to show outgoing research
+	public function outgoingResearch()
+	{
+		return view('admin.research-outgoing');
+	}
+
+
 	public function logout()
 	{
 		$action = 'Logout';
