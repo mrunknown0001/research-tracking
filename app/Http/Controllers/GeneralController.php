@@ -38,6 +38,9 @@ class GeneralController extends Controller
         else if(Auth::user()->user_type == 2) {
             return redirect()->route('oc.dashboard');
         }
+        else if(Auth::user()->user_type == 7) {
+            return redirect()->route('drc.dashboard');
+        }
         else if(Auth::user()->user_type == 8) {
             return redirect()->route('fr.dashboard');
         }

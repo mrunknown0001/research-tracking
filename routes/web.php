@@ -54,6 +54,13 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 
 
 // start of department research chairperson route group
+Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.history']], function () {
+	Route::get('/', 'DrcController@dashboard')->name('drc.dashboard');
+
+
+	// route to logout fr
+	Route::get('/logout', 'DrcController@logout')->name('drc.logout');
+});
 
 
 // start of faculty researcher route group

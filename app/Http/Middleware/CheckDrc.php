@@ -16,6 +16,15 @@ class CheckDrc
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::user()) {
+            if(Auth::user()->user_type != 7) {
+                return abort(403, 'Unauthorize Access');
+            }
+        }
+        else {
+            return redirect()->route('login')->with('error', 'Login First!');
+        }
+
         return $next($request);
     }
 }
