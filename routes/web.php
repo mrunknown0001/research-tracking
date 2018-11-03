@@ -40,6 +40,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to go to outgoing research
 	Route::get('/research/outgoing', 'AdminController@outgoingResearch')->name('admin.outgoing.research');
 
+	// route to go to forms
+	Route::get('/forms', 'AdminController@forms')->name('admin.forms');
+
 	Route::get('/logout', 'AdminController@logout')->name('admin.logout');
 });
 

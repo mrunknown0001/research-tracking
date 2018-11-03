@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title') Incoming Research @endsection
+@section('title') Outgoing Research @endsection
 
 @section('content')
 

@@ -33,6 +33,13 @@ class AdminController extends Controller
 	}
 
 
+	// method use to go to forms
+	public function forms()
+	{
+		return view('admin.forms');
+	}
+
+
 	public function logout()
 	{
 		$action = 'Logout';
