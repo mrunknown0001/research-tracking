@@ -19,4 +19,9 @@ class CollegeDepartment extends Model
     {
     	return $this->hasMany('App\FrAssignment', 'department_id');
     }
+
+    public function assigned_drc()
+    {
+        return $this->hasOne('App\DrcAssignment', 'department_id');
+    }
 }

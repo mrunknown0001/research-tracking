@@ -15,4 +15,9 @@ class DrcAssignment extends Model
     {
     	return $this->belongsTo('App\CollegeDepartment', 'department_id');
     }
+
+    public function drc()
+    {
+    	return $this->belongsTo('App\User', 'drc_id');
+    }
 }

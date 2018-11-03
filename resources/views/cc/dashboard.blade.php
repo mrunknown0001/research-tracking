@@ -36,6 +36,48 @@
 												<th class="text-center">Action</th>
 											</thead>
 											<tbody>
+												@if(count($d->assigned_drc) > 0)
+												<tr>
+													<td class="text-center">
+														{{ $d->assigned_drc->drc->id_number }}
+													</td>
+													<td class="text-center">
+														{{ ucwords($d->assigned_drc->drc->firstname . ' ' . $d->assigned_drc->drc->lastname) }}
+													</td>
+													<td>
+														{{ strtolower($d->assigned_drc->drc->email) }}
+													</td>
+													<td class="text-center">
+														{{ strtolower($d->assigned_drc->drc->contact_number) }}
+													</td>
+													<td class="text-center">
+														<a href="#" alt="Edit"><i class="material-icons">edit</i></a>
+														<a href="#" alt="Delete" onclick="showModalDelete()"><i class="material-icons">delete</i></a>
+													</td>
+													
+
+<div class="ui modal" id="dialogModal">
+  <i class="close icon"></i>
+  <div class="header">
+    Profile Picture
+  </div>
+  <div class="image ">
+
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Yep, that's me
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+
+												</tr>
+												@endif
 												@foreach($d->assigned_fr as $f)
 													<tr>
 														<td class="text-center">
@@ -54,6 +96,8 @@
 															<a href="#" alt="Edit"><i class="material-icons">edit</i></a>
 															<a href="#" alt="Delete"><i class="material-icons">delete</i></a>
 														</td>
+
+
 													</tr>
 												@endforeach
 											</tbody>
@@ -78,5 +122,7 @@
 
     </div>
 </div>
+<script>
 
+</script>
 @endsection
