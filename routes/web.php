@@ -34,6 +34,9 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back.history']], function () {
 	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
 
+	// route to go to incomming research
+	Route::get('/research/incoming', 'AdminController@incomingResearch')->name('admin.incoming.research');
+
 	Route::get('/logout', 'AdminController@logout')->name('admin.logout');
 });
 
@@ -51,6 +54,13 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 
 
 // start of college clerk route group
+Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.history']], function () {
+	Route::get('/', 'CollegeClerkController@dashboard')->name('cc.dashboard');
+
+
+	// route to logout fr
+	Route::get('/logout', 'CollegeClerkController@logout')->name('cc.logout');
+});
 
 
 // start of department research chairperson route group

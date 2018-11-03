@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'check.fr' => \App\Http\Middleware\CheckFr::class,
         'check.oc' => \App\Http\Middleware\CheckOfficeClerk::class,
         'check.drc' => \App\Http\Middleware\CheckDrc::class,
+        'check.cc' => \App\Http\Middleware\CheckCollegeClerk::class,
     ];
 }

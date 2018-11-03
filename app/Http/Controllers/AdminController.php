@@ -19,6 +19,13 @@ class AdminController extends Controller
 	}
 
 
+	// method use to show incoming research page
+	public function incomingResearch()
+	{
+		return view('admin.research-incoming');
+	}
+
+
 	public function logout()
 	{
 		$action = 'Logout';

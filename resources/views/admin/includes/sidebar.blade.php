@@ -13,8 +13,8 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
+          <li class="nav-item {{ route('admin.incoming.research') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.incoming.research') }}">
               <i class="material-icons">vertical_align_bottom</i>
               <p>Incoming Research</p>
             </a>
