@@ -21,7 +21,10 @@
               <p class="card-category"> Complete the Profile </p>
             </div>
             <div class="card-body">
-							<form action="#" method="POST" autocomplete="off">
+							@include('includes.all')
+
+							<form action="{{ route('cc.add.account.post') }}" method="POST" autocomplete="off">
+								{{ csrf_field() }}
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
@@ -33,6 +36,13 @@
 										<label class="bmd-label-floating">College Department</label>
 										<select name="department" id="department" class="form-control">
 											<option value="">Select Department</option>
+											@if(count($departments) > 0)
+												@foreach($departments as $d)
+													<option value="{{ $d->id }}">{{ $d->name }}</option>
+												@endforeach
+											@else
+												<option value="">No Department</option>
+											@endif
 										</select>
 									</div>
 								</div>
@@ -73,6 +83,8 @@
 											<label class="bmd-label-floating">User Type</label>
 											<select name="user_type" id="user_type" class="form-control">
 												<option value="">Select User Type</option>
+												<option value="8">Faculty Researcher</option>
+												<option value="7">Department Research Chairperson</option>
 											</select>
 									</div>
 								</div>

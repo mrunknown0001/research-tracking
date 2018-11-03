@@ -72,6 +72,8 @@ Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.hi
 	// route to go to add account
 	Route::get('/add-account', 'CollegeClerkController@addAccount')->name('cc.add.account');
 
+	// route to save new account
+	Route::post('/add-account', 'CollegeClerkController@postAddAccount')->name('cc.add.account.post');
 
 	// route to logout fr
 	Route::get('/logout', 'CollegeClerkController@logout')->name('cc.logout');

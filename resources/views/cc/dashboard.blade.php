@@ -29,29 +29,30 @@
 									@if(count($d->assigned_fr) > 0)
 										<table class="table">
 											<thead>
-												<th>ID Number</th>
-												<th>Name</th>
-												<th>Email</th>
-												<th>Contact Number</th>
-												<th>Action</th>
+												<th class="text-center">ID Number</th>
+												<th class="text-center">Name</th>
+												<th class="text-center">Email</th>
+												<th class="text-center">Contact Number</th>
+												<th class="text-center">Action</th>
 											</thead>
 											<tbody>
 												@foreach($d->assigned_fr as $f)
 													<tr>
-														<td>
+														<td class="text-center">
 															{{ $f->researcher->id_number }}
 														</td>
-														<td>
+														<td class="text-center">
 															{{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
 														</td>
-														<td>
+														<td class="text-center">
 															{{ strtolower($f->researcher->email) }}
 														</td>
-														<td>
+														<td class="text-center">
 															{{ strtolower($f->researcher->contact_number) }}
 														</td>
-														<td>
-															update|remove
+														<td class="text-center">
+															<a href="#" alt="Edit"><i class="material-icons">edit</i></a>
+															<a href="#" alt="Delete"><i class="material-icons">delete</i></a>
 														</td>
 													</tr>
 												@endforeach

@@ -19,6 +19,7 @@
                     <img src="{{ asset('logo/tsu_logo.png') }}" class="img" width="80px">
                     <h3>TSU - Research Office</h3>
                     <p>Faculty Research Management and Training</p>
+                    <h4>Change Default Password</h4>
                   </div>
                   
                   @include('includes.all')

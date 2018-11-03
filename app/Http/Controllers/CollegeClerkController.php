@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\CollegeDepartment;
+use App\User;
+use App\DrcAssignment;
+use App\FrAssignment;
 
 class CollegeClerkController extends Controller
 {
     // method use to go to dashboard of cc
     public function dashboard()
     {
-    	$college_id = Auth::user()->collegeClerkAssignment->college->id;
+        $college_id = Auth::user()->collegeClerkAssignment->college->id;
 
-    	$departments = CollegeDepartment::where('college_id', $college_id)->get();
+        $departments = CollegeDepartment::where('college_id', $college_id)->get();
 
     	return view('cc.dashboard', ['departments' => $departments]);
     }
@@ -23,7 +26,91 @@ class CollegeClerkController extends Controller
     // method use to go to add account
     public function addAccount()
     {
-    	return view('cc.account-add');
+        $college_id = Auth::user()->collegeClerkAssignment->college->id;
+
+        $departments = CollegeDepartment::where('college_id', $college_id)->get();
+
+    	return view('cc.account-add', ['departments' => $departments]);
+    }
+
+
+    // method use to save new account
+    public function postAddAccount(Request $request)
+    {
+        $request->validate([
+            'id_number' => 'required|unique:users',
+            'department' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'contact_number' => 'required|digits:11',
+            'user_type' => 'required'
+        ]);
+
+        $id_number = $request['id_number'];
+        $department = $request['department'];
+        $firstname = $request['firstname'];
+        $middlename = $request['middlename'];
+        $lastname = $request['lastname'];
+        $email = $request['email'];
+        $contact_number = $request['contact_number'];
+        $user_type = $request['user_type'];
+
+        $dept = CollegeDepartment::findOrFail($department);
+
+        if($user_type != 8 && $user_type != 7) {
+            return redirect()->back()->with('error', 'Please Try Again Later!');
+        }
+
+        // save new user
+        $user = new User();
+        $user->firstname = $firstname;
+        $user->middlename = $middlename;
+        $user->lastname = $lastname;
+        $user->id_number = $id_number;
+        $user->password = bcrypt('password');
+        $user->email = $email;
+        $user->contact_number = $contact_number;
+        $user->user_type = $user_type;
+
+        if($user_type == 8) {
+            $user->save();
+
+            $fr = new FrAssignment();
+            $fr->fr_id = $user->id;
+            $fr->college_id = $dept->college->id;
+            $fr->department_id = $dept->id;
+            $fr->save();
+
+            $action = 'Added Faculty Researcher';
+        }
+        else {
+            // check if there is assign drc to the department
+            $check_drc_assign = DrcAssignment::where('department_id', $dept->id)->first();
+
+            if(count($check_drc_assign) > 0) {
+                return redirect()->back()->with('error', ucwords($dept->name) . ' Department Already has Chairperson');
+            }
+
+            $user->save();
+
+            $drc = new DrcAssignment();
+            $drc->fr_id = $user->id;
+            $drc->college_id = $dept->college->id;
+            $drc->department_id = $dept->id;
+            $drc->save();
+
+            $action = 'Added Department Research Chairperson';
+        }
+
+
+
+
+        // add to audit trail/activity logs
+        GeneralController::log($action);
+
+        // return back with success message
+        return redirect()->back()->with('success', 'User Added');
     }
 
 
