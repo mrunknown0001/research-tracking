@@ -25,8 +25,8 @@
               <p>Outgoing Research</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
+          <li class="nav-item {{ route('drc.forms') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('drc.forms') }}">
               <i class="material-icons">file_copy</i>
               <p>Forms</p>
             </a>

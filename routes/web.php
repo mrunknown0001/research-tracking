@@ -101,6 +101,9 @@ Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.hi
 Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.history']], function () {
 	Route::get('/', 'DrcController@dashboard')->name('drc.dashboard');
 
+	// route to go to forms
+	Route::get('/forms', 'DrcController@forms')->name('drc.forms');
+
 
 	// route to logout fr
 	Route::get('/logout', 'DrcController@logout')->name('drc.logout');

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+
+use App\User;
+use App\Form;
 
 class DrcController extends Controller
 {
@@ -10,6 +14,15 @@ class DrcController extends Controller
     public function dashboard()
     {
     	return view('drc.dashboard');
+    }
+
+
+    // method use to view forms
+    public function forms()
+    {
+    	$forms = Form::get();
+
+    	return view('drc.forms', ['forms' => $forms]);
     }
 
 
