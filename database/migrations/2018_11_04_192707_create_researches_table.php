@@ -15,6 +15,10 @@ class CreateResearchesTable extends Migration
     {
         Schema::create('researches', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('author_id')->unsigned();
+            $table->foreign('author_id')->references('id')->on('users');
+            $table->string('title', 50);
+            $table->timestamp('time_posted')->nullable();
             $table->timestamps();
         });
     }
