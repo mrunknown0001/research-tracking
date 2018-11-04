@@ -43,36 +43,6 @@
               <p>Accounts</p>
             </a>
           </li>
-{{--           <li class="nav-item ">
-            <a class="nav-link" href="">
-              <i class="material-icons"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
-              <i class="material-icons"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
-              <i class="material-icons"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
-              <i class="material-icons"></i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li> --}}
         </ul>
       </div>
     </div>

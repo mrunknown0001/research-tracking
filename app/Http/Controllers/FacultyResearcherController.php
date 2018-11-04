@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Http\Controllers\GeneralController;
+
+use App\User;
+use App\Form;
 
 class FacultyResearcherController extends Controller
 {
@@ -10,6 +15,15 @@ class FacultyResearcherController extends Controller
     public function dashboard()
     {
     	return view('fr.dashboard');
+    }
+
+
+    // method use to go to forms
+    public function forms()
+    {
+    	$forms = Form::get();
+
+    	return view('fr.forms', ['forms' => $forms]);
     }
 
 

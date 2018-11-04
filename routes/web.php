@@ -111,6 +111,9 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.history']], function () {
 	Route::get('/', 'FacultyResearcherController@dashboard')->name('fr.dashboard');
 
+	// route to view forms
+	Route::get('/forms', 'FacultyResearcherController@forms')->name('fr.forms');
+
 
 	// route to logout fr
 	Route::get('/logout', 'FacultyResearcherController@logout')->name('fr.logout');
@@ -124,4 +127,4 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 
 
 // downloadable forms routes here
-Route::get('/admin/downloadable/form/{filename}', 'AdminController@downloadForm')->name('admin.download.form');
+Route::get('/downloadable/form/{filename}', 'AdminController@downloadForm')->name('admin.download.form');
