@@ -145,7 +145,7 @@ class CollegeClerkController extends Controller
         GeneralController::log($action);
 
         // return back with success message
-        return redirect()->back()->with('success', );
+        return redirect()->back()->with('success', $action);
     }
 
 
