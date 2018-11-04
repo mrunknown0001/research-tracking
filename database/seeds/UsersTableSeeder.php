@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
         	[
         		'firstname' => 'Admin',
+                'middlename' => 'Ad',
         		'lastname' => 'Admin',
         		'id_number' => '18-11111',
                 'email' => 'admin@admin.com',
@@ -23,6 +24,7 @@ class UsersTableSeeder extends Seeder
         	],
             [
                 'firstname' => 'oc',
+                'middlename' => 'oc',
                 'lastname' => 'oc',
                 'id_number' => '18-22222',
                 'email' => 'oc@admin.com',
@@ -32,6 +34,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'firstname' => 'cc',
+                'middlename' => 'cc',
                 'lastname' => 'cc',
                 'id_number' => '18-66666',
                 'email' => 'cc@gmail.com',
@@ -41,6 +44,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'firstname' => 'drc',
+                'middlename' => 'dr',
                 'lastname' => 'drc',
                 'id_number' => '18-77777',
                 'email' => 'drc@drc.com',
@@ -50,6 +54,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'firstname' => 'Fr',
+                'middlename' => 'ff',
                 'lastname' => 'Fr',
                 'id_number' => '18-88888',
                 'email' => 'fr@fr.com',
