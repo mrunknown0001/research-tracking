@@ -38,11 +38,11 @@
                       <tr>
                         <td>{{ $a->id_number }}</td>
                         <td>{{ ucwords($a->firstname) }}</td>
-                        <td></td>
+                        <td>{{ ucwords($a->middlename) }}</td>
                         <td>{{ ucwords($a->lastname) }}</td>
                         <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ strtolower($a->email) }}</td>
+                        <td>{{ $a->contact_number }}</td>
                       </tr>
                     @endforeach
                   </tbody>
