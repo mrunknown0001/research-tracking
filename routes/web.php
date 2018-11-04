@@ -75,6 +75,13 @@ Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.hi
 	// route to save new account
 	Route::post('/add-account', 'CollegeClerkController@postAddAccount')->name('cc.add.account.post');
 
+	// route to remove use account
+	Route::post('/remove-account', 'CollegeClerkController@postRemoveAccount')->name('cc.remove.account.post');
+
+	Route::get('/remove-account', function () {
+		return abort(404);
+	});
+
 	// route to logout fr
 	Route::get('/logout', 'CollegeClerkController@logout')->name('cc.logout');
 });

@@ -55,7 +55,7 @@ class AdminController extends Controller
 	// method use to go to accounts
 	public function accounts()
 	{
-		$accounts = User::orderBy('id_number', 'asc')->paginate(10);
+		$accounts = User::where('active', 1)->orderBy('id_number', 'asc')->paginate(10);
 
 		return view('admin.accounts', ['accounts' => $accounts]);
 	}

@@ -88,22 +88,30 @@ class CollegeClerkController extends Controller
             // check if there is assign drc to the department
             $check_drc_assign = DrcAssignment::where('department_id', $dept->id)->first();
 
-            if(count($check_drc_assign) > 0) {
+            if(count($check_drc_assign) > 0 && $check_drc_assign->drc->active == 1) {
                 return redirect()->back()->with('error', ucwords($dept->name) . ' Department Already has Chairperson');
             }
+            else if(count($check_drc_assign) > 0 && $check_drc_assign->drc->active == 0) {
+                $user->save();
 
-            $user->save();
+                $check_drc_assign->drc_id = $user->id;
+                $check_drc_assign->save();
 
-            $drc = new DrcAssignment();
-            $drc->fr_id = $user->id;
-            $drc->college_id = $dept->college->id;
-            $drc->department_id = $dept->id;
-            $drc->save();
+                $action = 'Added Department Research Chairperson';
+            }
+            else {
+                $user->save();
 
-            $action = 'Added Department Research Chairperson';
+                $drc = new DrcAssignment();
+                $drc->drc_id = $user->id;
+                $drc->college_id = $dept->college->id;
+                $drc->department_id = $dept->id;
+                $drc->save();
+
+                $action = 'Added Department Research Chairperson';
+            }
+
         }
-
-
 
 
         // add to audit trail/activity logs
@@ -111,6 +119,33 @@ class CollegeClerkController extends Controller
 
         // return back with success message
         return redirect()->back()->with('success', 'User Added');
+    }
+
+
+    // method use to remove the user 
+    public function postRemoveAccount(Request $request)
+    {
+        $id = $request['user_id'];
+
+        $user = User::findOrFail($id);
+        $user->active = 0;
+        $user->save();
+
+        // add to audit trail/activity logs
+        if($user->user_type == 8) {
+            $action = 'Removed Faculty Researcher';
+        }
+        else if($user->user_type == 7) {
+            $action = 'Removed DRC Account';
+        }
+        else {
+            $action = 'User Account Removed';
+        }
+
+        GeneralController::log($action);
+
+        // return back with success message
+        return redirect()->back()->with('success', );
     }
 
 

@@ -26,7 +26,7 @@
 	            <div class="card-body">
 	              <div class="table-responsive">
 								
-									@if(count($d->assigned_fr) > 0)
+									@if(count($d->assigned_fr) > 0  || (count($d->assigned_drc) > 0 && $d->assigned_drc->drc->active == 1))
 										<table class="table">
 											<thead>
 												<th class="text-center">ID Number</th>
@@ -36,74 +36,56 @@
 												<th class="text-center">Action</th>
 											</thead>
 											<tbody>
-												@if(count($d->assigned_drc) > 0)
-												<tr>
-													<td class="text-center">
-														{{ $d->assigned_drc->drc->id_number }}
-													</td>
-													<td class="text-center">
-														{{ ucwords($d->assigned_drc->drc->firstname . ' ' . $d->assigned_drc->drc->lastname) }}
-													</td>
-													<td>
-														{{ strtolower($d->assigned_drc->drc->email) }}
-													</td>
-													<td class="text-center">
-														{{ strtolower($d->assigned_drc->drc->contact_number) }}
-													</td>
-													<td class="text-center">
-														<a href="#" alt="Edit"><i class="material-icons">edit</i></a>
-														<a href="#" alt="Delete" onclick="showModalDelete()"><i class="material-icons">delete</i></a>
-													</td>
-													
-
-<div class="ui modal" id="dialogModal">
-  <i class="close icon"></i>
-  <div class="header">
-    Profile Picture
-  </div>
-  <div class="image ">
-
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
-      Nope
-    </div>
-    <div class="ui positive right labeled icon button">
-      Yep, that's me
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
-</div>
-
-
-												</tr>
-												@endif
-												@foreach($d->assigned_fr as $f)
+												@if(count($d->assigned_drc) > 0 && $d->assigned_drc->drc->active == 1)
 													<tr>
 														<td class="text-center">
-															{{ $f->researcher->id_number }}
+															{{ $d->assigned_drc->drc->id_number }}
 														</td>
 														<td class="text-center">
-															{{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
+															{{ ucwords($d->assigned_drc->drc->firstname . ' ' . $d->assigned_drc->drc->lastname) }}
 														</td>
 														<td class="text-center">
-															{{ strtolower($f->researcher->email) }}
+															{{ strtolower($d->assigned_drc->drc->email) }}
 														</td>
 														<td class="text-center">
-															{{ strtolower($f->researcher->contact_number) }}
+															{{ strtolower($d->assigned_drc->drc->contact_number) }}
 														</td>
 														<td class="text-center">
-															<a href="#" alt="Edit"><i class="material-icons">edit</i></a>
-															<a href="#" alt="Delete"><i class="material-icons">delete</i></a>
+															<a href="#" class="text-primary"><i class="material-icons">edit</i></a>
+															<a href="#" class="text-danger" data-toggle="modal" data-target="#accountDeleteDrc-{{ $d->assigned_drc->drc->id }}"><i class="material-icons">delete</i></a>
 														</td>
-
-
+														@include('cc.includes.modal-account-delete-drc')
 													</tr>
+												@endif
+												
+												@foreach($d->assigned_fr as $f)
+													@if($f->researcher->active == 1)
+														<tr>
+															<td class="text-center">
+																{{ $f->researcher->id_number }}
+															</td>
+															<td class="text-center">
+																{{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
+															</td>
+															<td class="text-center">
+																{{ strtolower($f->researcher->email) }}
+															</td>
+															<td class="text-center">
+																{{ strtolower($f->researcher->contact_number) }}
+															</td>
+															<td class="text-center">
+																<a href="#" class="text-primary"><i class="material-icons">edit</i></a>
+																<a href="#" class="text-danger" data-toggle="modal" data-target="#deleteAccountFr-{{ $f->researcher->id }}"><i class="material-icons">delete</i></a></a>
+															</td>
+															@include('cc.includes.modal-account-delete-fr')
+														</tr>
+													@endif
 												@endforeach
+
 											</tbody>
 										</table>
 									@else
-										<p class="text-center">No Research</p>
+										<p class="text-center">No Researchers</p>
 									@endif
 
 	              </div>

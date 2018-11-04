@@ -8,9 +8,6 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/material-dashboard.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('css/pagination.css') }}">
 
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/modal/modal.min.css') }}">
-  {{-- <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/font-awesome.min.css') }}"> --}}
-
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <script src="{{ asset('assets/js/core/jquery.min.js') }}" type="text/javascript"></script>
@@ -31,7 +28,5 @@
   <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}" type="text/javascript"></script>
   {{-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc --}}
   <script src="{{ asset('assets/js/material-dashboard.js?v=2.1.0') }}" type="text/javascript"></script>
-
-  <script src="{{ asset('assets/modal/modal.min.js') }}" type="text/javascript"></script>
 </body>
 </html>
