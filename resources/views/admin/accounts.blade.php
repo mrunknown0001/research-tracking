@@ -40,7 +40,17 @@
                         <td>{{ ucwords($a->firstname) }}</td>
                         <td>{{ ucwords($a->middlename) }}</td>
                         <td>{{ ucwords($a->lastname) }}</td>
-                        <td></td>
+                        <td>
+                          @if($a->user_type == 8)
+                            {{ ucwords($a->frAssignment->college->name) }}
+                          @elseif($a->user_type == 7)
+                            {{ ucwords($a->drcAssignment->college->name) }}
+                          @elseif($a->user_type == 6)
+                            {{ ucwords($a->collegeClerkAssignment->college->name) }}
+                          @else
+                            N/A
+                          @endif
+                        </td>
                         <td>{{ strtolower($a->email) }}</td>
                         <td>{{ $a->contact_number }}</td>
                       </tr>
