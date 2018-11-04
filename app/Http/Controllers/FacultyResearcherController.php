@@ -18,6 +18,20 @@ class FacultyResearcherController extends Controller
     }
 
 
+    // method use to access incoming research
+    public function incomingResearch()
+    {
+        return view('fr.research-incoming');
+    }
+
+
+    // method use to access outgoing research
+    public function outgoingResearch()
+    {
+        return view('fr.research-outgoing');
+    }
+
+
     // method use to go to forms
     public function forms()
     {
@@ -26,6 +40,12 @@ class FacultyResearcherController extends Controller
     	return view('fr.forms', ['forms' => $forms]);
     }
 
+
+    // method use to access send form
+    public function sendRequestForm()
+    {
+        return view('fr.send-request-form');
+    }
 
     // method use to logout of fr
 	public function logout()

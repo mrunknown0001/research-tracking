@@ -114,9 +114,17 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.history']], function () {
 	Route::get('/', 'FacultyResearcherController@dashboard')->name('fr.dashboard');
 
+	// route to incoming research
+	Route::get('/research/incoming', 'FacultyResearcherController@incomingResearch')->name('fr.incoming.research');
+
+	// route to outgoing research
+	Route::get('/research/outgoing', 'FacultyResearcherController@outgoingResearch')->name('fr.outgoing.research');
+
 	// route to view forms
 	Route::get('/forms', 'FacultyResearcherController@forms')->name('fr.forms');
 
+	// route to access send forms
+	Route::get('/form/send', 'FacultyResearcherController@sendRequestForm')->name('fr.send.request.form');
 
 	// route to logout fr
 	Route::get('/logout', 'FacultyResearcherController@logout')->name('fr.logout');
