@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CollegeClerkAssignmentsTableSeeder::class);
         $this->call(DrcAssignmentsTableSeeder::class);
         $this->call(FrcAssignmentsTableSeeder::class);
+        $this->call(FormsTableSeeder::class);
     }
 }

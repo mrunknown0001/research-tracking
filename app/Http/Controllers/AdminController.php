@@ -9,6 +9,7 @@ use App\Http\Controllers\GeneralController;
 use App\AuditTrail;
 use App\College;
 use App\User;
+use App\Form;
 
 class AdminController extends Controller
 {
@@ -38,7 +39,9 @@ class AdminController extends Controller
 	// method use to go to forms
 	public function forms()
 	{
-		return view('admin.forms');
+		$forms = Form::get();
+
+		return view('admin.forms', ['forms' => $forms]);
 	}
 
 
@@ -67,5 +70,16 @@ class AdminController extends Controller
 		GeneralController::log($action);
 
 		return redirect()->route('logout');
+	}
+
+
+
+	// method use to download form
+	public function downloadForm($filename)
+	{
+		$action = 'Form Download ' . $filename;
+		GeneralController::log($action);
+
+		return response()->download(public_path("uploads/fillable/{$filename}"));
 	}
 }

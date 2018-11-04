@@ -75,6 +75,16 @@ Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.hi
 	// route to save new account
 	Route::post('/add-account', 'CollegeClerkController@postAddAccount')->name('cc.add.account.post');
 
+	// route to update account
+	Route::get('/account/{id}/update', 'CollegeClerkController@updateAccount')->name('cc.update.account');
+
+	// route to save update on account
+	Route::post('/account/update', 'CollegeClerkController@postUpdateAccount')->name('cc.update.account.post');
+
+	Route::get('/account/update', function () {
+		return abort(404);
+	});
+
 	// route to remove use account
 	Route::post('/remove-account', 'CollegeClerkController@postRemoveAccount')->name('cc.remove.account.post');
 
@@ -105,3 +115,13 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 	// route to logout fr
 	Route::get('/logout', 'FacultyResearcherController@logout')->name('fr.logout');
 });
+
+
+
+
+
+
+
+
+// downloadable forms routes here
+Route::get('/admin/downloadable/form/{filename}', 'AdminController@downloadForm')->name('admin.download.form');

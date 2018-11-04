@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title') Incoming Research @endsection
+@section('title') Forms @endsection
 
 @section('content')
 
@@ -27,6 +27,9 @@
                     <div class="form-group">
                       <select name="form" id="form" class="form-control" placeholder="Form to be replaced *">
                         <option value="">Select Form to Replace</option>
+                        @foreach($forms as $f)
+                          <option value="{{ $f->id }}">{{ $f->name }}</option>
+                        @endforeach
                       </select>
                     </div>
                     <div class="form-group">
@@ -56,7 +59,25 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-
+                
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>From Name</th>
+                    <th class="text-center">Action</th>
+                  </thead>
+                  <tbody>
+                    @foreach($forms as $f)
+                      <tr>
+                        <td>{{ $f->name . ' - ' . $f->alias }}</td>
+                        <td class="text-center">
+                          <a href="{{ route('admin.download.form', ['filename' => $f->filename]) }}">
+                            <i class="material-icons">save_alt</i>
+                          </a>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
 
               </div>
             </div>

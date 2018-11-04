@@ -122,6 +122,118 @@ class CollegeClerkController extends Controller
     }
 
 
+    // method use to update account
+    public function updateAccount($id = null)
+    {
+        $college_id = Auth::user()->collegeClerkAssignment->college->id;
+
+        $departments = CollegeDepartment::where('college_id', $college_id)->get();
+
+        $user = User::findOrFail($id);
+
+        // check if the user belongs to this college
+        $clerk = Auth::user();
+
+        if($user->user_type == 7) {
+            if($clerk->collegeClerkAssignment->college->id != $user->drcAssignment->college->id) {
+                // return back with error
+                return redirect()->back()->with('error', 'Please Reoad This Page and Try Again!');
+            }
+        }
+        else if($user->user_type == 8) {
+            if($clerk->collegeClerkAssignment->college->id != $user->frAssignment->college->id) {
+                // return back with error
+                return redirect()->back()->with('error', 'Please Reoad This Page and Try Again!');
+            } 
+        }
+
+        return view('cc.account-edit', ['user' => $user, 'departments' => $departments]);
+    }
+
+
+    // method use to save updates on user 
+    public function postUpdateAccount(Request $request)
+    {
+        $request->validate([
+            'id_number' => 'required',
+            'department' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'contact_number' => 'required|digits:11',
+            'user_type' => 'required'
+        ]);
+
+        $id = $request['id'];
+
+        $user = User::findOrFail($id);
+        
+        $id_number = $request['id_number'];
+        $department = $request['department'];
+        $firstname = $request['firstname'];
+        $middlename = $request['middlename'];
+        $lastname = $request['lastname'];
+        $email = $request['email'];
+        $contact_number = $request['contact_number'];
+        $user_type = $request['user_type'];
+
+        $dept = CollegeDepartment::findOrFail($department);
+
+        // check id_number ais used
+        $check_id_number = User::where('id_number', $id_number)->first();
+
+        if(count($check_id_number) > 0 && $check_id_number->id != $user->id) {
+            return redirect()->back()->with('error', 'ID Number already used');
+        }
+
+
+        $user->firstname = $firstname;
+        $user->middlename = $middlename;
+        $user->lastname = $lastname;
+        $user->id_number = $id_number;
+        $user->email = $email;
+        $user->contact_number = $contact_number;
+        $user->user_type = $user_type;
+        $user->save();
+
+        if($user_type == 8) {
+            $user->save();
+
+            $user->frAssignment->fr_id = $user->id;
+            $user->frAssignment->college_id = $dept->college->id;
+            $user->frAssignment->department_id = $dept->id;
+            $user->frAssignment->save();
+
+            $action = 'Updated Faculty Researcher';
+        }
+        else {
+            // check if there is assign drc to the department
+            $check_drc_assign = DrcAssignment::where('department_id', $dept->id)->first();
+
+            if(count($check_drc_assign) > 0 && $check_drc_assign->drc->active == 1 && $check_drc_assign->drc->id != $user->id) {
+                return redirect()->back()->with('error', ucwords($dept->name) . ' Department Already has Chairperson');
+            }
+            else {
+                $user->save();
+
+                $user->drcAssignment->drc_id = $user->id;
+                $user->drcAssignment->college_id = $dept->college->id;
+                $user->drcAssignment->department_id = $dept->id;
+                $user->drcAssignment->save();
+
+                $action = 'Updated Department Research Chairperson';
+            }
+
+        }
+
+        GeneralController::log($action);
+
+        // return back with success message
+        return redirect()->back()->with('success', 'User Updated');
+
+    }
+
+
     // method use to remove the user 
     public function postRemoveAccount(Request $request)
     {

@@ -51,8 +51,8 @@
 															{{ strtolower($d->assigned_drc->drc->contact_number) }}
 														</td>
 														<td class="text-center">
-															<a href="#" class="text-primary"><i class="material-icons">edit</i></a>
-															<a href="#" class="text-danger" data-toggle="modal" data-target="#accountDeleteDrc-{{ $d->assigned_drc->drc->id }}"><i class="material-icons">delete</i></a>
+															<a href="{{ route('cc.update.account', ['id' => $d->assigned_drc->drc->id]) }}" class="text-primary"><i class="material-icons">edit</i></a>
+															<a href="javascript:void(0)" class="text-danger" data-toggle="modal" data-target="#accountDeleteDrc-{{ $d->assigned_drc->drc->id }}"><i class="material-icons">delete</i></a>
 														</td>
 														@include('cc.includes.modal-account-delete-drc')
 													</tr>
@@ -74,8 +74,8 @@
 																{{ strtolower($f->researcher->contact_number) }}
 															</td>
 															<td class="text-center">
-																<a href="#" class="text-primary"><i class="material-icons">edit</i></a>
-																<a href="#" class="text-danger" data-toggle="modal" data-target="#deleteAccountFr-{{ $f->researcher->id }}"><i class="material-icons">delete</i></a></a>
+																<a href="{{ route('cc.update.account', ['id' => $f->researcher->id]) }}" class="text-primary"><i class="material-icons">edit</i></a>
+																<a href="javascript:void(0)" class="text-danger" data-toggle="modal" data-target="#deleteAccountFr-{{ $f->researcher->id }}"><i class="material-icons">delete</i></a></a>
 															</td>
 															@include('cc.includes.modal-account-delete-fr')
 														</tr>
