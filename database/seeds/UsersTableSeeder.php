@@ -61,6 +61,26 @@ class UsersTableSeeder extends Seeder
                 'contact_number' => '09191111118',
                 'user_type' => 8,
                 'password' => bcrypt('password')
+            ],
+            [
+                'firstname' => 'Fr2',
+                'middlename' => 'ff',
+                'lastname' => 'Fr',
+                'id_number' => '18-99999',
+                'email' => 'fr@fr.com',
+                'contact_number' => '09191111119',
+                'user_type' => 8,
+                'password' => bcrypt('password')
+            ],
+            [
+                'firstname' => 'Fr3',
+                'middlename' => 'ff',
+                'lastname' => 'Fr',
+                'id_number' => '18-88882',
+                'email' => 'fr@fr.com',
+                'contact_number' => '09191111120',
+                'user_type' => 8,
+                'password' => bcrypt('password')
             ]
         ]);
     }

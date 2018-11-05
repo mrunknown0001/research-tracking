@@ -117,6 +117,9 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.history']], function () {
 	Route::get('/', 'FacultyResearcherController@dashboard')->name('fr.dashboard');
 
+	// route to submit research
+	Route::post('/', 'FacultyResearcherController@postSubmitResearch')->name('fr.submit.research.post');
+
 	// route to incoming research
 	Route::get('/research/incoming', 'FacultyResearcherController@incomingResearch')->name('fr.incoming.research');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 use Auth;
 use App\Http\Controllers\GeneralController;
 
@@ -14,9 +15,35 @@ class FacultyResearcherController extends Controller
     // method use to go to dashboard of fr
     public function dashboard()
     {
-    	return view('fr.dashboard');
+        $researchers = User::where('active', 1)
+                            ->where('id', '!=', Auth::user()->id)
+                            ->where('user_type', 8)
+                            ->orderBy('lastname', 'asc')
+                            ->get();
+
+    	return view('fr.dashboard', ['researchers' => $researchers]);
     }
 
+
+    // method use to submit research 
+    public function postSubmitResearch(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'co_authors' => 'required',
+            'files.*' => 'required|mimes:pdf,doc,docx'
+        ]);
+
+        $title = $request['title'];
+        $co_authors = $request['co_authors'];
+
+        $files = $request['files'];
+
+        foreach($files as $file) {
+            return $file->getClientOriginalName();
+        }
+
+    }
 
     // method use to access incoming research
     public function incomingResearch()

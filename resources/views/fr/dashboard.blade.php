@@ -21,8 +21,11 @@
               <p class="card-category">  </p>
             </div>
             <div class="card-body">
+          
+              @include('includes.all')
 
-							<form action="#" method="POST" enctype="multipart/form-data">
+							<form action="{{ route('fr.submit.research.post') }}" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
 								<div class="form-group">
 									<label class="bmd-label-floating">Research Title</label>
                   <input type="text" name="title" id="title" class="form-control" required>
@@ -30,12 +33,15 @@
 								<div class="row">
 									<div class="col-md-8">
 										<label class="bmd-label-floating">Co Authors</label>
-	                  <select type="text" name="co_author[]" multiple id="co_author" class="form-control" required>
-                      <option value="">Select Co-Authors</option>
+	                  <select type="text" name="co_authors" id="co_authors" class="form-control" required>
+                      <option value="">Select Co-Author</option>
+                      @foreach($researchers as $r)
+                        <option value="{{ $r->id }}">{{ $r->firstname . ' ' . $r->lastname }}</option>
+                      @endforeach
                     </select>
 									</div>
 									<div class="col-md-4">
-										<input type="file" name="file" id="file">
+										<input type="file" name="files[]" id="files" multiple accept="application/msword,.doc,.docx,application/pdf">
 									</div>
 								</div>
 								<div class="form-group">

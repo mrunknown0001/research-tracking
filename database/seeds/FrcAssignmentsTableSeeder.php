@@ -16,7 +16,17 @@ class FrcAssignmentsTableSeeder extends Seeder
         		'fr_id' => 5,
         		'college_id' => 1,
         		'department_id' => 1
-        	]
+        	],
+            [
+                'fr_id' => 6,
+                'college_id' => 1,
+                'department_id' => 1
+            ],
+            [
+                'fr_id' => 7,
+                'college_id' => 1,
+                'department_id' => 1
+            ]
         ]);
     }
 }
