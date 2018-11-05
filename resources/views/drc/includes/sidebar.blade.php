@@ -19,8 +19,8 @@
               <p>Incoming Research</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
+          <li class="nav-item {{  route('drc.outgoing.research') == url()->current() ? 'active' : '' }} }}">
+            <a class="nav-link" href="{{ route('drc.outgoing.research') }}">
               <i class="material-icons">vertical_align_top</i>
               <p>Outgoing Research</p>
             </a>

@@ -23,6 +23,14 @@ class DrcController extends Controller
         return view('drc.research-incoming');
     }
 
+
+    // method use to access outgoingResearch
+    public function outgoingResearch()
+    {
+        return view('drc.research-outgoing');
+    }
+
+
     // method use to view forms
     public function forms()
     {

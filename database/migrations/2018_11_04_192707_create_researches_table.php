@@ -19,7 +19,7 @@ class CreateResearchesTable extends Migration
             $table->foreign('author_id')->references('id')->on('users');
             $table->string('title', 50);
             $table->string('tracking_number', 12)->unique();
-            $table->tinyInteger('step_number')->default(1);
+            $table->tinyInteger('step_number')->default(2);
             $table->timestamp('time_posted')->nullable();
             $table->tinyInteger('active')->default(1);
             $table->timestamps();

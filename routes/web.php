@@ -104,6 +104,9 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 	// route to access incoming research
 	Route::get('/research/incoming', 'DrcController@incomingResearch')->name('drc.incoming.research');
 
+	// route to access outgoing research
+	Route::get('/research/outgoing', 'DrcController@outgoingResearch')->name('drc.outgoing.research');
+
 	// route to go to forms
 	Route::get('/forms', 'DrcController@forms')->name('drc.forms');
 
