@@ -13,7 +13,7 @@
               <p>Documents</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item {{ route('drc.incoming.research') == url()->current() ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('drc.incoming.research') }}">
               <i class="material-icons">vertical_align_bottom</i>
               <p>Incoming Research</p>
