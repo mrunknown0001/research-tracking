@@ -15,6 +15,37 @@
       <div class="content">
         <div class="container-fluid">
 
+					<div class="card">
+            <div class="card-header card-header-success">
+              <h4 class="card-title "> Send Requests / Forms </h4>
+              <p class="card-category">  </p>
+            </div>
+            <div class="card-body">
+
+							<form action="#" method="POST" enctype="multipart/form-data">
+								<div class="form-group">
+									<label class="bmd-label-floating">Comment</label>
+                  <input type="text" name="comment" id="comment" class="form-control" required>
+								</div>
+								<div class="row">
+									<div class="col-md-8">
+										<div class="form-group">
+		                  <select name="form" id="form" class="form-control">
+		                  	<option value="">Form Type</option>
+		                  </select>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<input type="file" name="file" id="file">
+									</div>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-success">Send</button>
+								</div>
+							</form>
+
+            </div>
+          </div>
 
         </div>
       </div>
