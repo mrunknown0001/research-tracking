@@ -44,7 +44,9 @@ class FacultyResearcherController extends Controller
     // method use to access send form
     public function sendRequestForm()
     {
-        return view('fr.send-request-form');
+        $forms = Form::get();
+
+        return view('fr.send-request-form', ['forms' => $forms]);
     }
 
     // method use to logout of fr
