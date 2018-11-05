@@ -39,9 +39,51 @@ class FacultyResearcherController extends Controller
 
         $files = $request['files'];
 
-        foreach($files as $file) {
-            return $file->getClientOriginalName();
+        // check if files count is greater than 7
+        if(count($files) > 7) {
+            return redirect()->back()->with('error', 'File Upload is not more than 7 files');
         }
+
+
+        // generate tracking number for tracking of the research
+
+        $filenames = [];
+        $research_file = null;
+        $research_file_count = 0;
+
+        foreach($files as $file) {
+
+            // determine the research file
+            $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+            if($ext == 'doc' || $ext == 'docx') {
+                $research_file = 1;
+                $research_file_count++;
+            }
+        }
+
+        // check if there is more than 1 research file
+        if($research_file_count > 1) {
+            return redirect()->back()->with('error', 'More than 1 research document found.');
+        }
+
+        // check if the reserach file is found
+        if($research_file == null) {
+            return redirect()->back()->with('error', 'Research File Not Found. It must be in .doc or .docx file format');
+        }
+
+
+
+        foreach($files as $file) {
+
+            // posible rename and/or upload file to folder
+
+        }
+
+        return 'renaming/uploading and attaching tracking number next...  code found in 
+        app\Http\Controllers\FacultyResearcherController @ method postSubmitResearch lines 29 to 88 ';
+
+        // add co - authors/contributors to the research 
+        // and reflect to thier accounts as their research document(s)
 
     }
 

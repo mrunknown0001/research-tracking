@@ -45,7 +45,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<button type="submit" class="btn btn-success">Update</button>
+									<button type="submit" class="btn btn-success">Submit</button>
 								</div>
 							</form>
 
