@@ -30,7 +30,9 @@
 								<div class="row">
 									<div class="col-md-8">
 										<label class="bmd-label-floating">Co Authors</label>
-	                  <input type="text" name="co_author" id="co_author" class="form-control" required>
+	                  <select type="text" name="co_author[]" multiple id="co_author" class="form-control" required>
+                      <option value="">Select Co-Authors</option>
+                    </select>
 									</div>
 									<div class="col-md-4">
 										<input type="file" name="file" id="file">
