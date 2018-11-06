@@ -85,6 +85,9 @@ Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.hi
 		return abort(404);
 	});
 
+	// route to reset password of a user
+	Route::post('/reset/password', 'CollegeClerkController@postResetPassword')->name('cc.reset.password.post');
+
 	// route to remove use account
 	Route::post('/remove-account', 'CollegeClerkController@postRemoveAccount')->name('cc.remove.account.post');
 
@@ -110,6 +113,8 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 	// route to go to forms
 	Route::get('/forms', 'DrcController@forms')->name('drc.forms');
 
+	// route to access send request forms
+	Route::get('/form/send', 'DrcController@sendRequestForm')->name('drc.send.request.form');
 
 	// route to logout fr
 	Route::get('/logout', 'DrcController@logout')->name('drc.logout');

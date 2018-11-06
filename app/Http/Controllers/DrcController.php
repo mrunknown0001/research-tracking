@@ -40,6 +40,15 @@ class DrcController extends Controller
     }
 
 
+    // method use to access sendRequestForm
+    public function sendRequestForm()
+    {
+        $forms = Form::get();
+
+        return view('drc.send-request-form', ['forms' => $forms]);
+    }
+
+
     // method use to logout of fr
 	public function logout()
 	{

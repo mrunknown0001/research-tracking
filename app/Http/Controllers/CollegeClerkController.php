@@ -234,6 +234,29 @@ class CollegeClerkController extends Controller
     }
 
 
+    // method use to resset password to password
+    public function postResetPassword(Request $request)
+    {
+        $id = $request['user_id'];
+
+        $user = User::findOrFail($id);
+
+        $user->password = bcrypt('password');
+        $user->save();
+
+        if($user->user_type == 8) {
+            $action = 'Reset Password of FR';
+        }
+        else {
+            $action = 'Reset Password of DRC';
+        }
+        
+        GeneralController::log($action);
+
+        return redirect()->back()->with('success', 'Password Reset Successful!');
+    }
+
+
     // method use to remove the user 
     public function postRemoveAccount(Request $request)
     {

@@ -26,6 +26,8 @@
 	            <div class="card-body">
 	              <div class="table-responsive">
 								
+									@include('includes.all')
+
 									@if(count($d->assigned_fr) > 0  || (count($d->assigned_drc) > 0 && $d->assigned_drc->drc->active == 1))
 										<table class="table">
 											<thead>
@@ -52,9 +54,11 @@
 														</td>
 														<td class="text-center">
 															<a href="{{ route('cc.update.account', ['id' => $d->assigned_drc->drc->id]) }}" class="text-primary"><i class="material-icons">edit</i></a>
+															<a href="javascript:void" class="" data-toggle="modal" data-target="#resetPasswordDrc-{{ $d->assigned_drc->drc->id }}"><i class="material-icons">vpn_key</i></a>
 															<a href="javascript:void(0)" class="text-danger" data-toggle="modal" data-target="#accountDeleteDrc-{{ $d->assigned_drc->drc->id }}"><i class="material-icons">delete</i></a>
 														</td>
 														@include('cc.includes.modal-account-delete-drc')
+														@include('cc.includes.modal-password-reset-drc')
 													</tr>
 												@endif
 												
@@ -75,9 +79,11 @@
 															</td>
 															<td class="text-center">
 																<a href="{{ route('cc.update.account', ['id' => $f->researcher->id]) }}" class="text-primary"><i class="material-icons">edit</i></a>
+																<a href="javascript:void" class="" data-toggle="modal" data-target="#resetPasswordFr-{{ $f->researcher->id }}"><i class="material-icons">vpn_key</i></a>
 																<a href="javascript:void(0)" class="text-danger" data-toggle="modal" data-target="#deleteAccountFr-{{ $f->researcher->id }}"><i class="material-icons">delete</i></a></a>
 															</td>
 															@include('cc.includes.modal-account-delete-fr')
+															@include('cc.includes.modal-password-reset-fr')
 														</tr>
 													@endif
 												@endforeach

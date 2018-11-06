@@ -31,8 +31,8 @@
               <p>Forms</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#">
+          <li class="nav-item {{ route('drc.send.request.form') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('drc.send.request.form') }}">
               <i class="material-icons">send</i>
               <p>Send Request/Form</p>
             </a>
