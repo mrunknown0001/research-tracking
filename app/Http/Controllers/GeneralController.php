@@ -151,13 +151,14 @@ class GeneralController extends Controller
             $string2 .= $characters[rand(0, $charactersLength - 1)];
         }
 
-        return $randomString . '-' . $string2;
+        $tracking = $randomString . '-' . $string2;
+
+       if(Research::where('tracking_number', $tracking)->exists()) {
+            return self::generate_tracking_number();
+        }
+
+        return $tracking;
     }
 
 
-    // check if string is already in database
-    public function check_tracking_number($str)
-    {
-        
-    }
 }

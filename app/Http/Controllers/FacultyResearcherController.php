@@ -45,9 +45,6 @@ class FacultyResearcherController extends Controller
         }
 
 
-        // generate tracking number for tracking of the research
-
-        $filenames = [];
         $research_file = null;
         $research_file_count = 0;
 
@@ -71,18 +68,36 @@ class FacultyResearcherController extends Controller
             return redirect()->back()->with('error', 'Research File Not Found. It must be in .doc or .docx file format');
         }
 
+        // generate unique tracking number
+        $tracking_number = GeneralController::generate_tracking_number();
 
+
+        $filenames = [];
 
         foreach($files as $file) {
 
             // posible rename and/or upload file to folder
+            // move to entry folder
+            $renamed = Auth::user()->id_number . '.' . time().'.'.$file->getClientOriginalExtension();
+
+            /*
+            talk the select file and move it public directory and make avatars
+            folder if doesn't exsit then give it that unique name.
+            */
+            $file->move(public_path('uploads/files'), $renamed);
+
+            $filenames[] = [
+                'original_name' => $file->getClientOriginalName(),
+                'unique_filename' => $renamed
+            ];
 
         }
 
-        return GeneralController::generate_tracking_number();
+
+        return $filenames;
 
         return 'renaming/uploading and attaching tracking number next...  code found in 
-        app\Http\Controllers\FacultyResearcherController @ method postSubmitResearch lines 29 to 88 ';
+        app\Http\Controllers\FacultyResearcherController @ method postSubmitResearch  ';
 
         // add co - authors/contributors to the research 
         // and reflect to thier accounts as their research document(s)
