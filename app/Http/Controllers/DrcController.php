@@ -20,6 +20,16 @@ class DrcController extends Controller
     // method use to access incomingResearch
     public function incomingResearch()
     {
+        $drc = Auth::user();
+
+        $college_id = $drc->drcAssignment->college->id;
+        $deparment_id = $drc->drcAssignment->deparment->id;
+
+        // get all the researches that has an incoming status in drc
+        $incomming2 = Research::where('college_id', $college_id)
+                            ->where('deparment_id', $deparment_id)
+                            ->get();
+
         return view('drc.research-incoming');
     }
 
