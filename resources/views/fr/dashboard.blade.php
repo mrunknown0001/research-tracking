@@ -91,6 +91,8 @@
                       @endif
                     </tbody>
                   </table>
+                @else
+                  <p class="text-center">No Research Found!</p>
                 @endif
               </div>
             </div>
