@@ -59,6 +59,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.history']], function () {
 	Route::get('/', 'OfficeClerkController@dashboard')->name('oc.dashboard');
 
+	// route to incoming research
+	
+	// route to outgoing research
 
 	// route to logout fr
 	Route::get('/logout', 'OfficeClerkController@logout')->name('oc.logout');
