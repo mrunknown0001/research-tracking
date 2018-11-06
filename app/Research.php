@@ -19,4 +19,9 @@ class Research extends Model
     {
     	return $this->hasMany('App\ResearchCoauthor', 'research_id');
     }
+
+    public function files()
+    {
+    	return $this->hasMany('App\ResearchUploadedFile', 'research_id');
+    }
 }

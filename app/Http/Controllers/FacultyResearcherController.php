@@ -77,7 +77,7 @@ class FacultyResearcherController extends Controller
             return redirect()->back()->with('error', 'More than 1 research document found.');
         }
 
-        // check if the reserach file is found
+        // check if the research file is found
         if($research_file == null) {
             return redirect()->back()->with('error', 'Research File Not Found. It must be in .doc or .docx file format');
         }
@@ -149,6 +149,48 @@ class FacultyResearcherController extends Controller
         return redirect()->back()->with('success', 'Research Submitted!');
 
     }
+
+
+    // method use to view research details
+    public function researchDetails($id = null)
+    {
+        $research = Research::findorfail($id);
+
+        $fr = Auth::user();
+
+        if($research->author_id != $fr->id) {
+            return redirect()->back()->with('error', 'Please Try Again Later!');
+        }
+
+        return view('fr.research-details', ['research' => $research]);
+
+
+    }
+
+
+    // method use to update research
+    public function researchUpdate($id = null)
+    {
+        $research = Research::findorfail($id);
+
+        $fr = Auth::user();
+
+        if($research->author_id != $fr->id) {
+            return redirect()->back()->with('error', 'Please Try Again Later!');
+        }
+
+        $researchers = User::where('active', 1)
+                            ->where('id', '!=', Auth::user()->id)
+                            ->where('user_type', 8)
+                            ->orderBy('lastname', 'asc')
+                            ->get();
+
+        // redirect to update form
+        return view('fr.research-update', ['research' => $research, 'researchers' => $researchers]);
+
+    }
+
+
 
     // method use to access incoming research
     public function incomingResearch()

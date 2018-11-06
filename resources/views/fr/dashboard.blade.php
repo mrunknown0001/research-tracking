@@ -62,25 +62,25 @@
                 @if(count($researches) > 0 || count($co_researches) > 0)
                   <table class="table">
                     <thead class="text-success">
-                      <th>Tracking No.</th>
-                      <th>Title</th>
-                      <th>Author</th>
-                      <th>Track Document</th>
-                      <th>Action</th>
+                      <th class="text-center">Tracking No.</th>
+                      <th class="text-center">Title</th>
+                      <th class="text-center">Author</th>
+                      <th class="text-center">Track Document</th>
+                      <th class="text-center">Action</th>
                     </thead>
                     <tbody>
                       @if(count($researches) > 0)
                         @foreach($researches as $r)
                           <tr>
-                            <td>{{ $r->tracking_number }}</td>
-                            <td>{{ ucwords($r->title) }}</td>
-                            <td>{{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}</td>
-                            <td>
+                            <td class="text-center">{{ $r->tracking_number }}</td>
+                            <td class="text-center">{{ ucwords($r->title) }}</td>
+                            <td class="text-center">{{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}</td>
+                            <td class="text-center">
                               <a href="javascript:void(0)"><i class="material-icons">visibility</i></a>
-                              <a href="javascript:void(0)"><i class="material-icons">assignment</i></a>
+                              <a href="{{ route('fr.research.details', ['id' => $r->id]) }}"><i class="material-icons">assignment</i></a>
                             </td>
-                            <td>
-                              <a href="#" class="btn btn-primary">Update</a>
+                            <td class="text-center">
+                              <a href="{{ route('fr.research.update', ['id' => $r->id]) }}" class="btn btn-primary">Update</a>
                               <a href="#" class="btn btn-success">Progress Report</a>
                             </td>
                           </tr>
