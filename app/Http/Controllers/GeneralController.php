@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\AuditTrail;
+use App\Research;
 
 class GeneralController extends Controller
 {
@@ -131,5 +132,32 @@ class GeneralController extends Controller
     	// return to its intended dashboard
     	return $this->auth_check();
 
+    }
+
+
+    // static method use to generate tracking number
+    // 94f1ebea-7fe
+    public static function generate_tracking_number($length = 8, $slength = 3)
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        
+        $string2 = '';
+        for ($i = 0; $i < $slength; $i++) {
+            $string2 .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        return $randomString . '-' . $string2;
+    }
+
+
+    // check if string is already in database
+    public function check_tracking_number($str)
+    {
+        
     }
 }

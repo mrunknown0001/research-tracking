@@ -31,7 +31,7 @@ class FacultyResearcherController extends Controller
         $request->validate([
             'title' => 'required',
             'co_authors' => 'required',
-            'files.*' => 'required|mimes:pdf,doc,docx'
+            'files.*' => 'required|file|mimes:pdf,doc,docx|max:20480'
         ]);
 
         $title = $request['title'];
@@ -78,6 +78,8 @@ class FacultyResearcherController extends Controller
             // posible rename and/or upload file to folder
 
         }
+
+        return GeneralController::generate_tracking_number();
 
         return 'renaming/uploading and attaching tracking number next...  code found in 
         app\Http\Controllers\FacultyResearcherController @ method postSubmitResearch lines 29 to 88 ';
