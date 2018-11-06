@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
 use Auth;
 use App\Http\Controllers\GeneralController;
+use DB;
 
 use App\User;
 use App\Form;
+use App\Research;
+use App\ResearchCoauthor;
 
 class FacultyResearcherController extends Controller
 {
@@ -21,7 +24,16 @@ class FacultyResearcherController extends Controller
                             ->orderBy('lastname', 'asc')
                             ->get();
 
-    	return view('fr.dashboard', ['researchers' => $researchers]);
+        // get all researches involved by
+        $researches = Research::where('author_id', Auth::user()->id)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+
+        $co_researches = ResearchCoauthor::where('co_author_id', Auth::user()->id)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+
+    	return view('fr.dashboard', ['researchers' => $researchers, 'researches' => $researches, 'co_researches' => $co_researches]);
     }
 
 
@@ -31,7 +43,7 @@ class FacultyResearcherController extends Controller
         $request->validate([
             'title' => 'required',
             'co_authors' => 'required',
-            'files.*' => 'required|file|mimes:pdf,doc,docx|max:20480'
+            'files.*' => 'required|file|mimes:pdf,doc,docx|max:5000'
         ]);
 
         $title = $request['title'];
@@ -47,12 +59,14 @@ class FacultyResearcherController extends Controller
 
         $research_file = null;
         $research_file_count = 0;
+        $research_filename = '';
 
         foreach($files as $file) {
 
             // determine the research file
             $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
             if($ext == 'doc' || $ext == 'docx') {
+                $research_filename = $file->getClientOriginalName();
                 $research_file = 1;
                 $research_file_count++;
             }
@@ -71,6 +85,19 @@ class FacultyResearcherController extends Controller
         // generate unique tracking number
         $tracking_number = GeneralController::generate_tracking_number();
 
+        $researcher = Auth::user();
+
+        // save research here
+        $research = new Research();
+        $research->author_id = Auth::user()->id;
+        $research->title = $title;
+        $research->tracking_number = $tracking_number;
+        $research->research_filename = $research_filename;
+        $research->college_id = $researcher->frAssignment->college->id;
+        $research->department_id = $researcher->frAssignment->department->id;
+        $research->time_posted = now();
+        $research->save();
+
 
         $filenames = [];
 
@@ -87,20 +114,39 @@ class FacultyResearcherController extends Controller
             $file->move(public_path('uploads/files'), $renamed);
 
             $filenames[] = [
-                'original_name' => $file->getClientOriginalName(),
+                'original_filename' => $file->getClientOriginalName(),
                 'unique_filename' => $renamed
             ];
 
         }
 
 
-        return $filenames;
+        // save filenames in database for download
+        $uploaded_files = [];
 
-        return 'renaming/uploading and attaching tracking number next...  code found in 
-        app\Http\Controllers\FacultyResearcherController @ method postSubmitResearch  ';
+        foreach($filenames as $f) {
+            $uploaded_files[] = [
+                'research_id' => $research->id,
+                'original_filename' => $f['original_filename'],
+                'unique_filename' => $f['unique_filename']
+            ];
+        }
 
-        // add co - authors/contributors to the research 
-        // and reflect to thier accounts as their research document(s)
+        DB::table('research_uploaded_files')->insert($uploaded_files);
+
+        // save co author
+        // this can be multiple
+        if($co_authors != null) {
+            $co = new ResearchCoauthor();
+            $co->research_id = $research->id;
+            $co->co_author_id = $co_authors;
+            $co->save();
+        }
+
+        $action = 'Submitted Research';
+        GeneralController::log($action);
+
+        return redirect()->back()->with('success', 'Research Submitted!');
 
     }
 

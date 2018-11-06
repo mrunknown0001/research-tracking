@@ -21,7 +21,9 @@
               <p class="card-category"> Step 3 </p>
             </div>
             <div class="card-body">
+              <div class="table-responsive">
 
+              </div>
             </div>
           </div>
 

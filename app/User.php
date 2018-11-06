@@ -43,7 +43,7 @@ class User extends Authenticatable
         return $this->hasOne('App\FrAssignment', 'fr_id');
     }
 
-    public function research()
+    public function researches()
     {
         return $this->hasMany('App\Research', 'author_id');
     }
@@ -52,4 +52,5 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\ResearchCoauthor', 'co_author_id');
     }
+
 }

@@ -10,6 +10,11 @@ class Research extends Model
 		'title', 'tracking_number', 'time_posted',
 	];
 
+	public function author()
+	{
+		return $this->belongsTo('App\User', 'author_id');
+	}
+
     public function co_author()
     {
     	return $this->hasMany('App\ResearchCoauthor', 'research_id');
