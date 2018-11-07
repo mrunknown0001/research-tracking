@@ -42,7 +42,6 @@ class FacultyResearcherController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'co_authors' => 'required',
             'files.*' => 'required|file|mimes:pdf,doc,docx|max:5000'
         ]);
 

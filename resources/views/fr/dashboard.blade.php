@@ -24,7 +24,7 @@
           
               @include('includes.all')
 
-							<form action="{{ route('fr.submit.research.post') }}" method="POST" enctype="multipart/form-data">
+							<form action="{{ route('fr.submit.research.post') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 {{ csrf_field() }}
 								<div class="form-group">
 									<label class="bmd-label-floating">Research Title</label>
@@ -33,7 +33,7 @@
 								<div class="row">
 									<div class="col-md-8">
 										<label class="bmd-label-floating">Co Authors</label>
-	                  <select type="text" name="co_authors" id="co_authors" class="form-control" required>
+	                  <select type="text" name="co_authors" id="co_authors" class="form-control" >
                       <option value="">Select Co-Author</option>
                       @foreach($researchers as $r)
                         <option value="{{ $r->id }}">{{ $r->firstname . ' ' . $r->lastname }}</option>
