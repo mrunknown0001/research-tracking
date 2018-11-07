@@ -110,6 +110,13 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 	// route to access incoming research
 	Route::get('/research/incoming', 'DrcController@incomingResearch')->name('drc.incoming.research');
 
+	// route to accept step 2 incoming research
+	Route::post('/research/incoming/receive', 'DrcController@postReceiveIncomingResearch')->name('drc.receive.incoming.research.post');
+
+	Route::get('/research/incoming/receive', function () {
+		return redirect()->route('drc.incoming.research');
+	});
+
 	// route to access outgoing research
 	Route::get('/research/outgoing', 'DrcController@outgoingResearch')->name('drc.outgoing.research');
 
