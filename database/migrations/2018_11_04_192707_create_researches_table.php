@@ -71,6 +71,43 @@ class CreateResearchesTable extends Migration
             $table->boolean('step_8_proceeded')->default(0);
             $table->timestamp('step_8_date_proceeded')->nullable();
 
+            $table->boolean('step_9_received')->default(0);
+            $table->timestamp('step_9_date_received')->nullable();
+            $table->boolean('step_9_proceeded')->default(0);
+            $table->timestamp('step_9_date_proceeded')->nullable();
+
+            $table->boolean('step_10_received')->default(0);
+            $table->timestamp('step_10_date_received')->nullable();
+            $table->string('step_10_comment', 100)->nullable();
+            $table->boolean('step_10_proceeded')->default(0);
+            $table->timestamp('step_10_date_proceeded')->nullable();
+
+            $table->boolean('step_11_received')->default(0);
+            $table->timestamp('step_11_date_received')->nullable();
+            $table->boolean('step_11_proceeded')->default(0);
+            $table->timestamp('step_11_date_proceeded')->nullable();
+
+            $table->boolean('step_12_received')->default(0);
+            $table->timestamp('step_12_date_received')->nullable();
+            $table->string('step_12_comment', 100)->nullable();
+            $table->boolean('step_12_proceeded')->default(0);
+            $table->timestamp('step_12_date_proceeded')->nullable();
+
+            $table->boolean('step_13_received')->default(0);
+            $table->timestamp('step_13_date_received')->nullable();
+            $table->string('step_13_comment', 100)->nullable();
+            $table->boolean('step_13_proceeded')->default(0);
+            $table->timestamp('step_13_date_proceeded')->nullable();
+
+            $table->boolean('step_14_received')->default(0);
+            $table->timestamp('step_14_date_received')->nullable();
+            $table->string('funding_type', 100)->nullable();
+            $table->boolean('step_14_proceeded')->default(0);
+            $table->timestamp('step_14_date_proceeded')->nullable();
+
+            $table->boolean('step_15_received')->default(0);
+            $table->timestamp('step_15_date_received')->nullable();
+
             $table->boolean('active')->default(1);
             $table->timestamps();
         });
