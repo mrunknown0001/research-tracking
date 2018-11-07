@@ -41,7 +41,7 @@ class CreateResearchesTable extends Migration
             $table->boolean('step_4_received')->default(0);
             $table->timestamp('step_4_date_received')->nullable();
             $table->string('step_4_comment', 100)->nullable();
-            $table->boolean('step_4_proceeded')->defaul(0);
+            $table->boolean('step_4_proceeded')->default(0);
             $table->timestamp('step_4_date_proceeded')->nullable();
 
             $table->boolean('step_5_received')->default(0);
