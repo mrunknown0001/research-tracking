@@ -194,7 +194,14 @@ class FacultyResearcherController extends Controller
     // method use to access incoming research
     public function incomingResearch()
     {
-        return view('fr.research-incoming');
+        $researcher = Auth::user();
+
+        $incoming3 = Research::where('author_id', $researcher->id)
+                            ->where('step_number', 3)
+                            ->where('step_3_received', 0)
+                            ->get();
+
+        return view('fr.research-incoming', ['incoming3' => $incoming3]);
     }
 
 
