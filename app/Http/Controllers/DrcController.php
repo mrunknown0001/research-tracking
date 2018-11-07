@@ -7,6 +7,7 @@ use Auth;
 
 use App\User;
 use App\Form;
+use App\Research;
 
 class DrcController extends Controller
 {
@@ -23,11 +24,11 @@ class DrcController extends Controller
         $drc = Auth::user();
 
         $college_id = $drc->drcAssignment->college->id;
-        $deparment_id = $drc->drcAssignment->deparment->id;
+        $department_id = $drc->drcAssignment->department->id;
 
         // get all the researches that has an incoming status in drc
         $incomming2 = Research::where('college_id', $college_id)
-                            ->where('deparment_id', $deparment_id)
+                            ->where('department_id', $department_id)
                             ->get();
 
         return view('drc.research-incoming');
