@@ -120,6 +120,13 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 	// route to access outgoing research
 	Route::get('/research/outgoing', 'DrcController@outgoingResearch')->name('drc.outgoing.research');
 
+	// route to proceed in step 3
+	Route::post('/research/procced/step/three', 'DrcController@postProceedStepThree')->name('dr.proceed.step.three');
+
+	Route::get('/research/procced/step/three', function () {
+		return redirect()->route('drc.outgoing.research');
+	});
+
 	// route to go to forms
 	Route::get('/forms', 'DrcController@forms')->name('drc.forms');
 

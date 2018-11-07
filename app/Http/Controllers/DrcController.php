@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\Http\Controllers\GeneralController;
+use Zipper;
 
 use App\User;
 use App\Form;
@@ -83,7 +84,7 @@ class DrcController extends Controller
 
         $college_id = $drc->drcAssignment->college->id;
         $department_id = $drc->drcAssignment->department->id;
-        
+
         $outgoing2 = Research::where('college_id', $college_id)
                             ->where('department_id', $department_id)
                             ->where('step_number', 2)
@@ -97,6 +98,34 @@ class DrcController extends Controller
                             ->get();
 
         return view('drc.research-outgoing', ['outgoing2' => $outgoing2, 'outgoing5' => $outgoing5]);
+    }
+
+
+    // method use to proceed to step three
+    public function postProceedStepThree(Request $request)
+    {
+        $id = $request['research_id'];
+
+        $comment = $request['comment'];
+
+        $research = Research::findorfail($id);
+
+
+        // add comment, move step_number to 3, step 2 proceeded, step 2 date proceeded
+        $research->step_number = 3;
+        $research->step_2_comment = $comment;
+        $research->step_2_proceeded = 1;
+        $research->step_2_date_proceeded = now();
+
+        // save research
+        $research->save();
+
+        // add audit trail
+        $action = 'Proceeded Research';
+        GeneralController::log($action);
+
+        // return redirect back
+        return redirect()->back()->with('success', 'Research Proceeded');
     }
 
 
