@@ -32,7 +32,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUserLink">
-                  <a class="dropdown-item" href="javascript:void(0)">Profile</a>
+                  <a class="dropdown-item" href="{{ route('fr.profile') }}">Profile</a>
                   <a class="dropdown-item" href="{{ route('fr.logout') }}">Logout</a>
                 </div>
               </li>

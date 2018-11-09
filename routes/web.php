@@ -140,6 +140,11 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 
 // start of faculty researcher route group
 Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.history']], function () {
+
+	// route to access profile
+	Route::get('/profile', 'FacultyResearcherController@profile')->name('fr.profile');
+
+	// route to access dashboard
 	Route::get('/', 'FacultyResearcherController@dashboard')->name('fr.dashboard');
 
 	// route to submit research

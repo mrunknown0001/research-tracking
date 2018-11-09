@@ -15,6 +15,12 @@ use App\ResearchCoauthor;
 
 class FacultyResearcherController extends Controller
 {
+    // method use to access profile
+    public function profile()
+    {
+        return view('fr.profile');
+    }
+
     // method use to go to dashboard of fr
     public function dashboard()
     {
