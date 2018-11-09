@@ -95,7 +95,7 @@
 
           <div class="card">
             <div class="card-header card-header-success">
-              <h4 class="card-title "> Incoming Research from # </h4>
+              <h4 class="card-title "> Incoming Research from Research Ethics and Review Committee </h4>
               <p class="card-category"> Step 11 </p>
             </div>
             <div class="card-body">
@@ -105,7 +105,7 @@
 
           <div class="card">
             <div class="card-header card-header-success">
-              <h4 class="card-title "> Incoming Research from # </h4>
+              <h4 class="card-title "> Incoming Research from University Research Office </h4>
               <p class="card-category"> Step 15 </p>
             </div>
             <div class="card-body">

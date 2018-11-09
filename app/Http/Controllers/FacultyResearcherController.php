@@ -212,6 +212,21 @@ class FacultyResearcherController extends Controller
     }
 
 
+    // method use to track document research
+    public function trackResearchDocument($id = null)
+    {
+        $researcher = Auth::user();
+
+        $research = Research::findorfail($id);
+
+        if($research->author_id != $researcher->id) {
+            return redirect()->back()->with('error', 'Please Try Again');
+        }
+
+        return view('fr.research-tracking', ['research' => $research]);
+    }
+
+
     // method use to go to forms
     public function forms()
     {

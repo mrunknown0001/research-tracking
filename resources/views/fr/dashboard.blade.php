@@ -76,7 +76,7 @@
                             <td class="text-center">{{ ucwords($r->title) }}</td>
                             <td class="text-center">{{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}</td>
                             <td class="text-center">
-                              <a href="javascript:void(0)"><i class="material-icons">visibility</i></a>
+                              <a href="{{ route('fr.track.research.document', ['id' => $r->id]) }}"><i class="material-icons">visibility</i></a>
                               <a href="{{ route('fr.research.details', ['id' => $r->id]) }}"><i class="material-icons">assignment</i></a>
                             </td>
                             <td class="text-center">

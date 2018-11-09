@@ -157,6 +157,9 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 	// route to outgoing research
 	Route::get('/research/outgoing', 'FacultyResearcherController@outgoingResearch')->name('fr.outgoing.research');
 
+	// route to view tracking of reserach document
+	Route::get('/reserach/{id}/track/document', 'FacultyResearcherController@trackResearchDocument')->name('fr.track.research.document');
+
 	// route to view forms
 	Route::get('/forms', 'FacultyResearcherController@forms')->name('fr.forms');
 
