@@ -29,7 +29,7 @@ class CreateResearchesTable extends Migration
 
             $table->boolean('step_2_received')->default(0);
             $table->timestamp('step_2_date_received')->nullable();
-            $table->string('step_2_comment', 100)->nullable();
+            $table->string('step_2_comment', 1024)->nullable();
             $table->boolean('step_2_proceeded')->default(0);
             $table->timestamp('step_2_date_proceeded')->nullable();
 
@@ -40,13 +40,13 @@ class CreateResearchesTable extends Migration
 
             $table->boolean('step_4_received')->default(0);
             $table->timestamp('step_4_date_received')->nullable();
-            $table->string('step_4_comment', 100)->nullable();
+            $table->string('step_4_comment', 1024)->nullable();
             $table->boolean('step_4_proceeded')->default(0);
             $table->timestamp('step_4_date_proceeded')->nullable();
 
             $table->boolean('step_5_received')->default(0);
             $table->timestamp('step_5_date_received')->nullable();
-            $table->string('step_5_comment', 100)->nullable();
+            $table->string('step_5_comment', 1024)->nullable();
             $table->tinyInteger('colloquium_grade')->nullable();
             $table->boolean('step_5_proceeded')->default(0);
             $table->timestamp('step_5_date_proceeded')->nullable();
@@ -58,13 +58,13 @@ class CreateResearchesTable extends Migration
 
             $table->boolean('step_7_received')->default(0);
             $table->timestamp('step_7_date_received')->nullable();
-            $table->string('step_7_comment', 100)->nullable();
+            $table->string('step_7_comment', 1024)->nullable();
             $table->boolean('step_7_proceeded')->default(0);
             $table->timestamp('step_7_date_proceeded')->nullable();
 
             $table->boolean('step_8_received')->default(0);
             $table->timestamp('step_8_date_received')->nullable();
-            $table->string('step_8_comment', 100)->nullable();
+            $table->string('step_8_comment', 1024)->nullable();
             $table->tinyInteger('urec_grade')->nullable();
             $table->integer('agenda_id')->unsigned()->nullable();
             $table->foreign('agenda_id')->references('id')->on('agendas');
@@ -78,7 +78,7 @@ class CreateResearchesTable extends Migration
 
             $table->boolean('step_10_received')->default(0);
             $table->timestamp('step_10_date_received')->nullable();
-            $table->string('step_10_comment', 100)->nullable();
+            $table->string('step_10_comment', 1024)->nullable();
             $table->boolean('step_10_proceeded')->default(0);
             $table->timestamp('step_10_date_proceeded')->nullable();
 
@@ -89,19 +89,19 @@ class CreateResearchesTable extends Migration
 
             $table->boolean('step_12_received')->default(0);
             $table->timestamp('step_12_date_received')->nullable();
-            $table->string('step_12_comment', 100)->nullable();
+            $table->string('step_12_comment', 1024)->nullable();
             $table->boolean('step_12_proceeded')->default(0);
             $table->timestamp('step_12_date_proceeded')->nullable();
 
             $table->boolean('step_13_received')->default(0);
             $table->timestamp('step_13_date_received')->nullable();
-            $table->string('step_13_comment', 100)->nullable();
+            $table->string('step_13_comment', 1024)->nullable();
             $table->boolean('step_13_proceeded')->default(0);
             $table->timestamp('step_13_date_proceeded')->nullable();
 
             $table->boolean('step_14_received')->default(0);
             $table->timestamp('step_14_date_received')->nullable();
-            $table->string('funding_type', 100)->nullable();
+            $table->string('funding_type', 1024)->nullable();
             $table->boolean('step_14_proceeded')->default(0);
             $table->timestamp('step_14_date_proceeded')->nullable();
 
