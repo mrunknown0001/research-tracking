@@ -13,6 +13,20 @@ class OfficeClerkController extends Controller
     }
 
 
+    // method to access incoming research
+    public function incomingResearch()
+    {
+    	return view('oc.research-incoming');
+    }
+
+
+    // method to access outgoing research
+    public function outgoingResearch()
+    {
+    	return view('oc.research-outgoing');
+    }
+
+
     // method use to logout of fr
 	public function logout()
 	{

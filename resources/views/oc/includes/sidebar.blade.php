@@ -8,19 +8,19 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item {{ route('oc.dashboard') == url()->current() ? 'active' : '' }} ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('oc.dashboard') }}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
+          <li class="nav-item {{ route('oc.incoming.research') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('oc.incoming.research') }}">
               <i class="material-icons">vertical_align_bottom</i>
               <p>Incoming Research</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">
+          <li class="nav-item {{ route('oc.outgoing.research') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('oc.outgoing.research') }}">
               <i class="material-icons">vertical_align_top</i>
               <p>Outgoing Research</p>
             </a>

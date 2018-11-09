@@ -60,8 +60,10 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 	Route::get('/', 'OfficeClerkController@dashboard')->name('oc.dashboard');
 
 	// route to incoming research
+	Route::get('/oc/research/incoming', 'OfficeClerkController@incomingResearch')->name('oc.incoming.research');
 	
 	// route to outgoing research
+	Route::get('/oc/research/outgoing', 'OfficeClerkController@outgoingResearch')->name('oc.outgoing.research');
 
 	// route to logout fr
 	Route::get('/logout', 'OfficeClerkController@logout')->name('oc.logout');
