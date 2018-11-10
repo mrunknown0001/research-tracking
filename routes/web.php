@@ -164,8 +164,16 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 	// route to receive document research
 	Route::post('/research/incoming/receive', 'FacultyResearcherController@postReceiveIncomingResearch')->name('fr.receive.incoming.research.post');
 
+	Route::get('/research/incoming/receive', function () {
+		return redirect()->route('fr.incoming.research');
+	});
+
 	// route to outgoing research
 	Route::get('/research/outgoing', 'FacultyResearcherController@outgoingResearch')->name('fr.outgoing.research');
+
+	// route to proceed research
+	Route::post('/research/outgoing/proceed', 'FacultyResearcherController@postProceedOutgoingResearch')->name('fr.procced.outgoing.research.post');
+
 
 	// route to view tracking of reserach document
 	Route::get('/research/{id}/track/document', 'FacultyResearcherController@trackResearchDocument')->name('fr.track.research.document');

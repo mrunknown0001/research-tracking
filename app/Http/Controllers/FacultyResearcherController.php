@@ -289,6 +289,13 @@ class FacultyResearcherController extends Controller
     }
 
 
+    // method use to proceed research document to next step
+    public function postProceedOutgoingResearch(Request $request)
+    {
+        return $request;
+    }
+
+
     // method use to track document research
     public function trackResearchDocument($id = null)
     {
