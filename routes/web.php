@@ -61,6 +61,13 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 
 	// route to incoming research
 	Route::get('/oc/research/incoming', 'OfficeClerkController@incomingResearch')->name('oc.incoming.research');
+
+	// route to receive incoming research
+	Route::post('/oc/research/incoming/receive', 'OfficeClerkController@postReceiveIncomingResearch')->name('oc.receive.incoming.research.post');
+
+	Route::get('/oc/research/incoming/receive', function() {
+		return redirect()->route('oc.incoming.research');
+	});
 	
 	// route to outgoing research
 	Route::get('/oc/research/outgoing', 'OfficeClerkController@outgoingResearch')->name('oc.outgoing.research');
