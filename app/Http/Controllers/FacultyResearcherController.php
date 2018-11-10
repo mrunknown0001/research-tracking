@@ -207,14 +207,85 @@ class FacultyResearcherController extends Controller
                             ->where('step_3_received', 0)
                             ->get();
 
-        return view('fr.research-incoming', ['incoming3' => $incoming3]);
+        $incoming6 = Research::where('author_id', $researcher->id)
+                            ->where('step_number', 6)
+                            ->where('step_6_received', 0)
+                            ->get();
+
+        $incoming9 = Research::where('author_id', $researcher->id)
+                            ->where('step_number', 9)
+                            ->where('step_9_received', 0)
+                            ->get();
+
+        $incoming11 = Research::where('author_id', $researcher->id)
+                            ->where('step_number', 11)
+                            ->where('step_11_received', 0)
+                            ->get();
+
+        $incoming15 = Research::where('author_id', $researcher->id)
+                            ->where('step_number', 15)
+                            ->where('step_15_received', 0)
+                            ->get();
+
+        return view('fr.research-incoming', ['incoming3' => $incoming3, 'incoming6' => $incoming6, 'incoming9' => $incoming9, 'incoming11' => $incoming11, 'incoming15' => $incoming15]);
+    }
+
+
+    // method use to receive document
+    public function postReceiveIncomingResearch(Request $request)
+    {
+        $research_id = $request['research_id'];
+
+        $research = Research::findorfail($research_id); 
+
+        if($research->author_id != Auth::user()->id) {
+            return redirect()->back()->with('error', 'Please Try Again Later!');
+        }
+
+        if($research->step_number == 3) {
+            $research->step_3_received = 1;
+            $research->step_3_date_received = now();
+        }
+        else if($research->step_number == 6) {
+            $research->step_6_received = 1;
+            $research->step_6_date_received = now();
+        }
+        else if($research->step_number == 9) {
+            $research->step_9_received = 1;
+            $research->step_9_date_received = now();
+        }
+        else if($research->step_number == 11) {
+            $research->step_11_received = 1;
+            $research->step_11_date_received = now();
+        }
+        else if($research->step_number == 15) {
+            $research->step_15_received = 1;
+            $research->step_15_date_received = now();
+        }
+        else {
+            return redirect()->back()->with('error', 'Please Try Again Later!');
+        }
+
+        $research->save();
+
+        $action = 'Received Research';
+        GeneralController::log($action);
+
+        return redirect()->route('fr.outgoing.research')->with('success', 'Research Received');
     }
 
 
     // method use to access outgoing research
     public function outgoingResearch()
     {
-        return view('fr.research-outgoing');
+        $researcher = Auth::user(); 
+
+        $outgoing3 = Research::where('author_id' , $researcher->id)
+                        ->where('step_number', 3)
+                        ->where('step_3_received', 1)
+                        ->get();
+
+        return view('fr.research-outgoing', ['outgoing3' => $outgoing3]);
     }
 
 

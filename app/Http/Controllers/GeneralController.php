@@ -193,7 +193,7 @@ class GeneralController extends Controller
 
 
         // download zipped files
-        return response()->download(public_path("uploads/tmp_zipped/{$research->title}".'.zip'))->deleteFileAfterSend();
+        return response()->download(public_path("uploads/tmp_zipped/{$research->title}".'.zip'));
 
  
     }

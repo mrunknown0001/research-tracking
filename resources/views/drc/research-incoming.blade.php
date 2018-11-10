@@ -55,6 +55,7 @@
                             @endif
                           </td>
                           <td class="text-center">
+                            <a href="{{ route('download.research.zip', ['id' => $r->id]) }}"><i class="material-icons">save_alt</i></a>
                             <form action="{{ route('drc.receive.incoming.research.post') }}" method="POST">
                               {{ csrf_field() }}
                               <input type="hidden" name="research_id" value="{{ $r->id }}">

@@ -123,7 +123,7 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 	Route::get('/research/outgoing', 'DrcController@outgoingResearch')->name('drc.outgoing.research');
 
 	// route to proceed in step 3
-	Route::post('/research/procced/step/three', 'DrcController@postProceedStepThree')->name('dr.proceed.step.three');
+	Route::post('/research/proceed/step/three', 'DrcController@postProceedStepThree')->name('dr.proceed.step.three');
 
 	Route::get('/research/procced/step/three', function () {
 		return redirect()->route('drc.outgoing.research');
@@ -161,11 +161,17 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 	// route to incoming research
 	Route::get('/research/incoming', 'FacultyResearcherController@incomingResearch')->name('fr.incoming.research');
 
+	// route to receive document research
+	Route::post('/research/incoming/receive', 'FacultyResearcherController@postReceiveIncomingResearch')->name('fr.receive.incoming.research.post');
+
 	// route to outgoing research
 	Route::get('/research/outgoing', 'FacultyResearcherController@outgoingResearch')->name('fr.outgoing.research');
 
 	// route to view tracking of reserach document
-	Route::get('/reserach/{id}/track/document', 'FacultyResearcherController@trackResearchDocument')->name('fr.track.research.document');
+	Route::get('/research/{id}/track/document', 'FacultyResearcherController@trackResearchDocument')->name('fr.track.research.document');
+
+
+
 
 	// route to view forms
 	Route::get('/forms', 'FacultyResearcherController@forms')->name('fr.forms');
