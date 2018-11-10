@@ -54,7 +54,7 @@
                             @endif
                           </td>
                           <td class="text-center">
-                            <a href="#"><i class="material-icons">save_alt</i></a>
+                            <a href="{{ route('download.research.zip', ['id' => $r->id]) }}"><i class="material-icons">save_alt</i></a>
                             <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#researchProceed-{{ $r->id }}">Proceed</button>
                           </td>
                           @include('drc.includes.modal-research-proceed')

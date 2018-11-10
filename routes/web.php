@@ -186,3 +186,6 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 
 // downloadable forms routes here
 Route::get('/downloadable/form/{filename}', 'AdminController@downloadForm')->name('admin.download.form');
+
+// route to download all research project documents in zip for
+Route::get('/research/{id}/download/zipped', 'GeneralController@downloadResearchZip')->name('download.research.zip');

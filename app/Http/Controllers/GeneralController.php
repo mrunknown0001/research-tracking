@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Zipper;
+use Illuminate\Filesystem\Filesystem;
 
 use App\AuditTrail;
 use App\Research;
@@ -158,6 +160,42 @@ class GeneralController extends Controller
         }
 
         return $tracking;
+    }
+
+
+    // method use to download all files in research in zip format
+    public function downloadResearchZip($id = null)
+    {
+        $research = Research::findorfail($id);
+
+        $files = [];
+
+        // get file then rename to its original file
+        foreach($research->files as $file) {
+            $files[] = [
+                'filename' => '/public/uploads/tmp_zipped/'.$file->original_filename
+            ];
+
+            \File::copy(base_path('public/uploads/files/'.$file->unique_filename),base_path('public/uploads/tmp_files_copy/'.$file->original_filename));
+        }
+        
+        // zip all rename files 
+        $files = glob(public_path('/uploads/tmp_files_copy/*'));
+        Zipper::make(public_path('/uploads/tmp_zipped/'.$research->title . '.zip'))->add($files)->close();
+
+
+        // delete all renamed files
+        $file_remover = new Filesystem;
+        $file_remover->cleanDirectory(public_path('/uploads/tmp_files_copy'));        
+
+
+        // add to activity log
+
+
+        // download zipped files
+        return response()->download(public_path("uploads/tmp_zipped/{$research->title}".'.zip'))->deleteFileAfterSend();
+
+ 
     }
 
 

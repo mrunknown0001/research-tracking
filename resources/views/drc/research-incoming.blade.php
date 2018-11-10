@@ -58,7 +58,7 @@
                             <form action="{{ route('drc.receive.incoming.research.post') }}" method="POST">
                               {{ csrf_field() }}
                               <input type="hidden" name="research_id" value="{{ $r->id }}">
-                              <button type="submit" class="btn btn-success btn-sm">Proceed</button>
+                              <button type="submit" class="btn btn-success btn-sm">Receive</button>
                             </form>
                           </td>
                         </tr>
