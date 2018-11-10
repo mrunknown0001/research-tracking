@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+
+use App\Research;
 
 class OfficeClerkController extends Controller
 {
@@ -16,7 +19,11 @@ class OfficeClerkController extends Controller
     // method to access incoming research
     public function incomingResearch()
     {
-    	return view('oc.research-incoming');
+        $incoming4 = Research::where('step_number', 4)
+                            ->where('step_4_received', 0)
+                            ->get();
+
+    	return view('oc.research-incoming', ['incoming4' => $incoming4]);
     }
 
 
