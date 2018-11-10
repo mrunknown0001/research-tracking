@@ -285,14 +285,69 @@ class FacultyResearcherController extends Controller
                         ->where('step_3_received', 1)
                         ->get();
 
-        return view('fr.research-outgoing', ['outgoing3' => $outgoing3]);
+        $outgoing6 = Research::where('author_id' , $researcher->id)
+                        ->where('step_number', 6)
+                        ->where('step_6_received', 1)
+                        ->get();
+
+        $outgoing9 = Research::where('author_id' , $researcher->id)
+                        ->where('step_number', 9)
+                        ->where('step_9_received', 1)
+                        ->get();
+
+        $outgoing11 = Research::where('author_id' , $researcher->id)
+                        ->where('step_number', 11)
+                        ->where('step_11_received', 1)
+                        ->get();
+
+        return view('fr.research-outgoing', ['outgoing3' => $outgoing3, 'outgoing6' => $outgoing6, 'outgoing9' => $outgoing9, 'outgoing11' => $outgoing11]);
     }
 
 
     // method use to proceed research document to next step
     public function postProceedOutgoingResearch(Request $request)
     {
-        return $request;
+        $id = $request['research_id'];
+
+        $research = Research::findorfail($id);
+
+        $researcher = Auth::user();
+
+        if($research->author_id != $researcher->id) {
+            return redirect()->back()->with('error', 'Please Try Again Later');
+        }
+
+        // proceed to next step of the process
+        if($research->step_number == 3) {
+            $research->step_number = 4;
+            $research->step_3_proceeded = 1;
+            $research->step_3_date_proceeded = now();
+        }
+        else if($research->step_number == 6) {
+            $research->step_number = 7;
+            $research->step_6_proceeded = 1;
+            $research->step_6_date_proceeded = now();
+        }
+        else if($research->step_number == 9) {
+            $research->step_number = 10;
+            $research->step_9_proceeded = 1;
+            $research->step_9_date_proceeded = now();
+        }
+        else if($research->step_number == 11) {
+            $research->step_number = 12;
+            $research->step_11_proceeded = 1;
+            $research->step_11_date_proceeded = now();
+        }
+
+        // save 
+        $research->save();
+
+        // add to activity logs
+        $action = 'Research Proceeded';
+        GeneralController::log($action);
+
+        // return to outgoing research
+        return redirect()->route('fr.outgoing.research')->with('success', 'Research Proceeded');
     }
 
 
