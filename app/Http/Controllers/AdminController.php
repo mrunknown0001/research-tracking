@@ -10,6 +10,7 @@ use App\AuditTrail;
 use App\College;
 use App\User;
 use App\Form;
+use App\Research;
 
 class AdminController extends Controller
 {
@@ -25,7 +26,19 @@ class AdminController extends Controller
 	// method use to show incoming research page
 	public function incomingResearch()
 	{
-		return view('admin.research-incoming');
+		$incoming8 = Research::where('step_number', 8)
+							->where('step_8_received', 0)
+							->get();
+
+		$incoming12 = Research::where('step_number', 12)
+							->where('step_12_received', 0)
+							->get();
+
+		$incoming14 = Research::where('step_number', 14)
+							->where('step_14_received', 0)
+							->get();
+
+		return view('admin.research-incoming', ['incoming8' => $incoming8, 'incoming12' => $incoming12, 'incoming14' => $incoming14]);
 	}
 
 
