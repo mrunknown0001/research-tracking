@@ -113,7 +113,7 @@
                             <a href="{{ route('download.research.zip', ['id' => $r->id]) }}"><i class="material-icons">save_alt</i></a>
                             <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#researchProceed-{{ $r->id }}">Proceed</button>
                           </td>
-                          @include('oc.includes.modal-research-proceed-step-5')
+                          @include('oc.includes.modal-research-proceed-step-8')
                         </tr>
                       @endforeach
                     </tbody>

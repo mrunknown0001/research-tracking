@@ -19,7 +19,7 @@
           @endif
         </p>
 
-        <form action="#" method="POST">
+        <form action="{{ route('oc.proceed.step.eight.post') }}" method="POST">
           {{ csrf_field() }}
           <div class="form-group">
             <textarea name="comment" id="commment" class="form-control" placeholder="Comment..."></textarea>

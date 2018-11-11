@@ -134,7 +134,30 @@ class OfficeClerkController extends Controller
         return redirect()->back()->with('success', 'Research Proceeded');
 
 
+    }
 
+
+    // method use to proceed to step 8 from step 7
+    public function postProceedStepEight(Request $request)
+    {
+        $id = $request['research_id'];
+        $comment = $request['comment'];
+
+        $research = Research::findorfail($id);
+        $research = Research::findorfail($id);
+
+        $research->step_number = 8;
+        $research->step_7_comment = $comment;
+        $research->step_7_proceeded = 1;
+        $research->step_7_date_proceeded = now();
+
+        // save research
+        $research->save();
+        $action = 'Proceeded Research From Step 7 to 8';
+        GeneralController::log($action);
+
+        // return redirect back
+        return redirect()->back()->with('success', 'Research Proceeded');
     }
 
 

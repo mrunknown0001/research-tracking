@@ -60,20 +60,27 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 	Route::get('/', 'OfficeClerkController@dashboard')->name('oc.dashboard');
 
 	// route to incoming research
-	Route::get('/oc/research/incoming', 'OfficeClerkController@incomingResearch')->name('oc.incoming.research');
+	Route::get('/research/incoming', 'OfficeClerkController@incomingResearch')->name('oc.incoming.research');
 
 	// route to receive incoming research
-	Route::post('/oc/research/incoming/receive', 'OfficeClerkController@postReceiveIncomingResearch')->name('oc.receive.incoming.research.post');
+	Route::post('/research/incoming/receive', 'OfficeClerkController@postReceiveIncomingResearch')->name('oc.receive.incoming.research.post');
 
-	Route::get('/oc/research/incoming/receive', function() {
+	Route::get('/research/incoming/receive', function() {
 		return redirect()->route('oc.incoming.research');
 	});
 	
 	// route to outgoing research
-	Route::get('/oc/research/outgoing', 'OfficeClerkController@outgoingResearch')->name('oc.outgoing.research');
+	Route::get('/research/outgoing', 'OfficeClerkController@outgoingResearch')->name('oc.outgoing.research');
 
 	// route to proceed to step 5 from step 4|
-	Route::post('/oc/research/outgoing/proceed/step/five', 'OfficeClerkController@postProceedStepFive')->name('oc.proceed.step.five');
+	Route::post('/research/outgoing/proceed/step/five', 'OfficeClerkController@postProceedStepFive')->name('oc.proceed.step.five');
+
+	Route::get('/research/outgoing/proceed/step/five', function () {
+		return redirect()->route('oc.outgoing.research');
+	});
+
+	// route to proceed to 8 from step 7
+	Route::post('/research/outgoing/proceed/step/eight', 'OfficeClerkController@postProceedStepEight')->name('oc.proceed.step.eight.post');
 
 	// route to logout fr
 	Route::get('/logout', 'OfficeClerkController@logout')->name('oc.logout');
