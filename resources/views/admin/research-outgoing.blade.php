@@ -56,8 +56,9 @@
                           </td>
                           <td class="text-center">
                             <a href="{{ route('download.research.zip', ['id' => $r->id]) }}"><i class="material-icons">save_alt</i></a>
-                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#">Proceed</button>
+                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#researchProceed-{{ $r->id }}">Proceed</button>
                           </td>
+                          @include('admin.includes.modal-research-proceed-step-9')
                         </tr>
                       @endforeach
                     </tbody>

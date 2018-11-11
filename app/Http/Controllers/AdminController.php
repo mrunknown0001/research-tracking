@@ -11,6 +11,7 @@ use App\College;
 use App\User;
 use App\Form;
 use App\Research;
+use App\Agenda;
 
 class AdminController extends Controller
 {
@@ -100,7 +101,43 @@ class AdminController extends Controller
 						->where('step_14_received', 1)
 						->get();
 
-		return view('admin.research-outgoing', ['outgoing8' => $outgoing8, 'outgoing12' => $outgoing12, 'outgoing14' => $outgoing14]);
+		$agendas = Agenda::orderBy('title', 'asc')->get();
+
+		return view('admin.research-outgoing', ['outgoing8' => $outgoing8, 'outgoing12' => $outgoing12, 'outgoing14' => $outgoing14, 'agendas' => $agendas]);
+	}
+
+
+	// method use to proceed to step 9
+	public function postProceedStepNine(Request $request)
+	{
+		$request->validate([
+			'grade' => 'required|numeric',
+			'agenda' => 'required'
+		]);
+
+		$id = $request['research_id'];
+		$grade = $request['grade'];
+		$agenda_id = $request['agenda'];
+
+		$research = Research::findorfail($id);
+
+		$agenda = Agenda::findorfail($agenda_id);
+
+		// proceed
+		$research->step_number = 9;
+		$research->agenda_id = $agenda->id;
+		$research->urec_grade = $grade;
+		$research->step_8_proceeded = 1;
+		$research->step_8_date_proceeded = now();
+		$research->save();
+
+
+		// add to activity log
+		$action = 'Research Proceeded to Step 9';
+		GeneralController::log($action);
+
+		// return redirect back
+		return redirect()->back()->with('success', 'Research Proceeded');
 	}
 
 
