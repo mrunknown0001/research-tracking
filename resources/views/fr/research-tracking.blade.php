@@ -24,6 +24,9 @@
               <p>
                 <a href="{{ route('fr.dashboard') }}" class="btn btn-danger">Go Back</a>
               </p>
+
+              
+
             </div>
           </div>
 

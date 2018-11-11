@@ -28,18 +28,19 @@
                 {{ csrf_field() }}
 								<div class="form-group">
 									<label class="bmd-label-floating">Research Title</label>
-                  <input type="text" name="title" id="title" value="{{ ucwords($research->title) }}" class="form-control" required>
+                  <input type="text" name="title" id="title" value="{{ ucwords($research->title) }}" class="form-control" readonly="">
 								</div>
 								<div class="row">
 									<div class="col-md-12">
                     <div class="form-group">
-  										<label class="bmd-label-floating">Co Authors</label>
-  	                  <select type="text" name="co_authors" id="co_authors" class="form-control" required>
-                        <option value="">Select Co-Author</option>
-                        @foreach($researchers as $r)
-                          <option value="{{ $r->id }}">{{ $r->firstname . ' ' . $r->lastname }}</option>
-                        @endforeach
-                      </select>
+  										<label class="bmd-label-floating">Authors</label>
+  	                  
+                        {{ ucwords($research->author->firstname . ' ' . $research->author->lastname) }}
+                        @if(count($research->co_author) > 0)
+                          @foreach($research->co_author as $ca)
+                            , {{ ucwords($ca->researcher->firstname . ' ' . $ca->researcher->lastname) }}
+                          @endforeach
+                        @endif
                     </div>
 									</div>
 								</div>
