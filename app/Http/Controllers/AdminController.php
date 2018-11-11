@@ -97,7 +97,7 @@ class AdminController extends Controller
 						->get();
 
 
-		$outgoing14 = Research::where('step_number', 8)
+		$outgoing14 = Research::where('step_number', 14)
 						->where('step_14_received', 1)
 						->get();
 
@@ -165,6 +165,36 @@ class AdminController extends Controller
 		// return redirect back
 		return redirect()->back()->with('success', 'Research Proceeded');
 
+	}
+
+
+	// method use to proceed to step 15
+	public function postProceedStepFifteen(Request $request)
+	{
+		$request->validate([
+			'funding_type' => 'required'
+		]);
+
+		$id = $request['research_id'];
+		$funding_type = $request['funding_type'];
+		$comment = $request['comment'];
+
+		$research = Research::findorfail($id);
+
+		// proceed
+		$research->step_number = 15;
+		$research->funding_type = $funding_type;
+		$research->step_14_proceeded = 1;
+		$research->step_14_date_proceeded = now();
+		$research->save();
+
+
+		// add to activity log
+		$action = 'Research Proceeded to Step 15';
+		GeneralController::log($action);
+
+		// return redirect back
+		return redirect()->back()->with('success', 'Research Proceeded');
 	}
 
 

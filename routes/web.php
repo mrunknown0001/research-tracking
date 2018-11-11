@@ -58,6 +58,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to proceed to step 13
 	Route::post('/research/proceed/step/thirteen', 'AdminController@postProceedStepThirteen')->name('admin.proceed.step.thirteen.post');
 
+	// route to proceed to step 15
+	Route::post('/research/outgoing/proceed/step/fifteen', 'AdminController@postProceedStepFifteen')->name('admin.proceed.step.fifteen.post');
+
 	// route to go to forms
 	Route::get('/forms', 'AdminController@forms')->name('admin.forms');
 
@@ -106,6 +109,10 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 
 	// route to proceed to 11  from step 7
 	Route::post('/research/outgoing/proceed/step/eleven', 'OfficeClerkController@postProceedStepEleven')->name('oc.proceed.step.eleven.post');
+
+	// route to proceed to 14 from step 13
+	Route::post('/research/outgoing/proceed/step/fourteen', 'OfficeClerkController@postProceedStepFourteen')->name('oc.proceed.step.fourteen.post');
+
 
 	// route to logout fr
 	Route::get('/logout', 'OfficeClerkController@logout')->name('oc.logout');

@@ -24,4 +24,9 @@ class Research extends Model
     {
     	return $this->hasMany('App\ResearchUploadedFile', 'research_id');
     }
+
+    public function agenda()
+    {
+        return $this->belongsTo('App\Agenda', 'agenda_id');
+    }
 }

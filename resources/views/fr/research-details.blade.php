@@ -45,15 +45,19 @@
                 <hr>
                 <div class="col-md-3">
                   <label class="text-warning">Grade in Colloquium</label>
+                  <p>{{ $research->colloquium_grade }}</p>
                 </div>
                 <div class="col-md-3">
                   <label class="text-warning">Grade in UREC</label>
+                  <p>{{ $research->urec_grade }}</p>
                 </div>
                 <div class="col-md-3">
                   <label class="text-warning">University Research Agenda</label>
+                  <p>{{ ucwords($research->agenda->title) }}</p>
                 </div>
                 <div class="col-md-3">
                   <label class="text-warning">Funding Type</label>
+                  <p>{{ $research->funding_type }}</p>
                 </div>
 
                 <hr>

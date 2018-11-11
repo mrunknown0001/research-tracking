@@ -101,7 +101,7 @@ class CreateResearchesTable extends Migration
 
             $table->boolean('step_14_received')->default(0);
             $table->timestamp('step_14_date_received')->nullable();
-            $table->string('funding_type', 1024)->nullable();
+            $table->string('funding_type', 10)->nullable();
             $table->boolean('step_14_proceeded')->default(0);
             $table->timestamp('step_14_date_proceeded')->nullable();
 
