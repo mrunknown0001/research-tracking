@@ -34,8 +34,15 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back.history']], function () {
 	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
 
-	// route to go to incomming research
+	// route to go to incoming research
 	Route::get('/research/incoming', 'AdminController@incomingResearch')->name('admin.incoming.research');
+
+	// route to receive incoming research
+	Route::post('/research/incoming/receive', 'AdminController@postReceiveIncomingResearch')->name('admin.receive.incoming.research.post');
+
+	Route::get('/research/incoming/receive', function () {
+		return redirect()->route('admin.incoming.research');
+	});
 
 	// route to go to outgoing research
 	Route::get('/research/outgoing', 'AdminController@outgoingResearch')->name('admin.outgoing.research');

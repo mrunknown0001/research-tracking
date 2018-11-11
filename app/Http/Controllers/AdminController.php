@@ -42,10 +42,65 @@ class AdminController extends Controller
 	}
 
 
+	// method use to receive incoming research in admin
+	public function postReceiveIncomingResearch(Request $request)
+	{
+		$id = $request['research_id'];
+
+		$research = Research::findorfail($id);
+
+		$action = 'Research Received';
+
+		if($research->step_number == 8) {
+			$research->step_8_received = 1;
+			$research->step_8_date_received = now();
+
+			$action = 'Research Received on Step 8';
+		}
+		else if($research->step_number == 12) {
+			$research->step_12_received = 1;
+			$research->step_12_date_received = now();
+
+			$action = 'Research Received on Step 12';
+		}
+		else if($research->step_number == 14) {
+			$research->step_14_received = 1;
+			$research->step_14_date_received = now();
+
+			$action = 'Research Received on Step 14';
+		}
+		else {
+			return redirect()->back()->with('error', 'Please Try Again Later');
+		}
+
+		$research->save();
+
+		GeneralController::log($action);
+
+		return redirect()->route('admin.outgoing.research')->with('success', 'Research Received');
+
+
+	}
+
+
 	// method use to show outgoing research
 	public function outgoingResearch()
 	{
-		return view('admin.research-outgoing');
+		$outgoing8 = Research::where('step_number', 8)
+						->where('step_8_received', 1)
+						->get();
+
+
+		$outgoing12 = Research::where('step_number', 12)
+						->where('step_12_received', 1)
+						->get();
+
+
+		$outgoing14 = Research::where('step_number', 8)
+						->where('step_14_received', 1)
+						->get();
+
+		return view('admin.research-outgoing', ['outgoing8' => $outgoing8, 'outgoing12' => $outgoing12, 'outgoing14' => $outgoing14]);
 	}
 
 
