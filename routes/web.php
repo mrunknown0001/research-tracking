@@ -92,6 +92,13 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 	// route to proceed to 8 from step 7
 	Route::post('/research/outgoing/proceed/step/eight', 'OfficeClerkController@postProceedStepEight')->name('oc.proceed.step.eight.post');
 
+	Route::get('/research/outgoing/proceed/step/eight', function () {
+		return redirect()->route('oc.outgoing.research');
+	});
+
+	// route to proceed to 11  from step 7
+	Route::post('/research/outgoing/proceed/step/eleven', 'OfficeClerkController@postProceedStepEleven')->name('oc.proceed.step.eleven.post');
+
 	// route to logout fr
 	Route::get('/logout', 'OfficeClerkController@logout')->name('oc.logout');
 });

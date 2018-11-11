@@ -161,6 +161,30 @@ class OfficeClerkController extends Controller
     }
 
 
+    // method use to proceed to step eleven
+public function postProceedStepEleven(Request $request)
+{
+    $id = $request['research_id'];
+    $comment = $request['comment'];
+
+    $research = Research::findorfail($id);
+
+    // proceed 
+    $research->step_number = 11;
+    $research->step_10_comment = $comment;
+    $research->step_10_proceeded = 1;
+    $research->step_10_date_proceeded = now();
+    $research->save();
+
+    // add to activity log / audit trail
+    $action = 'Research Proceeded to Step 11';
+    GeneralController::log($action);
+
+    // return redirect back
+    return redirect()->back()->with('success', 'Research Proceeded');
+}
+
+
     // method use to logout of fr
 	public function logout()
 	{
