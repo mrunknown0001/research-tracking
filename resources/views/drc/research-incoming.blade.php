@@ -67,7 +67,7 @@
                     </tbody>
   								</table>
                 @else
-                  <p class="text-center">No Research Found</p>
+                  <p class="text-center">No Incoming Research on Step 2</p>
                 @endif
 
               </div>
@@ -76,7 +76,7 @@
 
           <div class="card">
             <div class="card-header card-header-info">
-              <h4 class="card-title "> Incoming Research From Faculty Researcher </h4>
+              <h4 class="card-title "> Incoming Research From College Research Evaluation Committee </h4>
               <p class="card-category"> Step 5 </p>
             </div>
             <div class="card-body">
@@ -91,9 +91,40 @@
                       <th class="text-center">Author(s)</th>
                       <th class="text-center">Action</th>
                     </thead>
+                    <tbody>
+                      @foreach($incoming5 as $r)
+                        <tr>
+                          <td class="text-center">
+                            {{ $r->time_posted }}
+                          </td>
+                          <td class="text-center">
+                            {{ $r->tracking_number }}
+                          </td>
+                          <td class="text-center">
+                            {{ ucwords($r->title) }}
+                          </td>
+                          <td class="text-center">
+                            {{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}
+                            @if(count($r->co_author) > 0)
+                              @foreach($r->co_author as $ca)
+                                , {{ ucwords($ca->researcher->firstname . ' ' . $ca->researcher->lastname) }}
+                              @endforeach
+                            @endif
+                          </td>
+                          <td class="text-center">
+                            <form action="{{ route('drc.receive.incoming.research.post') }}" method="POST">
+                              <a href="{{ route('download.research.zip', ['id' => $r->id]) }}"><i class="material-icons">save_alt</i></a>
+                              {{ csrf_field() }}
+                              <input type="hidden" name="research_id" value="{{ $r->id }}">
+                              <button type="submit" class="btn btn-success btn-sm">Receive</button>
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
                   </table>
                 @else
-                  <p class="text-center">No Research Found</p>
+                  <p class="text-center">No Incoming Research on Step 5 </p>
                 @endif
               </div>
             </div>

@@ -72,6 +72,9 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 	// route to outgoing research
 	Route::get('/oc/research/outgoing', 'OfficeClerkController@outgoingResearch')->name('oc.outgoing.research');
 
+	// route to proceed to step 5 from step 4|
+	Route::post('/oc/research/outgoing/proceed/step/five', 'OfficeClerkController@postProceedStepFive')->name('oc.proceed.step.five');
+
 	// route to logout fr
 	Route::get('/logout', 'OfficeClerkController@logout')->name('oc.logout');
 });
@@ -132,7 +135,14 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 	// route to proceed in step 3
 	Route::post('/research/proceed/step/three', 'DrcController@postProceedStepThree')->name('dr.proceed.step.three');
 
-	Route::get('/research/procced/step/three', function () {
+	Route::get('/research/proceed/step/three', function () {
+		return redirect()->route('drc.outgoing.research');
+	});
+
+	// route to proceed to step 6, inclueded with input of colloquium grade
+	Route::post('/research/proceed/step/six', 'DrcController@postProceedStepSix')->name('dr.proceed.step.six');
+
+	Route::get('/research/proceed/step/six', function() {
 		return redirect()->route('drc.outgoing.research');
 	});
 

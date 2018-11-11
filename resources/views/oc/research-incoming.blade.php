@@ -114,7 +114,7 @@
                             @endif
                           </td>
                           <td class="text-center">
-                            <form action="#" method="POST">
+                            <form action="{{ route('oc.receive.incoming.research.post') }}" method="POST">
                               {{ csrf_field() }}
                               <input type="hidden" name="research_id" value="{{ $r->id }}">
                               <button type="submit" class="btn btn-success btn-sm">Receive</button>
@@ -171,7 +171,7 @@
                             @endif
                           </td>
                           <td class="text-center">
-                            <form action="#" method="POST">
+                            <form action="{{ route('oc.receive.incoming.research.post') }}" method="POST">
                               {{ csrf_field() }}
                               <input type="hidden" name="research_id" value="{{ $r->id }}">
                               <button type="submit" class="btn btn-success btn-sm">Receive</button>
@@ -228,7 +228,7 @@
                             @endif
                           </td>
                           <td class="text-center">
-                            <form action="#" method="POST">
+                            <form action="{{ route('oc.receive.incoming.research.post') }}" method="POST">
                               {{ csrf_field() }}
                               <input type="hidden" name="research_id" value="{{ $r->id }}">
                               <button type="submit" class="btn btn-success btn-sm">Receive</button>

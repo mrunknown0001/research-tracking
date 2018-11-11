@@ -121,7 +121,38 @@ class DrcController extends Controller
         $research->save();
 
         // add audit trail
-        $action = 'Proceeded Research';
+        $action = 'Proceeded Research from Step 2 to 3';
+        GeneralController::log($action);
+
+        // return redirect back
+        return redirect()->back()->with('success', 'Research Proceeded');
+    }
+
+
+    // method use to proceed to step five
+    public function postProceedStepSix(Request $request)
+    {
+        $request->validate([
+            'grade' => 'required|numeric|max:100'
+        ]);
+
+        $id = $request['research_id'];
+        $grade = $request['grade'];
+        $comment = $request['comment'];
+
+        $research = Research::findorfail($id);
+
+        // proceed
+        $research->step_number = 6;
+        $research->step_5_comment = $comment;
+        $research->colloquium_grade = $grade;
+        $research->step_5_proceeded = 1;
+        $research->step_5_date_proceeded = now();
+
+        // save
+        $research->save();
+
+        $action = 'Proceeded Research from Step 5 to 6';
         GeneralController::log($action);
 
         // return redirect back
