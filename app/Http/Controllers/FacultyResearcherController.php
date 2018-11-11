@@ -317,33 +317,46 @@ class FacultyResearcherController extends Controller
             return redirect()->back()->with('error', 'Please Try Again Later');
         }
 
+        $action = 'Research Proceeded';
+
         // proceed to next step of the process
         if($research->step_number == 3) {
             $research->step_number = 4;
             $research->step_3_proceeded = 1;
             $research->step_3_date_proceeded = now();
+
+            $action = 'Research Proceeded from Step 3 to 4';
         }
         else if($research->step_number == 6) {
             $research->step_number = 7;
             $research->step_6_proceeded = 1;
             $research->step_6_date_proceeded = now();
+
+            $action = 'Research Proceeded from Step 6 to 7';
         }
         else if($research->step_number == 9) {
             $research->step_number = 10;
             $research->step_9_proceeded = 1;
             $research->step_9_date_proceeded = now();
+
+            $action = 'Research Proceeded from Step 9 to 10';
         }
         else if($research->step_number == 11) {
             $research->step_number = 12;
             $research->step_11_proceeded = 1;
             $research->step_11_date_proceeded = now();
+
+            $action = 'Research Proceeded from Step 11 to 12';
+        }
+        else {
+            return redirect()->back()->with('error', 'Please Try Again Later');
         }
 
         // save 
         $research->save();
 
         // add to activity logs
-        $action = 'Research Proceeded';
+        
         GeneralController::log($action);
 
         // return to outgoing research

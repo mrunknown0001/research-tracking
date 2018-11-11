@@ -47,22 +47,31 @@ class OfficeClerkController extends Controller
         $research = Research::findorfail($id);
 
         // check the step number if valid for office clerk
+        $action = 'Received Research';
 
         if($research->step_number == 4) {
             $research->step_4_received = 1;
             $research->step_4_date_received = now();
+
+            $action = 'Received Research on Step 4';
         }
         else if($research->step_number == 7) {
             $research->step_7_received = 1;
             $research->step_7_date_received = now();
+
+            $action = 'Received Research on Step 7';
         }
         else if($research->step_number == 10) {
             $research->step_10_received = 1;
             $research->step_10_date_received = now();
+
+            $action = 'Received Research on Step 10';
         }
         else if($research->step_number == 13) {
             $research->step_13_received = 1;
             $research->step_13_date_received = now();
+
+            $action = 'Received Research on Step 13';
         }
         else {
             return redirect()->back()->with('error', 'Please Try Again Later');
@@ -71,7 +80,7 @@ class OfficeClerkController extends Controller
         $research->save();
 
         // add to activity log/ audit trail
-        $action = 'Received Research';
+        
         GeneralController::log($action);
 
         // return redirect to outgoing research
