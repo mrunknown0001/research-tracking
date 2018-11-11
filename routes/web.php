@@ -50,6 +50,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to proceed to step 9
 	Route::post('/research/proceed/step/nine', 'AdminController@postProceedStepNine')->name('admin.proceed.step.nine.post');
 
+	Route::get('/research/proceed/step/nine', function () {
+		return redirect()->route('admin.outgoing.research');
+	});
+
+
+	// route to proceed to step 13
+	Route::post('/research/proceed/step/thirteen', 'AdminController@postProceedStepThirteen')->name('admin.proceed.step.thirteen.post');
+
 	// route to go to forms
 	Route::get('/forms', 'AdminController@forms')->name('admin.forms');
 

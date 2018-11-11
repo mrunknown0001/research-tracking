@@ -141,6 +141,33 @@ class AdminController extends Controller
 	}
 
 
+	// method use to procced to step 13
+	public function postProceedStepThirteen(Request $request)
+	{
+		$id = $request['research_id'];
+
+		$comment = $request['comment'];
+
+		$research = Research::findorfail($id);
+
+		// proceed
+		$research->step_number = 13;
+		$research->step_12_comment = $comment;
+		$research->step_12_proceeded = 1;
+		$research->step_12_date_proceeded = now();
+		$research->save();
+
+
+		// add to activity log
+		$action = 'Research Proceeded to Step 13';
+		GeneralController::log($action);
+
+		// return redirect back
+		return redirect()->back()->with('success', 'Research Proceeded');
+
+	}
+
+
 	// method use to go to forms
 	public function forms()
 	{
