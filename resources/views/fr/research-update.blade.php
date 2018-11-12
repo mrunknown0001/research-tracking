@@ -24,8 +24,9 @@
           
               @include('includes.all')
 
-							<form action="#" method="POST" enctype="multipart/form-data">
+							<form action="{{ route('fr.update.research.post') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
+                <input type="hidden" name="research_id" value="{{ $research->id }}">
 								<div class="form-group">
 									<label class="bmd-label-floating">Research Title</label>
                   <input type="text" name="title" id="title" value="{{ ucwords($research->title) }}" class="form-control" readonly="">
@@ -51,7 +52,7 @@
                     </div>
                     <hr>
                     <div class="col-md-6">
-                      <input type="file" name="{{ $file->id }}" id="files" accept="application/msword,.doc,.docx,application/pdf">
+                      <input type="file" name="file{{ $file->id }}" id="files" accept="application/msword,.doc,.docx,application/pdf">
                     </div>
                   </div>
                 @endforeach

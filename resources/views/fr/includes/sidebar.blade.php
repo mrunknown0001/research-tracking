@@ -9,7 +9,7 @@
         <ul class="nav">
           <li class="nav-item {{ route('fr.dashboard') == url()->current() ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('fr.dashboard') }}">
-              <i class="material-icons">dashboard</i>
+              <i class="material-icons">work</i>
               <p>Dashboard</p>
             </a>
           </li>

@@ -208,6 +208,9 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 	// route to submit research
 	Route::post('/', 'FacultyResearcherController@postSubmitResearch')->name('fr.submit.research.post');
 
+	// route to update research documents 
+	Route::post('/research/document/update', 'FacultyResearcherController@postUpdateResearch')->name('fr.update.research.post');
+
 	// route to view details of research
 	Route::get('/research/{id}/details', 'FacultyResearcherController@researchDetails')->name('fr.research.details');
 

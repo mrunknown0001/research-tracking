@@ -156,6 +156,24 @@ class FacultyResearcherController extends Controller
     }
 
 
+    // method use to update research documents
+    public function postUpdateResearch(Request $request)
+    {
+        return 'in progress...';
+        // check the uploaded files to change
+
+        // upload files
+
+        // update names on database
+
+        // save
+
+        // add to audit trail
+
+        // redirect to dashboard
+    }
+
+
     // method use to view research details
     public function researchDetails($id = null)
     {
