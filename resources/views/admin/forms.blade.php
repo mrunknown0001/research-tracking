@@ -40,7 +40,7 @@
                       <div class="fileinput fileinput-new" data-provides="fileinput">
                         <span class="btn btn-raised btn-round btn-rose btn-file">
                           <span onclick="triggerClick()" class="fileinput-new" id="filename">Upload Form</span>
-                          <input type="file" oninput="showfilename()" name="file" id="file" />
+                          <input type="file" oninput="showfilename()" name="file" id="file" accept="application/pdf" />
                         </span>
                       </div>
 

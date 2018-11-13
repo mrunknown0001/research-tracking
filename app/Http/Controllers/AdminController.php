@@ -212,8 +212,23 @@ class AdminController extends Controller
 	{
 		$request->validate([
 			'form' => 'required',
-			'file' => 'required'
+			'file' => 'required|mimes:pdf'
 		]);
+
+		$file = $request['file'];
+
+		$id = $request['form'];
+
+		$form = Form::findorfail($id);
+
+		// replace form
+		$file->move(public_path('/uploads/fillable'), $form->filename);
+
+        $action = 'Form ' . $form->alias . ' Updated';
+        GeneralController::log($action);
+
+        return redirect()->back()->with('success', 'Form Updated!');
+
 	}
 
 
