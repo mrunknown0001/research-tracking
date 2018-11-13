@@ -23,7 +23,7 @@ class CreateFormRequestsTable extends Migration
             $table->string('original_filename', 150)->nullable();
             $table->string('unique_filename', 30)->nullable();
             $table->boolean('approved')->default(0);
-            $table->tinyInteger('active')->default(0);
+            $table->tinyInteger('active')->default(1);
             $table->timestamps();
         });
     }

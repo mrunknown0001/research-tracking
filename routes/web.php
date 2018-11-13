@@ -268,3 +268,7 @@ Route::get('/downloadable/form/{filename}', 'AdminController@downloadForm')->nam
 
 // route to download all research project documents in zip for
 Route::get('/research/{id}/download/zipped', 'GeneralController@downloadResearchZip')->name('download.research.zip');
+
+
+// route to download form request
+Route::get('/form/request/{id}/download', 'GeneralController@downloadFormRequest')->name('download.form.request');

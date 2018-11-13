@@ -89,7 +89,7 @@
                             {{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
                           </td>
                           <td class="text-center">
-                            <a href="#"><i class="material-icons">save_alt</i></a>
+                            <a href="{{ route('download.form.request', ['id' => $f->id]) }}"><i class="material-icons">save_alt</i></a>
                           </td>
                         </tr>
                       @endforeach

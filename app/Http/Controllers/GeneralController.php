@@ -9,6 +9,7 @@ use Illuminate\Filesystem\Filesystem;
 
 use App\AuditTrail;
 use App\Research;
+use App\FormRequest;
 
 class GeneralController extends Controller
 {
@@ -196,6 +197,21 @@ class GeneralController extends Controller
         return response()->download(public_path("uploads/tmp_zipped/{$research->title}".'.zip'));
 
  
+    }
+
+
+    // method use to download form request
+    public function downloadFormRequest($id = null)
+    {
+        $fr = FormRequest::findorfail($id);
+
+        // add to activity log
+        $action = 'Downloaded Form Request';
+        $this->log($action);
+
+        // download
+        return response()->download(public_path("uploads/form_requests/{$fr->unique_filename}"));
+
     }
 
 
