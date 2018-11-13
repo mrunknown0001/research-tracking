@@ -159,18 +159,31 @@ class FacultyResearcherController extends Controller
     // method use to update research documents
     public function postUpdateResearch(Request $request)
     {
-        return 'in progress...';
+        // return $request;
+        $id = $request['research_id'];
+
+        $researcher = Auth::user();
+
+        $research = Research::findorfail($id);
+
+        if($research->author_id != $researcher->id) {
+            return redirect()->back()->with('error', 'Please Try Again Later');
+        }
+
         // check the uploaded files to change
+        foreach($research->files as $file) {
+            // change the files
+            if(isset($request['file'.$file->id])) {
+                $f = $request['file'.$file->id];
 
-        // upload files
+                $f->move(public_path('uploads/files'), $file->unique_filename);
+            }
+        }
 
-        // update names on database
+        $action = 'Updated Research Documents';
+        GeneralController::log($action);
 
-        // save
-
-        // add to audit trail
-
-        // redirect to dashboard
+        return redirect()->back()->with('success', 'Research Documents Updated!');
     }
 
 

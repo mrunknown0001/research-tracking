@@ -80,6 +80,7 @@
                               <a href="{{ route('fr.research.details', ['id' => $r->id]) }}"><i class="material-icons">assignment</i></a>
                             </td>
                             <td class="text-center">
+                              <a href="{{ route('download.research.zip', ['id' => $r->id]) }}"><i class="material-icons">save_alt</i></a>
                               <a href="{{ route('fr.research.update', ['id' => $r->id]) }}" class="btn btn-primary">Update</a>
                               <a href="#" class="btn btn-success">Progress Report</a>
                             </td>
