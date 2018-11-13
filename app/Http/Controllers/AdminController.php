@@ -207,6 +207,16 @@ class AdminController extends Controller
 	}
 
 
+	// method use to update form 
+	public function postFormUpdate(Request $request)
+	{
+		$request->validate([
+			'form' => 'required',
+			'file' => 'required'
+		]);
+	}
+
+
 	// method use to go to research
 	public function research()
 	{

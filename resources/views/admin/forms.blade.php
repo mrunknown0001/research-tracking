@@ -15,6 +15,8 @@
       <div class="content">
         <div class="container-fluid">
 
+          @include('includes.all')
+
           <div class="row">
             <div class="col-md-8">
               <div class="card">
@@ -23,7 +25,8 @@
                   <p class="card-category">  </p>
                 </div>
                 <div class="card-body">
-                  <form action="#" method="POST" enctype="multipart/form-data">
+                  <form action="{{ route('admin.form.update.post') }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="form-group">
                       <select name="form" id="form" class="form-control" placeholder="Form to be replaced *">
                         <option value="">Select Form to Replace</option>

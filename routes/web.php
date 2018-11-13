@@ -64,6 +64,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to go to forms
 	Route::get('/forms', 'AdminController@forms')->name('admin.forms');
 
+	// route to update form
+	Route::post('/forms', 'AdminController@postFormUpdate')->name('admin.form.update.post');
+
 	// route to go to researches
 	Route::get('/research', 'AdminController@research')->name('admin.research');
 
