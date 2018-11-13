@@ -53,4 +53,9 @@ class User extends Authenticatable
         return $this->hasMany('App\ResearchCoauthor', 'co_author_id');
     }
 
+    public function form_requests()
+    {
+        return $this->hasMany('App\FormRequest', 'researcher_id');
+    }
+
 }

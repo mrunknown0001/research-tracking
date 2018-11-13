@@ -74,6 +74,30 @@
             <div class="card-body">
               <div class="table-responsive">
 
+                @if(count($form_requests) > 0)
+                  <table class="table">
+                    <thead>
+                      <th class="text-center">Form Name</th>
+                      <th class="text-center">Researcher</th>
+                      <th class="text-center">Action</th>
+                    </thead>
+                    <tbody>
+                      @foreach($form_requests as $f)
+                        <tr>
+                          <td class="text-center">{{ $f->form->name }}</td>
+                          <td class="text-center">
+                            {{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
+                          </td>
+                          <td class="text-center">
+                            <a href="#"><i class="material-icons">save_alt</i></a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                @else
+                  <p class="text-center">No Form Requests</p>
+                @endif
 
               </div>
             </div>

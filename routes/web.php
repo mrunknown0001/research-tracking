@@ -246,6 +246,9 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 	// route to view forms
 	Route::get('/forms', 'FacultyResearcherController@forms')->name('fr.forms');
 
+	// route to upload request form
+	Route::post('/forms', 'FacultyResearcherController@postRequestForm')->name('fr.form.request.post');
+
 	// route to access send forms
 	Route::get('/form/send', 'FacultyResearcherController@sendRequestForm')->name('fr.send.request.form');
 

@@ -22,7 +22,10 @@
             </div>
             <div class="card-body">
 
-							<form action="#" method="POST" enctype="multipart/form-data">
+							@include('includes.all')
+
+							<form action="{{ route('fr.form.request.post') }}" method="POST" enctype="multipart/form-data">
+								{{ csrf_field() }}
 								<div class="form-group">
 									<label class="bmd-label-floating">Comment</label>
                   <input type="text" name="comment" id="comment" class="form-control" required>
@@ -30,7 +33,7 @@
 								<div class="row">
 									<div class="col-md-8">
 										<div class="form-group">
-		                  <select name="form" id="form" class="form-control">
+		                  <select name="form" id="form" class="form-control" required>
 		                  	<option value="">Form Type</option>
 		                  	@foreach($forms as $f)
 													<option value="{{ $f->id }}">{{ $f->name }}</option>
@@ -39,7 +42,7 @@
 										</div>
 									</div>
 									<div class="col-md-4">
-										<input type="file" name="file" id="file">
+										<input type="file" name="file" id="file" accept="application/pdf" required>
 									</div>
 								</div>
 								<div class="form-group">

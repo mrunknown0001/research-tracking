@@ -12,6 +12,7 @@ use App\User;
 use App\Form;
 use App\Research;
 use App\ResearchCoauthor;
+use App\FormRequest;
 
 class FacultyResearcherController extends Controller
 {
@@ -416,6 +417,44 @@ class FacultyResearcherController extends Controller
     	$forms = Form::get();
 
     	return view('fr.forms', ['forms' => $forms]);
+    }
+
+
+    // method use to upload form request
+    public function postRequestForm(Request $request)
+    {
+        $request->validate([
+            'form' => 'required',
+            'file' => 'required|file|mimes:pdf'
+        ]);
+
+        $id = $request['form'];
+        $file = $request['file'];
+        $comment = $request['comment'];
+
+        $form = Form::findorfail($id);
+
+        // generate file name
+        $renamed = Auth::user()->id_number . '.' . time().'.'.$file->getClientOriginalExtension();
+
+        // upload form request
+        $file->move(public_path('/uploads/form_requests'), $renamed);
+
+        // new form  request upload
+        $req = new FormRequest();
+        $req->researcher_id = Auth::user()->id;
+        $req->form_id = $form->id;
+        $req->comment = $comment;
+        $req->original_filename = $file->getClientOriginalName();
+        $req->unique_filename = $renamed;
+        $req->save();
+
+        // add to activity log
+        $action = 'Requested Form';
+        GeneralController::log($action);
+
+        // return redirect back
+        return redirect()->back()->with('success', 'Form Request Submitted');
     }
 
 

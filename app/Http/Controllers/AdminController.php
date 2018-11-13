@@ -12,6 +12,7 @@ use App\User;
 use App\Form;
 use App\Research;
 use App\Agenda;
+use App\FormRequest;
 
 class AdminController extends Controller
 {
@@ -20,7 +21,9 @@ class AdminController extends Controller
 	{
 		$logs = AuditTrail::orderBy('created_at', 'desc')->paginate(10);
 
-		return view('admin.dashboard', ['logs' => $logs]);
+		$form_requests = FormRequest::orderBy('created_at', 'desc')->orderBy('approved', 'asc')->get();
+
+		return view('admin.dashboard', ['logs' => $logs, 'form_requests' => $form_requests]);
 	}
 
 
