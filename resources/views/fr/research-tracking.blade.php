@@ -89,13 +89,22 @@
                   <div class="card-header card-header-primary" id="headingThree">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <h5 class="card-title">Collapsible Group Item #3</h5>
+                        <h5 class="card-title">3. Faculty Researcher</h5>
                       </button>
                     </h5>
                   </div>
                   <div id="collapseThree" class="collapse {{ $research->step_number == 3 ? 'show' : '' }}" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -104,13 +113,35 @@
                   <div class="card-header card-header-primary" id="headingFour">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        <h5 class="card-title">Collapsible Group Item #4</h5>
+                        <h5 class="card-title">4. College research Evaluation Committee</h5>
                       </button>
                     </h5>
                   </div>
                   <div id="collapseFour" class="collapse {{ $research->step_number == 4 ? 'show' : '' }}" aria-labelledby="headingFour" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Status</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_4_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -119,13 +150,35 @@
                   <div class="card-header card-header-primary" id="headingFive">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        <h5 class="card-title">Collapsible Group Item #5</h5>
+                        <h5 class="card-title">5. department research coordinator</h5>
                       </button>
                     </h5>
                   </div>
                   <div id="collapseFive" class="collapse {{ $research->step_number == 5 ? 'show' : '' }}" aria-labelledby="headingFive" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_5_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -134,13 +187,24 @@
                   <div class="card-header card-header-primary" id="headingSix">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
-                        <h5 class="card-title">Collapsible Group Item #6</h5>
+                        <h5 class="card-title">6. Faculty Researcher</h5>
                       </button>
                     </h5>
                   </div>
                   <div id="collapseSix" class="collapse  {{ $research->step_number == 6 ? 'show' : '' }}" aria-labelledby="headingSix" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -149,13 +213,35 @@
                   <div class="card-header card-header-primary" id="headingSeven">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
-                        <h5 class="card-title">Collapsible Group Item #7</h5>
+                        <h5 class="card-title">7. UREC</h5>
                       </button>
                     </h5>
                   </div>
                   <div id="collapseSeven" class="collapse {{ $research->step_number == 7 ? 'show' : '' }}" aria-labelledby="headingSeven" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_7_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -164,7 +250,7 @@
                   <div class="card-header card-header-primary" id="headingEight">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
-                        <h5 class="card-title">Collapsible Group Item #8</h5>
+                        <h5 class="card-title">8. University Research Office</h5>
                       </button>
                     </h5>
                   </div>
@@ -179,7 +265,7 @@
                   <div class="card-header card-header-primary" id="headingNine">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
-                        <h5 class="card-title">Collapsible Group Item #9</h5>
+                        <h5 class="card-title">9. Faculty Researcher</h5>
                       </button>
                     </h5>
                   </div>
@@ -194,7 +280,7 @@
                   <div class="card-header card-header-primary" id="headingTen">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
-                        <h5 class="card-title">Collapsible Group Item #10</h5>
+                        <h5 class="card-title">10. Research Ethics and Review Committee</h5>
                       </button>
                     </h5>
                   </div>
@@ -209,7 +295,7 @@
                   <div class="card-header card-header-primary" id="headingEleven">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
-                        <h5 class="card-title">Collapsible Group Item #11</h5>
+                        <h5 class="card-title">11. Faculty Researcher</h5>
                       </button>
                     </h5>
                   </div>
@@ -224,7 +310,7 @@
                   <div class="card-header card-header-primary" id="headingTwelve">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
-                        <h5 class="card-title">Collapsible Group Item #12</h5>
+                        <h5 class="card-title">12. University Research Office</h5>
                       </button>
                     </h5>
                   </div>
@@ -239,7 +325,7 @@
                   <div class="card-header card-header-primary" id="headingThirteen">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="true" aria-controls="collapseThirteen">
-                        <h5 class="card-title">Collapsible Group Item #13</h5>
+                        <h5 class="card-title">13. Office of the University President</h5>
                       </button>
                     </h5>
                   </div>
@@ -254,7 +340,7 @@
                   <div class="card-header card-header-primary" id="headingFourteen">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFourteen" aria-expanded="true" aria-controls="collapseFourteen">
-                        <h5 class="card-title">Collapsible Group Item #14</h5>
+                        <h5 class="card-title">14. University Research Office</h5>
                       </button>
                     </h5>
                   </div>
@@ -269,7 +355,7 @@
                   <div class="card-header card-header-primary" id="headingFifteen">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFifteen" aria-expanded="true" aria-controls="collapseFifteen">
-                        <h5 class="card-title">Collapsible Group Item #15</h5>
+                        <h5 class="card-title">15. Faculty Researcher</h5>
                       </button>
                     </h5>
                   </div>
