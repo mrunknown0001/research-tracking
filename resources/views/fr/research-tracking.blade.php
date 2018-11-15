@@ -27,17 +27,26 @@
 
               <div id="accordion">
                 <div class="card">
-                  <div class="card-header card-header-primary" id="headingOne">
+                  <div class="card-header card-header-primary" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     <h5 class="mb-0">
-                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        <h5 class="card-title">Collapsible Group Item #1</h5>
+                      <button class="btn btn-link">
+                        <h5 class="card-title">1. Faculty Researcher</h5>
                       </button>
                     </h5>
                   </div>
 
                   <div id="collapseOne" class="collapse {{ $research->step_number == 1 ? 'show' : '' }}" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Released</th>
+                          <td></td>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->created_at }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -45,13 +54,34 @@
                   <div class="card-header card-header-primary" id="headingTwo">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <h5 class="card-title">Collapsible Group Item #2</h5>
+                        <h5 class="card-title">2. department research coordinator</h5>
                       </button>
                     </h5>
                   </div>
                   <div id="collapseTwo" class="collapse {{ $research->step_number == 2 ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                        </tbody>
+                      </table>
+
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
