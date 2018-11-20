@@ -21,7 +21,10 @@
               <p class="card-category">  </p>
             </div>
             <div class="card-body">
-
+              <p>Name: <strong>{{ ucwords(Auth::user()->firstname . ' ' . Auth::user()->lastname) }}</strong></p>
+              <p>ID Number: <strong>{{ Auth::user()->id_number }}</strong></p>
+              <p>Contact Number: <strong>{{ Auth::user()->contact_number }}</strong></p>
+              <p>Email: <strong>{{ strtolower(Auth::user()->email) }}</strong></p>
             </div>
           </div>
 

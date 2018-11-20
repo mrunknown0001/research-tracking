@@ -88,7 +88,20 @@
                         @endforeach
                       @endif
                       @if(count($co_researches) > 0)
-
+                        @foreach($co_researches as $r)
+                          <tr>
+                            <td class="text-center">{{ $r->research->tracking_number }}</td>
+                            <td class="text-center">{{ ucwords($r->research->title) }}</td>
+                            <td class="text-center">{{ ucwords($r->researcher->firstname . ' ' . $r->researcher->lastname) }}</td>
+                            <td class="text-center">
+                              <a href="{{ route('fr.track.research.document', ['id' => $r->research->id]) }}"><i class="material-icons">visibility</i></a>
+                              <a href="{{ route('fr.research.details', ['id' => $r->research->id]) }}"><i class="material-icons">assignment</i></a>
+                            </td>
+                            <td class="text-center">
+                              <a href="{{ route('download.research.zip', ['id' => $r->research->id]) }}"><i class="material-icons">save_alt</i></a>
+                            </td>
+                          </tr>
+                        @endforeach
                       @endif
                     </tbody>
                   </table>
