@@ -33,6 +33,36 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password')
             ],
             [
+                'firstname' => 'oc2',
+                'middlename' => 'oc2',
+                'lastname' => 'oc',
+                'id_number' => '18-33333',
+                'email' => 'oc@admin.com',
+                'contact_number' => '09191111113',
+                'user_type' => 3,
+                'password' => bcrypt('password')
+            ],
+            [
+                'firstname' => 'oc',
+                'middlename' => 'oc',
+                'lastname' => 'oc',
+                'id_number' => '18-44444',
+                'email' => 'oc@admin.com',
+                'contact_number' => '09191111114',
+                'user_type' => 4,
+                'password' => bcrypt('password')
+            ],
+            [
+                'firstname' => 'oc',
+                'middlename' => 'oc',
+                'lastname' => 'oc',
+                'id_number' => '18-55555',
+                'email' => 'oc@admin.com',
+                'contact_number' => '09191111115',
+                'user_type' => 5,
+                'password' => bcrypt('password')
+            ],
+            [
                 'firstname' => 'cc',
                 'middlename' => 'cc',
                 'lastname' => 'cc',
