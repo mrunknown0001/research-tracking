@@ -10,6 +10,7 @@ use Illuminate\Filesystem\Filesystem;
 use App\AuditTrail;
 use App\Research;
 use App\FormRequest;
+use App\Notification;
 
 class GeneralController extends Controller
 {
@@ -212,6 +213,31 @@ class GeneralController extends Controller
         // download
         return response()->download(public_path("uploads/form_requests/{$fr->unique_filename}"));
 
+    }
+
+
+
+    // method use to load notifications
+    public function notifications()
+    {
+
+        // if the user id has notification that is unread
+        $notifications = Notification::where('user_id', Auth::user()->id)->where('viewed', 0)->get();
+
+        return view('includes.notification-content', ['notifications' => $notifications]);
+    }
+
+
+    // method use to count notification
+    public function notificationCount()
+    {
+        $notifications = Notification::where('user_id', Auth::user()->id)->where('viewed', 0)->get();
+
+        if(count($notifications) > 0) {
+            return count($notifications);
+        }
+
+        return false;
     }
 
 

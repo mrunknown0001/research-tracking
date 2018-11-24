@@ -10,8 +10,10 @@
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <script src="{{ asset('assets/js/core/jquery.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('js/jquery.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
   <script src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
+  
 </head>
 <body class="">
   
@@ -19,7 +21,6 @@
 
   <script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/js/core/bootstrap-material-design.min.js') }}" type="text/javascript"></script>
-  <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
    {{-- Google Maps Plugin    --}}
   {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
   {{-- Chartist JS --}}
@@ -27,6 +28,14 @@
    {{-- Notifications Plugin    --}}
   <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}" type="text/javascript"></script>
   {{-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc --}}
-  <script src="{{ asset('assets/js/material-dashboard.js?v=2.1.0') }}" type="text/javascript"></script>
+  {{-- <script src="{{ asset('assets/js/material-dashboard.js?v=2.1.0') }}" type="text/javascript"></script> --}}
+
+  <script>
+    setInterval(function () {
+      $('#notification').load("/notifications");
+
+      $('#notificationcount').load("/notification-count");
+    }, 3000);
+  </script>
 </body>
 </html>
