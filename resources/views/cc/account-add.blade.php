@@ -33,7 +33,7 @@
                     </div>
 									</div>
 									<div class="col-md-6">
-										<label class="bmd-label-floating">College Department</label>
+										{{-- <label class="bmd-label-floating">College Department</label> --}}
 										<select name="department" id="department" class="form-control">
 											<option value="">Select Department</option>
 											@if(count($departments) > 0)
@@ -80,7 +80,7 @@
 										</div>
 									</div>
 									<div class="col-md-4">
-											<label class="bmd-label-floating">User Type</label>
+											{{-- <label class="bmd-label-floating">User Type</label> --}}
 											<select name="user_type" id="user_type" class="form-control">
 												<option value="">Select User Type</option>
 												<option value="8">Faculty Researcher</option>

@@ -13,7 +13,7 @@ class DrcAssignmentsTableSeeder extends Seeder
     {
         DB::table('drc_assignments')->insert([
         	[
-        		'drc_id' => 4,
+        		'drc_id' => 7,
         		'college_id' => 1,
         		'department_id' => 1
         	]

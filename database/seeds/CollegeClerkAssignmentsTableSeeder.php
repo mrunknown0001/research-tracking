@@ -13,7 +13,7 @@ class CollegeClerkAssignmentsTableSeeder extends Seeder
     {
         DB::table('college_clerk_assignments')->insert([
         	[
-        		'clerk_id' => 3,
+        		'clerk_id' => 6,
         		'college_id' => 1
         	]
         ]);

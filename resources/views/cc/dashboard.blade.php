@@ -28,7 +28,7 @@
 		            <div class="card-body">
 		              <div class="table-responsive">
 
-										@if(count($d->assigned_fr) > 0  || (count($d->assigned_drc) > 0 && $d->assigned_drc->drc->active == 1))
+										@if(!empty($d->assigned_fr)  || (!empty($d->assigned_drc) && $d->assigned_drc->drc->active == 1))
 											<table class="table">
 												<thead>
 													<th class="text-center">ID Number</th>
@@ -38,7 +38,7 @@
 													<th class="text-center">Action</th>
 												</thead>
 												<tbody>
-													@if(count($d->assigned_drc) > 0 && $d->assigned_drc->drc->active == 1)
+													@if(!empty($d->assigned_drc) && $d->assigned_drc->drc->active == 1)
 														<tr>
 															<td class="text-center">
 																{{ $d->assigned_drc->drc->id_number }}
