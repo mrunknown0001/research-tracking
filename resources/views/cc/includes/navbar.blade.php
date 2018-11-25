@@ -21,7 +21,7 @@
                   </p>
                 </a>
                 <div id="notification" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  @include('includes.notification-area')
+                  <div id="notificationbadge"></div>
                 </div>
               </li>
               <li class="nav-item dropdown">

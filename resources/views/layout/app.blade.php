@@ -32,9 +32,10 @@
 
   <script>
     setInterval(function () {
-      $('#notification').load("/notifications");
 
-      $('#notificationcount').load("/notification-count");
+      $('#notificationbadge').load("/notification-count");
+      
+      $('#notification').load("/notifications");
     }, 3000);
   </script>
 </body>

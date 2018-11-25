@@ -1,5 +1,7 @@
 <?php
 
+Route::get('/asdf', 'GeneralController@notificationCount');
+
 Route::group(['middleware' => 'prevent.back.history'], function () {
 	Route::get('/', 'LoginController@login')->name('login');
 
@@ -279,3 +281,9 @@ Route::get('/form/request/{id}/download', 'GeneralController@downloadFormRequest
 Route::get('/notifications', 'GeneralController@notifications')->name('notifications');
 
 Route::get('/notification-count', 'GeneralController@notificationCount')->name('notification.count');
+
+Route::get('/notification-badge', 'GeneralController@notificationBadge')->name('notification.badge');
+
+
+// route to read notification
+Route::get('/notification/read/{id}', 'GeneralController@notificationRead')->name('notification.read');

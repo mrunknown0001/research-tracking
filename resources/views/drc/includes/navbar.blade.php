@@ -15,14 +15,14 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
-                  @include('includes.notification-badge')
+                  <div id="notificationbadge"></div>
                   <p class="d-lg-none d-md-block">
                     Some Actions
                   </p>
                 </a>
                 <div id="notification" class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
                   {{-- <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a> --}}
-                  @include('includes.notification-area')
+                  <div id="notificationbadge"></div>
 
 
                 </div>

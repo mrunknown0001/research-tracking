@@ -243,14 +243,27 @@ class GeneralController extends Controller
     // method use to count notification
     public function notificationCount()
     {
+
         $notifications = Notification::where('user_id', Auth::user()->id)->where('viewed', 0)->get();
 
         if(count($notifications) > 0) {
-            return count($notifications);
+            $notificationCount = count($notifications);
+            return view('includes.notification-badge', ['notificationCount' => $notificationCount]);
         }
 
-        return false;
+        return view('includes.notification-badge-no-class');
     }
 
+
+    public function notificationRead($id)
+    {
+        $id = decrypt($id);
+
+        $notification = Notification::findorfail($id);
+        $notification->viewed = 1;
+        $notification->save();
+
+        return redirect()->route($notification->url);
+    }
 
 }
