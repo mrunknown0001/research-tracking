@@ -1,7 +1,5 @@
 <?php
 
-Route::get('/asdf', 'GeneralController@notificationCount');
-
 Route::group(['middleware' => 'prevent.back.history'], function () {
 	Route::get('/', 'LoginController@login')->name('login');
 

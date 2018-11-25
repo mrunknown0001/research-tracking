@@ -120,6 +120,13 @@ class DrcController extends Controller
         // save research
         $research->save();
 
+
+        $fr_id = $research->author_id;
+        $url = 'fr.incoming.research';
+        $message = 'DRC Proceeded Your Research';
+        GeneralController::create_notification($fr_id, $url, $message);
+
+
         // add audit trail
         $action = 'Proceeded Research from Step 2 to 3';
         GeneralController::log($action);

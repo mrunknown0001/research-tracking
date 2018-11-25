@@ -154,8 +154,12 @@ class FacultyResearcherController extends Controller
         // $user_id = ID of user to whom for the notification is
         // $message = 'Notification Message';
         // $url = name of the url
-        // GeneralController::create_notification($user_id, $message, $url);
+        // GeneralController::create_notification($user_id, $url, $message);
         // notificatio for the current drc of the department
+        $drc_id = Auth::user()->frAssignment->department->assigned_drc->drc->id;
+        $url = 'drc.incoming.research';
+        $message = 'Research Submitted by ' . Auth::user()->firstname . ' ' . Auth::user()->lastname;
+        GeneralController::create_notification($drc_id, $url, $message);
 
 
         $action = 'Submitted Research';
