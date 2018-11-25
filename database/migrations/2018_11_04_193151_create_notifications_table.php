@@ -17,7 +17,7 @@ class CreateNotificationsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('message', 50)->nullable();
+            $table->string('message', 80)->nullable();
             $table->string('url', 40)->nullable();
             $table->timestamp('date_viewed')->nullable();
             $table->tinyInteger('viewed')->default(0);

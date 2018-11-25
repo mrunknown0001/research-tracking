@@ -376,6 +376,11 @@ class FacultyResearcherController extends Controller
             $research->step_3_date_proceeded = now();
 
             $action = 'Research Proceeded from Step 3 to 4';
+
+            // get the id of the office clerk in step 4
+            $id = 2;
+            $url = 'oc.incoming.research';
+            $message = 'Researcher Proceeded the Research to Step 4';
         }
         else if($research->step_number == 6) {
             $research->step_number = 7;
@@ -404,6 +409,11 @@ class FacultyResearcherController extends Controller
 
         // save 
         $research->save();
+
+
+        // add to notification
+        GeneralController::create_notification($id, $url, $message);
+
 
         // add to activity logs
         
@@ -467,8 +477,6 @@ class FacultyResearcherController extends Controller
         $req->unique_filename = $renamed;
         $req->save();
 
-
-        // create notification for admin
 
         // add to activity log
         $action = 'Requested Form';

@@ -17,7 +17,7 @@ class CreateResearchUploadedFilesTable extends Migration
             $table->increments('id');
             $table->integer('research_id')->unsigned();
             $table->foreign('research_id')->references('id')->on('researches');
-            $table->string('original_filename', 80);
+            $table->string('original_filename', 100);
             $table->string('unique_filename', 30);
             $table->timestamps();
         });

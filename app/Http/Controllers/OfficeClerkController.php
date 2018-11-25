@@ -125,6 +125,15 @@ class OfficeClerkController extends Controller
         $research->step_4_proceeded = 1;
         $research->step_4_date_proceeded = now();
 
+
+        // create notificaiton for college department drc
+        $n_id = $research->author->frAssignment->department->assigned_drc->drc->id;;
+        $url = 'drc.incoming.research';
+        $message = 'CREC Proceeded to Step 5';
+
+
+        GeneralController::create_notification($n_id, $url, $message);
+
         // save research
         $research->save();
         $action = 'Proceeded Research From Step 4 to 5';

@@ -156,6 +156,13 @@ class DrcController extends Controller
         $research->step_5_proceeded = 1;
         $research->step_5_date_proceeded = now();
 
+
+        $fr_id = $research->author_id;
+        $url = 'fr.incoming.research';
+        $message = 'DRC Proceeded to Step 6';
+
+        GeneralController::create_notification($fr_id, $url, $message);
+
         // save
         $research->save();
 
