@@ -149,6 +149,15 @@ class FacultyResearcherController extends Controller
             $co->save();
         }
 
+
+        // create notification 
+        // $user_id = ID of user to whom for the notification is
+        // $message = 'Notification Message';
+        // $url = name of the url
+        // GeneralController::create_notification($user_id, $message, $url);
+        // notificatio for the current drc of the department
+
+
         $action = 'Submitted Research';
         GeneralController::log($action);
 
@@ -300,6 +309,11 @@ class FacultyResearcherController extends Controller
 
         $research->save();
 
+
+
+        // create notification for the based on the user type
+
+
         $action = 'Received Research';
         GeneralController::log($action);
 
@@ -448,6 +462,9 @@ class FacultyResearcherController extends Controller
         $req->original_filename = $file->getClientOriginalName();
         $req->unique_filename = $renamed;
         $req->save();
+
+
+        // create notification for admin
 
         // add to activity log
         $action = 'Requested Form';

@@ -217,12 +217,24 @@ class GeneralController extends Controller
 
 
 
+    // method use to generate notification for all users
+    public static function create_notification($id, $url, $message)
+    {
+        $n = new Notification();
+        $n->user_id = $id;
+        $n->message = $message;
+        $n->url = $url;
+        $n->save();
+    }
+
+
+
     // method use to load notifications
     public function notifications()
     {
 
         // if the user id has notification that is unread
-        $notifications = Notification::where('user_id', Auth::user()->id)->where('viewed', 0)->get();
+        $notifications = Notification::where('user_id', Auth::user()->id)->where('viewed', 0)->orderBy('created_at', 'desc')->get();
 
         return view('includes.notification-content', ['notifications' => $notifications]);
     }

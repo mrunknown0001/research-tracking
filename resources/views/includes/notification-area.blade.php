@@ -1,0 +1,1 @@
+<div id="notification"><a class="dropdown-item text-center" href="javascript:void(0)"><i>Loading...</i></a></div>
