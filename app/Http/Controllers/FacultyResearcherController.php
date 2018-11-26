@@ -388,11 +388,19 @@ class FacultyResearcherController extends Controller
             $research->step_6_date_proceeded = now();
 
             $action = 'Research Proceeded from Step 6 to 7';
+
+            $id = 3;
+            $url = 'oc.incoming.research';
+            $message = 'Researcher Proceeded the Research to Step 7';
         }
         else if($research->step_number == 9) {
             $research->step_number = 10;
             $research->step_9_proceeded = 1;
             $research->step_9_date_proceeded = now();
+
+            $id = 4;
+            $url = 'oc.incoming.research';
+            $message = 'Researcher Proceeded the Research to Step 10';
 
             $action = 'Research Proceeded from Step 9 to 10';
         }
@@ -400,6 +408,10 @@ class FacultyResearcherController extends Controller
             $research->step_number = 12;
             $research->step_11_proceeded = 1;
             $research->step_11_date_proceeded = now();
+
+            $id = 1;
+            $url = 'admin.incoming.research';
+            $message = 'Researcher Proceeded the Research to Step 12';
 
             $action = 'Research Proceeded from Step 11 to 12';
         }

@@ -135,6 +135,12 @@ class AdminController extends Controller
 		$research->save();
 
 
+		$r_id = $research->author_id;
+		$url = 'fr.incoming.research';
+		$message = 'Admin Proceeded Your Research to Step 9';
+
+		GeneralController::create_notification($r_id, $url, $message);
+
 		// add to activity log
 		$action = 'Research Proceeded to Step 9';
 		GeneralController::log($action);
@@ -159,6 +165,13 @@ class AdminController extends Controller
 		$research->step_12_proceeded = 1;
 		$research->step_12_date_proceeded = now();
 		$research->save();
+
+
+		$o_id = 5;
+		$url = 'oc.incoming.research';
+		$message = 'Admin Proceeded Your Research to Step 13';
+
+		GeneralController::create_notification($o_id, $url, $message);
 
 
 		// add to activity log
@@ -191,6 +204,12 @@ class AdminController extends Controller
 		$research->step_14_date_proceeded = now();
 		$research->save();
 
+
+		$r_id = $research->author_id;
+		$url = 'fr.incoming.research';
+		$message = 'Admin Proceeded Your Research to Step 15';
+
+		GeneralController::create_notification($r_id, $url, $message);
 
 		// add to activity log
 		$action = 'Research Proceeded to Step 15';

@@ -19,7 +19,7 @@ class CreateResearchesTable extends Migration
             $table->foreign('author_id')->references('id')->on('users');
             $table->string('title', 50);
             $table->string('tracking_number', 12)->unique();
-            $table->string('research_filename', 30);
+            $table->string('research_filename', 120);
             $table->integer('college_id')->unsigned();
             $table->foreign('college_id')->references('id')->on('colleges');
             $table->integer('department_id')->unsigned();

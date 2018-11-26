@@ -160,6 +160,15 @@ class OfficeClerkController extends Controller
         $research->step_7_proceeded = 1;
         $research->step_7_date_proceeded = now();
 
+
+        // create notificaiton for college department drc
+        $n_id = 1;;
+        $url = 'admin.incoming.research';
+        $message = 'CREC Proceeded to Step 8';
+
+
+        GeneralController::create_notification($n_id, $url, $message);
+
         // save research
         $research->save();
         $action = 'Proceeded Research From Step 7 to 8';
@@ -185,6 +194,12 @@ class OfficeClerkController extends Controller
         $research->step_10_date_proceeded = now();
         $research->save();
 
+        $u_id = $research->author_id;
+        $url = 'fr.incoming.research';
+        $message = 'RERC Proceeded to Step 11';
+
+        GeneralController::create_notification($u_id, $url, $message);
+
         // add to activity log / audit trail
         $action = 'Research Proceeded to Step 11';
         GeneralController::log($action);
@@ -208,6 +223,13 @@ class OfficeClerkController extends Controller
         $research->step_13_proceeded = 1;
         $research->step_13_date_proceeded = now();
         $research->save();
+
+
+        $u_id = 1;
+        $url = 'admin.incoming.research';
+        $message = 'OUP Proceeded to Step 14';
+
+        GeneralController::create_notification($u_id, $url, $message);
 
         // add to activity log / audit trail
         $action = 'Research Proceeded to Step 13';
