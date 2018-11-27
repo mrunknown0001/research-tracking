@@ -104,6 +104,10 @@ class FacultyResearcherController extends Controller
         $research->time_posted = now();
         $research->save();
 
+        $incentive = new ResearchIncentive();
+        $incentive->research_id = $research->id;
+        $incentive->save();
+
 
         $filenames = [];
 

@@ -29,4 +29,9 @@ class Research extends Model
     {
         return $this->belongsTo('App\Agenda', 'agenda_id');
     }
+
+    public function incentive()
+    {
+        return $this->hasOne('App\ResearchIncentive', 'research_id');
+    }
 }
