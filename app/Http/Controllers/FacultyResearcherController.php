@@ -13,6 +13,7 @@ use App\Form;
 use App\Research;
 use App\ResearchCoauthor;
 use App\FormRequest;
+use App\ResearchIncentive;
 
 class FacultyResearcherController extends Controller
 {
