@@ -73,6 +73,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to go to researches
 	Route::get('/research', 'AdminController@research')->name('admin.research');
 
+
+	// route to view research per department
+	Route::get('/research/department/{id}', 'AdminController@departmentResearch')->name('admin.department.research');
+
+	// route to view tracking details of research
+	Route::get('/research/tracking/{id}', 'AdminController@researchTracking')->name('admin.research.tracking');
+
 	// route to go to accounts
 	Route::get('/accounts', 'AdminController@accounts')->name('admin.accounts');
 

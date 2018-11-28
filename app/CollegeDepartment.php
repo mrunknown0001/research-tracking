@@ -24,4 +24,10 @@ class CollegeDepartment extends Model
     {
         return $this->hasOne('App\DrcAssignment', 'department_id');
     }
+
+
+    public function researches()
+    {
+        return $this->hasMany('App\Research', 'department_id');
+    }
 }

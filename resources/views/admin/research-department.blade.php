@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title') Research @endsection
+@section('title') Department Research @endsection
 
 @section('content')
 
@@ -14,48 +14,51 @@
 
       <div class="content">
         <div class="container-fluid">
-
-          @foreach($colleges as $c)
+          
+            <a href="{{ route('admin.research') }}" class="btn btn-primary">Back to Research</a>
+          
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title ">{{ ucwords($c->name) }}</h4>
+                <h4 class="card-title ">{{ ucwords($department->name) }} ({{ ucwords($department->college->name) }})</h4>
                 <p class="card-category">  </p>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  @if(count($c->departments) > 0)
+                  @if(count($department->researches) > 0)
                     <table class="table">
                       <thead class=" text-primary">
                         <th class="">
-                          Department
+                          Title
+                        </th>
+                        <th>
+                          Researcher
                         </th>
                         <th class="text-center">
                           Action
                         </th>
                       </thead>
                       <tbody>
-                        @foreach($c->departments as $d)
+                        @foreach($department->researches as $r)
                           <tr>
-                            <td class="">
-                              {{ ucwords($d->name) }}
+                            <td>
+                              {{ ucwords($r->title) }}
+                            </td>
+                            <td>
+                              {{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}
                             </td>
                             <td class="text-center">
-                              <a href="{{ route('admin.department.research', ['id' => encrypt($d->id)]) }}">
-                                <i class="material-icons">remove_red_eye</i>
-                              </a>
+                              <a href="{{ route('admin.research.tracking', ['id' => encrypt($r->id)]) }}"><i class="material-icons">visibility</i></a>
                             </td>
                           </tr>
                         @endforeach
                       </tbody>
                     </table>
                   @else
-                    <p class="text-center">No Department Available</p>
+                    <p class="text-center">No Research on This Department</p>
                   @endif
                 </div>
               </div>
             </div>
-          @endforeach
-      
         </div>
       </div>
       

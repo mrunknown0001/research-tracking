@@ -13,6 +13,7 @@ use App\Form;
 use App\Research;
 use App\Agenda;
 use App\FormRequest;
+use App\CollegeDepartment;
 
 class AdminController extends Controller
 {
@@ -268,6 +269,28 @@ class AdminController extends Controller
 		$colleges = College::get();
 
 		return view('admin.research', ['colleges' => $colleges]);
+	}
+
+
+	// method use to view researcher per department
+	public function departmentResearch($id)
+	{
+		$id = decrypt($id);
+
+		$department = CollegeDepartment::findorfail($id);
+
+		return view('admin.research-department', ['department' => $department]);
+	}
+
+
+	// method use to track research
+	public function researchTracking($id)
+	{
+		$id = decrypt($id);
+
+		$research = Research::findorfail($id);
+
+		return view('admin.research-tracking', ['research' => $research]);
 	}
 
 
