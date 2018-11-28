@@ -16,6 +16,13 @@ class OfficeClerkController extends Controller
     }
 
 
+    // mehtod use to access profile of office clerk
+    public function profile()
+    {
+        return view('oc.profile');
+    }
+
+
     // method to access incoming research
     public function incomingResearch()
     {

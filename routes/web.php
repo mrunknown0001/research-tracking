@@ -34,6 +34,9 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back.history']], function () {
 	Route::get('/', 'AdminController@dashboard')->name('admin.dashboard');
 
+	// route to access profile of admin
+	Route::get('/profile', 'AdminController@profile')->name('admin.profile');
+
 	// route to go to incoming research
 	Route::get('/research/incoming', 'AdminController@incomingResearch')->name('admin.incoming.research');
 
@@ -83,6 +86,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.history']], function () {
 	Route::get('/', 'OfficeClerkController@dashboard')->name('oc.dashboard');
 
+	// route to access profile of office clerk
+	Route::get('/profile', 'OfficeClerkController@profile')->name('oc.profile');
+
 	// route to incoming research
 	Route::get('/research/incoming', 'OfficeClerkController@incomingResearch')->name('oc.incoming.research');
 
@@ -126,6 +132,9 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.history']], function () {
 	Route::get('/', 'CollegeClerkController@dashboard')->name('cc.dashboard');
 
+	// route to access profile of college clerk
+	Route::get('/profile', 'CollegeClerkController@profile')->name('cc.profile');
+
 	// route to go to add account
 	Route::get('/add-account', 'CollegeClerkController@addAccount')->name('cc.add.account');
 
@@ -160,6 +169,9 @@ Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.hi
 // start of department research chairperson route group
 Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.history']], function () {
 	Route::get('/', 'DrcController@dashboard')->name('drc.dashboard');
+
+	// route to access profile of drc
+	Route::get('/profile', 'DrcController@profile')->name('drc.profile');
 
 	// route to access incoming research
 	Route::get('/research/incoming', 'DrcController@incomingResearch')->name('drc.incoming.research');

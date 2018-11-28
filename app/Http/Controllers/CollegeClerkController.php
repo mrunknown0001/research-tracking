@@ -23,6 +23,13 @@ class CollegeClerkController extends Controller
     }
 
 
+    // method use to access profile of college clerk
+    public function profile()
+    {
+        return view('cc.profile');
+    }
+
+
     // method use to go to add account
     public function addAccount()
     {

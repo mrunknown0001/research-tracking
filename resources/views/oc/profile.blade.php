@@ -6,17 +6,17 @@
 
 <div class="wrapper">
 
-    @include('admin.includes.sidebar')
+    @include('oc.includes.sidebar')
 
     <div class="main-panel">
 
-      @include('admin.includes.navbar')
+      @include('oc.includes.navbar')
 
       <div class="content">
         <div class="container-fluid">
 
           <div class="card">
-            <div class="card-header card-header-primary">
+            <div class="card-header card-header-warning">
               <h4 class="card-title "> Profile </h4>
               <p class="card-category">  </p>
             </div>

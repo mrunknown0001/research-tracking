@@ -33,7 +33,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUserLink">
-                  <a class="dropdown-item" href="javascript:void(0)">Profile</a>
+                  <a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a>
                   <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
                 </div>
               </li>

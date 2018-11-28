@@ -27,6 +27,13 @@ class AdminController extends Controller
 	}
 
 
+	// method use to access admin profile
+	public function profile()
+	{
+		return view('admin.profile');
+	}
+
+
 	// method use to show incoming research page
 	public function incomingResearch()
 	{

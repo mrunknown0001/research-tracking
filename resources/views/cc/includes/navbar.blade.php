@@ -15,7 +15,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
-                  @include('includes.notification-badge')
+                  <div id="notificationbadge"></div>
                   <p class="d-lg-none d-md-block">
                     Some Actions
                   </p>
@@ -32,7 +32,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUserLink">
-                  <a class="dropdown-item" href="javascript:void(0)">Profile</a>
+                  <a class="dropdown-item" href="{{ route('cc.profile') }}">Profile</a>
                   <a class="dropdown-item" href="{{ route('cc.logout') }}">Logout</a>
                 </div>
               </li>

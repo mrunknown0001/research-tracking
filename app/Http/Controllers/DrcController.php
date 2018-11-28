@@ -21,6 +21,13 @@ class DrcController extends Controller
     }
 
 
+    // method use to access profile of drc
+    public function profile()
+    {
+        return view('drc.profile');
+    }
+
+
     // method use to access incomingResearch
     public function incomingResearch()
     {
