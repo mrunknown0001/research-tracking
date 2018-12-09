@@ -15,15 +15,13 @@
       <div class="content">
         <div class="container-fluid">
 
-					<div class="card">
-            <div class="card-header card-header-success">
-              <h4 class="card-title "> Faculty Research Tracking: {{ ucwords($research->title) }}</h4>
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">  Research Tracking: {{ ucwords($research->title) }}</h4>
               <p class="card-category">  </p>
             </div>
             <div class="card-body">
-              <p>
-                <a href="{{ route('fr.dashboard') }}" class="btn btn-danger">Go Back</a>
-              </p>
+              
 
               <div id="accordion">
                 <div class="card">
@@ -256,7 +254,35 @@
                   </div>
                   <div id="collapseEight" class="collapse {{ $research->step_number == 8 ? 'show' : '' }}" aria-labelledby="headingEight" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                          <th>Grade in UREC</th>
+                          <th>University Research Agenda</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                          <td>{{ $research->urec_grade }}</td>
+                          <td>{{ $research->agenda->title }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_8_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
                     </div>
                   </div>
                 </div>
@@ -271,7 +297,35 @@
                   </div>
                   <div id="collapseNine" class="collapse {{ $research->step_number == 9 ? 'show' : '' }}" aria-labelledby="headingNine" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                          <th>Grade in UREC</th>
+                          <th>University Research Agenda</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                          <td>{{ $research->urec_grade }}</td>
+                          <td>{{ $research->agenda->title }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_10_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
                     </div>
                   </div>
                 </div>
@@ -286,7 +340,36 @@
                   </div>
                   <div id="collapseTen" class="collapse {{ $research->step_number == 10 ? 'show' : '' }}" aria-labelledby="headingTen" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                          <th>Grade in UREC</th>
+                          <th>University Research Agenda</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                          <td>{{ $research->urec_grade }}</td>
+                          <td>{{ $research->agenda->title }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_10_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
                     </div>
                   </div>
                 </div>
@@ -301,7 +384,35 @@
                   </div>
                   <div id="collapseEleven" class="collapse {{ $research->step_number == 11 ? 'show' : '' }}" aria-labelledby="headingEleven" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                          <th>Grade in UREC</th>
+                          <th>University Research Agenda</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                          <td>{{ $research->urec_grade }}</td>
+                          <td>{{ $research->agenda->title }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_11_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
                     </div>
                   </div>
                 </div>
@@ -316,7 +427,35 @@
                   </div>
                   <div id="collapseTwelve" class="collapse {{ $research->step_number == 12 ? 'show' : '' }}" aria-labelledby="headingTwelve" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                          <th>Grade in UREC</th>
+                          <th>University Research Agenda</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                          <td>{{ $research->urec_grade }}</td>
+                          <td>{{ $research->agenda->title }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_12_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
                     </div>
                   </div>
                 </div>
@@ -331,7 +470,35 @@
                   </div>
                   <div id="collapseThirteen" class="collapse {{ $research->step_number == 13 ? 'show' : '' }}" aria-labelledby="headingThirteen" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                          <th>Grade in UREC</th>
+                          <th>University Research Agenda</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                          <td>{{ $research->urec_grade }}</td>
+                          <td>{{ $research->agenda->title }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_13_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
                     </div>
                   </div>
                 </div>
@@ -346,7 +513,37 @@
                   </div>
                   <div id="collapseFourteen" class="collapse {{ $research->step_number == 14 ? 'show' : '' }}" aria-labelledby="headingFourteen" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                          <th>Grade in UREC</th>
+                          <th>University Research Agenda</th>
+                          <th>Funding</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                          <td>{{ $research->urec_grade }}</td>
+                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->funding_type }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_14_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
                     </div>
                   </div>
                 </div>
@@ -361,7 +558,37 @@
                   </div>
                   <div id="collapseFifteen" class="collapse {{ $research->step_number == 15 ? 'show' : '' }}" aria-labelledby="headingFifteen" data-parent="#accordion">
                     <div class="card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Time Posted</th>
+                          <th>Time Released</th>
+                          <th>Grade in Colloquium</th>
+                          <th>Grade in UREC</th>
+                          <th>University Research Agenda</th>
+                          <th>Funding</th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_2_date_proceeded }}</td>
+                          <td>{{ $research->created_at }}</td>
+                          <td>{{ $research->colloquium_grade }}</td>
+                          <td>{{ $research->urec_grade }}</td>
+                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->funding_type }}</td>
+                        </tbody>
+                      </table>
+
+                      <table class="table">
+                        <thead class="text-warning">
+                          <th>Comments</h>
+                          <th></th>
+                        </thead>
+                        <tbody>
+                          <td>{{ $research->step_15_comment }}</td>
+                          <td></td>
+                        </tbody>
+                      </table>
+
                     </div>
                   </div>
                 </div>

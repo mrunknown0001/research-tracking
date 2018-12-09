@@ -17,7 +17,13 @@ class DrcController extends Controller
     // method use to go to dashboard of drc
     public function dashboard()
     {
-    	return view('drc.dashboard');
+        // get all researches involved by
+        $researches = Research::where('department_id', Auth::user()->drcAssignment->department->id)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+
+    	return view('drc.dashboard', ['researches' => 
+            $researches]);
     }
 
 
@@ -178,6 +184,15 @@ class DrcController extends Controller
 
         // return redirect back
         return redirect()->back()->with('success', 'Research Proceeded');
+    }
+
+
+    // method use to track document research
+    public function trackResearch($id)
+    {
+        $research = Research::findorfail($id);
+
+        return view('drc.research-tracking', ['research' => $research]);
     }
 
 

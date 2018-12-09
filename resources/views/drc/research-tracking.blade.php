@@ -6,16 +6,16 @@
 
 <div class="wrapper">
 
-    @include('admin.includes.sidebar')
+    @include('drc.includes.sidebar')
 
     <div class="main-panel">
 
-      @include('admin.includes.navbar')
+      @include('drc.includes.navbar')
 
       <div class="content">
         <div class="container-fluid">
 
-					<div class="card">
+          <div class="card">
             <div class="card-header card-header-primary">
               <h4 class="card-title ">  Research Tracking: {{ ucwords($research->title) }}</h4>
               <p class="card-category">  </p>

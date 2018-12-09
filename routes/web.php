@@ -207,6 +207,10 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 		return redirect()->route('drc.outgoing.research');
 	});
 
+
+	// route to track research document
+	Route::get('/research/tracking/{id}', 'DrcController@trackResearch')->name('drc.track.research.document');
+
 	// route to go to forms
 	Route::get('/forms', 'DrcController@forms')->name('drc.forms');
 
