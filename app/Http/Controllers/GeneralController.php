@@ -27,21 +27,21 @@ class GeneralController extends Controller
     // return to intended dashboard 
     public static function auth_check()
     {
-            // check if user is agreed with terms and condition
-            if(Auth::user()->agreed != 1) {
-                return redirect()->route('privacy.statement.agree');
-            }
+        // check if user is agreed with terms and condition
+        if(Auth::user()->agreed != 1) {
+            return redirect()->route('privacy.statement.agree');
+        }
 
-            // check if user changes its default password
-            if(Auth::user()->password_changed != 1) {
-                return redirect()->route('change.default.password');
-            }
+        // check if user changes its default password
+        if(Auth::user()->password_changed != 1) {
+            return redirect()->route('change.default.password');
+        }
 
     	if(Auth::user()->user_type == 1) {
 			return redirect()->route('admin.dashboard');
 		}
         else if(Auth::user()->user_type == 2 || Auth::user()->user_type == 3 || Auth::user()->user_type == 4 || Auth::user()->user_type == 5) {
-            return redirect()->route('oc.dashboard');
+            return redirect()->route('oc.incoming.research');
         }
         else if(Auth::user()->user_type == 6) {
             return redirect()->route('cc.dashboard');

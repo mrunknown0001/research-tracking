@@ -331,7 +331,7 @@ class FacultyResearcherController extends Controller
         $action = 'Received Research';
         GeneralController::log($action);
 
-        return redirect()->route('fr.outgoing.research')->with('success', 'Research Received');
+        return redirect()->route('fr.incoming.research')->with('success', 'Research Received');
     }
 
 

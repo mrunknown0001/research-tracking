@@ -268,7 +268,7 @@
                           <td>{{ $research->created_at }}</td>
                           <td>{{ $research->colloquium_grade }}</td>
                           <td>{{ $research->urec_grade }}</td>
-                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->agenda_id != null ? $research->agenda->title : '' }}</td>
                         </tbody>
                       </table>
 
@@ -311,7 +311,7 @@
                           <td>{{ $research->created_at }}</td>
                           <td>{{ $research->colloquium_grade }}</td>
                           <td>{{ $research->urec_grade }}</td>
-                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->agenda_id != null ? $research->agenda->title : '' }}</td>
                         </tbody>
                       </table>
 
@@ -355,7 +355,7 @@
                           <td>{{ $research->created_at }}</td>
                           <td>{{ $research->colloquium_grade }}</td>
                           <td>{{ $research->urec_grade }}</td>
-                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->agenda_id != null ? $research->agenda->title : '' }}</td>
                         </tbody>
                       </table>
 
@@ -398,7 +398,7 @@
                           <td>{{ $research->created_at }}</td>
                           <td>{{ $research->colloquium_grade }}</td>
                           <td>{{ $research->urec_grade }}</td>
-                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->agenda_id != null ? $research->agenda->title : '' }}</td>
                         </tbody>
                       </table>
 
@@ -441,7 +441,7 @@
                           <td>{{ $research->created_at }}</td>
                           <td>{{ $research->colloquium_grade }}</td>
                           <td>{{ $research->urec_grade }}</td>
-                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->agenda_id != null ? $research->agenda->title : '' }}</td>
                         </tbody>
                       </table>
 
@@ -484,7 +484,7 @@
                           <td>{{ $research->created_at }}</td>
                           <td>{{ $research->colloquium_grade }}</td>
                           <td>{{ $research->urec_grade }}</td>
-                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->agenda_id != null ? $research->agenda->title : '' }}</td>
                         </tbody>
                       </table>
 
@@ -528,7 +528,7 @@
                           <td>{{ $research->created_at }}</td>
                           <td>{{ $research->colloquium_grade }}</td>
                           <td>{{ $research->urec_grade }}</td>
-                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->agenda_id != null ? $research->agenda->title : '' }}</td>
                           <td>{{ $research->funding_type }}</td>
                         </tbody>
                       </table>
@@ -573,7 +573,7 @@
                           <td>{{ $research->created_at }}</td>
                           <td>{{ $research->colloquium_grade }}</td>
                           <td>{{ $research->urec_grade }}</td>
-                          <td>{{ $research->agenda->title }}</td>
+                          <td>{{ $research->agenda_id != null ? $research->agenda->title : '' }}</td>
                           <td>{{ $research->funding_type }}</td>
                         </tbody>
                       </table>

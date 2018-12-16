@@ -89,7 +89,7 @@ class AdminController extends Controller
 
 		GeneralController::log($action);
 
-		return redirect()->route('admin.outgoing.research')->with('success', 'Research Received');
+		return redirect()->route('admin.incoming.research')->with('success', 'Research Received');
 
 
 	}

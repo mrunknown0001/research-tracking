@@ -7,12 +7,12 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item {{ route('oc.dashboard') == url()->current() ? 'active' : '' }} ">
+          {{-- <li class="nav-item {{ route('oc.dashboard') == url()->current() ? 'active' : '' }} ">
             <a class="nav-link" href="{{ route('oc.dashboard') }}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item {{ route('oc.incoming.research') == url()->current() ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('oc.incoming.research') }}">
               <i class="material-icons">vertical_align_bottom</i>

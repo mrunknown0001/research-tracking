@@ -91,7 +91,7 @@ class OfficeClerkController extends Controller
         GeneralController::log($action);
 
         // return redirect to outgoing research
-        return redirect()->route('oc.outgoing.research')->with('success', 'Research Received');
+        return redirect()->route('oc.incoming.research')->with('success', 'Research Received');
 
     }
 

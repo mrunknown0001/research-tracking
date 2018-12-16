@@ -85,7 +85,7 @@ class DrcController extends Controller
         $action = 'Received Research';
         GeneralController::log($action);
 
-        return redirect()->route('drc.outgoing.research')->with('success', 'Research Received');
+        return redirect()->route('drc.incoming.research')->with('success', 'Research Received');
 
     }
 
