@@ -33,8 +33,7 @@
 								<div class="row">
 									<div class="col-md-8">
 										<label class="bmd-label-floating">Co Authors</label>
-	                  <select type="text" name="co_authors" id="co_authors" class="form-control" >
-                      <option value="">Select Co-Author</option>
+	                  <select type="text" name="co_authors[]" id="co_authors" multiple="multiple" class="" >
                       @foreach($researchers as $r)
                         <option value="{{ $r->id }}">{{ $r->firstname . ' ' . $r->lastname }}</option>
                       @endforeach
@@ -119,5 +118,14 @@
 
     </div>
 </div>
-
+<script>
+$(function() {
+    $('#co_authors').change(function() {
+        console.log($(this).val());
+    }).multipleSelect({
+        width: '100%',
+        height: '80px'
+    });
+});
+</script>
 @endsection

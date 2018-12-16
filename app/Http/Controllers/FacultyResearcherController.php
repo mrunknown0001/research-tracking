@@ -48,6 +48,8 @@ class FacultyResearcherController extends Controller
     // method use to submit research 
     public function postSubmitResearch(Request $request)
     {
+        // return $request;
+
         $request->validate([
             'title' => 'required',
             'files.*' => 'required|file|mimes:pdf,doc,docx|max:5000'
@@ -55,6 +57,7 @@ class FacultyResearcherController extends Controller
 
         $title = $request['title'];
         $co_authors = $request['co_authors'];
+
 
         $files = $request['files'];
 
@@ -148,10 +151,12 @@ class FacultyResearcherController extends Controller
         // save co author
         // this can be multiple
         if($co_authors != null) {
+          foreach($co_authors as $c) {
             $co = new ResearchCoauthor();
             $co->research_id = $research->id;
-            $co->co_author_id = $co_authors;
+            $co->co_author_id = $c;
             $co->save();
+          }
         }
 
 

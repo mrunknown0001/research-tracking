@@ -8,11 +8,14 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/material-dashboard.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('css/pagination.css') }}">
 
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/multiple-select.css') }}">
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
   <script src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
+  <script src="{{ asset('js/multiple-select.js') }}"></script>
   
 </head>
 <body class="">
