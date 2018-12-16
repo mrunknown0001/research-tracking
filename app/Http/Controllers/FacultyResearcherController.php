@@ -52,7 +52,7 @@ class FacultyResearcherController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'files.*' => 'required|file|mimes:pdf,doc,docx|max:5000'
+            'files.*' => 'required|file|mimes:pdf,doc,docx|max:20000'
         ]);
 
         $title = $request['title'];
