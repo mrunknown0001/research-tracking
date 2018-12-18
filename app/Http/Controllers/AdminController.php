@@ -35,6 +35,20 @@ class AdminController extends Controller
 	}
 
 
+	// method use to access change password view
+	public function changePassword()
+	{
+		return view('admin.password-change');
+	}
+
+
+	// method use to update admin password
+	public function postChangePassword(Request $request)
+	{
+		return $request;
+	}
+
+
 	// method use to show incoming research page
 	public function incomingResearch()
 	{

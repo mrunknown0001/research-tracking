@@ -37,6 +37,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to access profile of admin
 	Route::get('/profile', 'AdminController@profile')->name('admin.profile');
 
+	// route to change password of admin
+	Route::get('/password', 'AdminController@changePassword')->name('admin.change.password');
+
+	Route::post('/password', 'AdminController@postChangePassword')->name('admin.change.password.post');
+
 	// route to go to incoming research
 	Route::get('/research/incoming', 'AdminController@incomingResearch')->name('admin.incoming.research');
 
