@@ -6,23 +6,23 @@
 
 <div class="wrapper">
 
-    @include('admin.includes.sidebar')
+    @include('fr.includes.sidebar')
 
     <div class="main-panel">
 
-      @include('admin.includes.navbar')
+      @include('fr.includes.navbar')
 
       <div class="content">
         <div class="container-fluid">
 
           <div class="card">
-            <div class="card-header card-header-primary">
+            <div class="card-header card-header-success">
               <h4 class="card-title "> Password Change </h4>
               <p class="card-category">  </p>
             </div>
             <div class="card-body">
               @include('includes.all')
-              <form action="{{ route('admin.change.password.post') }}" method="POST" autocomplete="off">
+              <form action="{{ route('fr.change.password.post') }}" method="POST" autocomplete="off">
                 {{ csrf_field() }}
                 <div class="form-group">
                   <label for="current_password" class="bmd-label-floating">Current Password</label>
@@ -52,7 +52,7 @@
                   @endif
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Change Password</button>
+                  <button type="submit" class="btn btn-success">Change Password</button>
                 </div>
               </form>
             </div>

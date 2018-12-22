@@ -30,6 +30,44 @@ class CollegeClerkController extends Controller
     }
 
 
+    // method use tochange password
+    public function changePassword()
+    {
+        return view('cc.password-change');
+    }
+
+
+    // method use to save new password
+    public function postChangePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $current_password = $request['current_password'];
+        $password = $request['password'];
+
+        // validate current password if matched
+        if(!password_verify($current_password, Auth::user()->password)) {
+            return redirect()->route('cc.change.password')->with('error', 'Incorrect Password!');
+        }
+
+        // if true, change password
+        Auth::user()->password = bcrypt($password);
+
+        if(Auth::user()->save()) {
+            // add to activitily
+            $action = 'Changed Password';
+            GeneralController::log($action);
+
+            return redirect()->route('cc.change.password')->with('success', 'Password Changed!');
+        }
+
+        return redirect()->route('cc.change.password')->with('error', 'Error Changing Password!');
+    }
+
+
     // method use to go to add account
     public function addAccount()
     {

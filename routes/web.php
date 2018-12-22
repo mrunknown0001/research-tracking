@@ -101,6 +101,13 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 	// route to access profile of office clerk
 	Route::get('/profile', 'OfficeClerkController@profile')->name('oc.profile');
 
+
+	// route to change password
+	Route::get('/password', 'OfficeClerkController@changePassword')->name('oc.change.password');
+
+	// route to save new password
+	Route::post('/password', 'OfficeClerkController@postChangePassword')->name('oc.change.password.post');
+
 	// route to incoming research
 	Route::get('/research/incoming', 'OfficeClerkController@incomingResearch')->name('oc.incoming.research');
 
@@ -147,6 +154,10 @@ Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.hi
 	// route to access profile of college clerk
 	Route::get('/profile', 'CollegeClerkController@profile')->name('cc.profile');
 
+	// route to change password
+	Route::get('/password', 'CollegeClerkController@changePassword')->name('cc.change.password');
+	Route::post('/password', 'CollegeClerkController@postChangePassword')->name('cc.change.password.post');
+
 	// route to go to add account
 	Route::get('/add-account', 'CollegeClerkController@addAccount')->name('cc.add.account');
 
@@ -184,6 +195,12 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 
 	// route to access profile of drc
 	Route::get('/profile', 'DrcController@profile')->name('drc.profile');
+
+
+	// route to change password
+	Route::get('/password', 'DrcController@changePassword')->name('drc.change.password');
+
+	Route::post('/password', 'DrcController@postChangePassword')->name('drc.change.password.post');
 
 	// route to access incoming research
 	Route::get('/research/incoming', 'DrcController@incomingResearch')->name('drc.incoming.research');
@@ -232,6 +249,11 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 
 	// route to access profile
 	Route::get('/profile', 'FacultyResearcherController@profile')->name('fr.profile');
+
+	// route to change password
+	Route::get('/password', 'FacultyResearcherController@changePassword')->name('fr.change.password');
+
+	Route::post('/password', 'FacultyResearcherController@postChangePassword')->name('fr.change.password.post');
 
 	// route to access dashboard
 	Route::get('/', 'FacultyResearcherController@dashboard')->name('fr.dashboard');

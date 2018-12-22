@@ -23,6 +23,44 @@ class FacultyResearcherController extends Controller
         return view('fr.profile');
     }
 
+
+    // method use to change password
+    public function changePassword()
+    {
+        return view('fr.password-change');
+    }
+
+
+    // method use to save new password
+    public function postChangePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $current_password = $request['current_password'];
+        $password = $request['password'];
+
+        // validate current password if matched
+        if(!password_verify($current_password, Auth::user()->password)) {
+            return redirect()->route('fr.change.password')->with('error', 'Incorrect Password!');
+        }
+
+        // if true, change password
+        Auth::user()->password = bcrypt($password);
+
+        if(Auth::user()->save()) {
+            // add to activitily
+            $action = 'Changed Password';
+            GeneralController::log($action);
+
+            return redirect()->route('fr.change.password')->with('success', 'Password Changed!');
+        }
+
+        return redirect()->route('fr.change.password')->with('error', 'Error Changing Password!');
+    }
+
     // method use to go to dashboard of fr
     public function dashboard()
     {

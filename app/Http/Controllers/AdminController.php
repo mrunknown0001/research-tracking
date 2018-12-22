@@ -45,7 +45,31 @@ class AdminController extends Controller
 	// method use to update admin password
 	public function postChangePassword(Request $request)
 	{
-		return $request;
+		$request->validate([
+			'current_password' => 'required',
+			'password' => 'required|confirmed|min:6'
+		]);
+
+		$current_password = $request['current_password'];
+		$password = $request['password'];
+
+		// validate current password if matched
+		if(!password_verify($current_password, Auth::user()->password)) {
+			return redirect()->route('admin.change.password')->with('error', 'Incorrect Password!');
+		}
+
+		// if true, change password
+		Auth::user()->password = bcrypt($password);
+
+		if(Auth::user()->save()) {
+			// add to activitily
+			$action = 'Changed Password';
+			GeneralController::log($action);
+
+			return redirect()->route('admin.change.password')->with('success', 'Password Changed!');
+		}
+
+		return redirect()->route('admin.change.password')->with('error', 'Error Changing Password!');
 	}
 
 

@@ -25,6 +25,9 @@
               <p>ID Number: <strong>{{ Auth::user()->id_number }}</strong></p>
               <p>Contact Number: <strong>{{ Auth::user()->contact_number }}</strong></p>
               <p>Email: <strong>{{ strtolower(Auth::user()->email) }}</strong></p>
+              <p>
+                <a href="{{ route('admin.change.password') }}" class="btn btn-primary">Change Password</a>
+              </p>
             </div>
           </div>
 

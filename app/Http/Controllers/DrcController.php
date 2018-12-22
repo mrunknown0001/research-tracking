@@ -34,6 +34,44 @@ class DrcController extends Controller
     }
 
 
+    // method use to change password
+    public function changePassword()
+    {
+        return view('drc.password-change');
+    }
+
+
+    // method use to save new password
+    public function postChangePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $current_password = $request['current_password'];
+        $password = $request['password'];
+
+        // validate current password if matched
+        if(!password_verify($current_password, Auth::user()->password)) {
+            return redirect()->route('drc.change.password')->with('error', 'Incorrect Password!');
+        }
+
+        // if true, change password
+        Auth::user()->password = bcrypt($password);
+
+        if(Auth::user()->save()) {
+            // add to activitily
+            $action = 'Changed Password';
+            GeneralController::log($action);
+
+            return redirect()->route('drc.change.password')->with('success', 'Password Changed!');
+        }
+
+        return redirect()->route('drc.change.password')->with('error', 'Error Changing Password!');
+    }
+
+
     // method use to access incomingResearch
     public function incomingResearch()
     {
