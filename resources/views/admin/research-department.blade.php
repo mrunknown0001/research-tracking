@@ -48,6 +48,7 @@
                             </td>
                             <td class="text-center">
                               <a href="{{ route('admin.research.tracking', ['id' => encrypt($r->id)]) }}"><i class="material-icons">visibility</i></a>
+                              <a href="" alt="Add Incentive">&#8369;</a>
                             </td>
                           </tr>
                         @endforeach
