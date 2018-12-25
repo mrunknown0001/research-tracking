@@ -299,11 +299,23 @@ class FacultyResearcherController extends Controller
     // method use to save progress report
     public function postSendProgressReport(Request $request)
     {
-        return $request;
-        
         $request->validate([
             'files.*' => 'required|file|mimes:pdf,doc,docx|max:20000'
         ]);
+
+        // get request files
+        
+
+        // save files to folder
+
+
+        // rename
+
+        // save original names for display as reference for admin to view
+
+        // save with log
+
+        // return redirect
     }
 
 
