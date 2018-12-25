@@ -347,6 +347,8 @@ class FacultyResearcherController extends Controller
         }
 
         if(DB::table('research_progress_reports')->insert($uploaded_files)) {
+            $action = 'Faculty Researcher Uploaded Progress Reports';
+            GeneralController::log($action);
             return redirect()->route('fr.dashboard')->with('success', 'Report Progress Submitted!');
         }
 

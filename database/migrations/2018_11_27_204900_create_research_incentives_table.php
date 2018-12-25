@@ -17,11 +17,11 @@ class CreateResearchIncentivesTable extends Migration
             $table->increments('id');
             $table->integer('research_id')->unsigned();
             $table->foreign('research_id')->references('id')->on('researches');
-            $table->integer('publication_inceptive')->nullable();
-            $table->integer('presentation_incentive')->nullable();
-            $table->integer('citation_incentive')->nullable();
-            $table->integer('competition_incentive')->nullable();
-            $table->integer('completed_research_incentive')->nullable();
+            $table->integer('publication_incentive')->nullable()->default(0);
+            $table->integer('presentation_incentive')->nullable()->default(0);
+            $table->integer('citation_incentive')->nullable()->default(0);
+            $table->integer('competition_incentive')->nullable()->default(0);
+            $table->integer('completed_research_incentive')->nullable()->default(0);
             $table->timestamps();
         });
     }

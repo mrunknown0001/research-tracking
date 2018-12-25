@@ -47,8 +47,9 @@
                               {{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}
                             </td>
                             <td class="text-center">
-                              <a href="{{ route('admin.research.tracking', ['id' => encrypt($r->id)]) }}"><i class="material-icons">visibility</i></a>
-                              <a href="{{ route('admin.research.incentive', ['id' => encrypt($r->id)]) }}" alt="Add Incentive">&#8369;</a>
+                              <a href="{{ route('admin.research.tracking', ['id' => encrypt($r->id)]) }}">{{-- <i class="material-icons">visibility</i> --}}Tracking</a> |
+                              <a href="{{ route('admin.research.incentive', ['id' => encrypt($r->id)]) }}" alt="Add Incentive">{{-- &#8369; --}}Add Incentive</a> |
+                              <a href="{{ route('admin.research.progress.reports', ['id' => encrypt($r->id)]) }}">Progress Reports</a>
                             </td>
                           </tr>
                         @endforeach

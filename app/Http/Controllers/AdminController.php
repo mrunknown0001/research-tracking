@@ -333,11 +333,60 @@ class AdminController extends Controller
 
 
 	// method use to add research incentive
-	public function researchInsevtive($id)
+	public function researchIncentive($id)
 	{
 		$id = decrypt($id);
 
-		return $research = Research::findorfail($id);
+		$research = Research::findorfail($id);
+
+		return view('admin.research-incentive', ['research' => $research]);
+	}
+
+
+	// method use to save research incentive
+	public function postResearchIncentive(Request $request)
+	{
+		$request->validate([
+			'publication_incentive' => 'nullable|numeric|min:0',
+			'presentation_incentive' => 'nullable|numeric|min:0',
+			'citation_incentive' => 'nullable|numeric|min:0',
+			'competition_incentive' => 'nullable|numeric|min:0',
+			'completed_research_incentive' => 'nullable|numeric|min:0'
+		]);
+
+		$publication_incentive = $request['publication_incentive'];
+		$presentation_incentive = $request['presentation_incentive'];
+		$citation_incentive = $request['citation_incentive'];
+		$competition_incentive = $request['competition_incentive'];
+		$completed_research_incentive = $request['completed_research_incentive'];
+
+		$research_id = $request['research_id'];
+
+		$research = Research::findorfail($research_id);
+
+		$research->incentive->publication_incentive = $publication_incentive;
+		$research->incentive->presentation_incentive = $presentation_incentive;
+		$research->incentive->citation_incentive = $citation_incentive;
+		$research->incentive->competition_incentive = $competition_incentive;
+		$research->incentive->completed_research_incentive = $completed_research_incentive;
+
+		if($research->incentive->save()) {
+
+			$action = 'Admin Added Incentives';
+			GeneralController::log($action);
+			return redirect()->route('admin.research.incentive', ['id' => encrypt($research->id)])->with('success', 'Incentives Added!');
+		}
+	}
+
+
+	// method use to show progress reports
+	public function researchProgressReports($id)
+	{
+		$id = decrypt($id);
+
+		$research = Research::findorfail($id);
+
+		return view('admin.research-progress-report', ['research' => $research]);
 	}
 
 
