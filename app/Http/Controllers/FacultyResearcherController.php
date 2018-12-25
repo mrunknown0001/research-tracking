@@ -289,6 +289,24 @@ class FacultyResearcherController extends Controller
     }
 
 
+    // method use to send progress report
+    public function sendProgressReport($id = null)
+    {
+        return view('fr.report-send-progress-report', ['id' => $id]);
+    }
+
+
+    // method use to save progress report
+    public function postSendProgressReport(Request $request)
+    {
+        return $request;
+        
+        $request->validate([
+            'files.*' => 'required|file|mimes:pdf,doc,docx|max:20000'
+        ]);
+    }
+
+
 
     // method use to access incoming research
     public function incomingResearch()

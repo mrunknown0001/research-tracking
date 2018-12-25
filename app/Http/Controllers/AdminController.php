@@ -354,6 +354,10 @@ class AdminController extends Controller
 	// method use to download form
 	public function downloadForm($filename)
 	{
+		if(!Auth::check()) {
+			return redirect()->route('login')->with('error', 'Login First');
+		}
+
 		$action = 'Form Download ' . $filename;
 		GeneralController::log($action);
 

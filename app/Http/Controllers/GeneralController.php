@@ -139,6 +139,13 @@ class GeneralController extends Controller
     }
 
 
+    // method use to view privacy statement
+    public function viewPrivacyStatement()
+    {
+        return view('privacy-statement');
+    }
+
+
     // static method use to generate tracking number
     // 94f1ebea-7fe
     public static function generate_tracking_number($length = 8, $slength = 3)
@@ -168,6 +175,10 @@ class GeneralController extends Controller
     // method use to download all files in research in zip format
     public function downloadResearchZip($id = null)
     {
+        if(!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Login First');
+        }
+
         $research = Research::findorfail($id);
 
         $files = [];
@@ -204,6 +215,10 @@ class GeneralController extends Controller
     // method use to download form request
     public function downloadFormRequest($id = null)
     {
+        if(!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Login First');
+        }
+
         $fr = FormRequest::findorfail($id);
 
         // add to activity log

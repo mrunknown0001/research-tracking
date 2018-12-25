@@ -18,6 +18,9 @@ Route::group(['middleware' => 'prevent.back.history'], function () {
 	// route use to agree with privacy statement
 	Route::post('/privacy-statement/agreed', 'GeneralController@postAgreedPrivacyStatement')->name('agreed.privacy.statement.post');
 
+	// route to view privacy statement
+	Route::get('/privacy-statement', 'GeneralController@viewPrivacyStatement')->name('privacy.statement');
+
 	// route to change default password
 	Route::get('/change-default-password', 'GeneralController@changeDefaultPassword')->name('change.default.password');
 
@@ -291,6 +294,15 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 	Route::get('/research/{id}/track/document', 'FacultyResearcherController@trackResearchDocument')->name('fr.track.research.document');
 
 
+	// route to send progress report
+	Route::get('/research/{id}/progress-report', 'FacultyResearcherController@sendProgressReport')->name('fr.send.progress.report');
+
+	// route to save sent progress report
+	Route::post('/research/progress-report', 'FacultyResearcherController@postSendProgressReport')->name('fr.send.progress.report.post');
+
+	Route::get('/research/progress-report', function () {
+		return redirect()->route('fr.dashboard');
+	});
 
 
 	// route to view forms

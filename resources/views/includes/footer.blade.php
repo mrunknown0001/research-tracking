@@ -3,7 +3,7 @@
           <nav class="float-left">
             <ul>
               <li>
-                <a href="">
+                <a href="{{ route('privacy.statement') }}" target="_blank">
                   Privacy Statement
                 </a>
               </li>

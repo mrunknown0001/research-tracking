@@ -112,22 +112,24 @@
 
 		<h4>Changes to this Statement</h4>
 		<p>TSU WebSite will occasionally update this Privacy Statement. When we do, we will also revise the "last updated" date at the bottom of the Privacy Statement.  For material changes to this statement, TSU WebSite will notify you by placing prominent notice on the Web site.</p>
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-2 text-center">
-				<form action="{{ route('agreed.privacy.statement.post') }}" method="POST">
-					{{ csrf_field() }}
-					<button type="submit" class="btn btn-primary">Agree</button>
-				</form>
+		@if(Auth::user()->agreed == 0)
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-2 text-center">
+					<form action="{{ route('agreed.privacy.statement.post') }}" method="POST">
+						{{ csrf_field() }}
+						<button type="submit" class="btn btn-primary">Agree</button>
+					</form>
+				</div>
+				<div class="col-md-2 text-center">
+					<form action="{{ route('declined.privacy.statement') }}" method="GET">
+						<button type="submit" class="btn btn-warning">Decline</button>
+					</form>
+					
+				</div>
+				<div class="col-md-4"></div>
 			</div>
-			<div class="col-md-2 text-center">
-				<form action="{{ route('declined.privacy.statement') }}" method="GET">
-					<button type="submit" class="btn btn-warning">Decline</button>
-				</form>
-				
-			</div>
-			<div class="col-md-4"></div>
-		</div>
+		@endif
 		<div class="clear-fix"></div>
 	</div>
 
