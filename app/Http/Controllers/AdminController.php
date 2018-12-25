@@ -332,6 +332,15 @@ class AdminController extends Controller
 	}
 
 
+	// method use to add research incentive
+	public function researchInsevtive($id)
+	{
+		$id = decrypt($id);
+
+		return $research = Research::findorfail($id);
+	}
+
+
 	// method use to go to accounts
 	public function accounts()
 	{

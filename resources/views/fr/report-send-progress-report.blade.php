@@ -26,7 +26,7 @@
                 <input type="hidden" name="research_id" value="{{ $id }}">
                 <div class="row">
                   <div class="col-md-4">
-                    <input type="file" name="file" id="file" accept="application/msword,.doc,.docx,application/pdf" multiple="" required>
+                    <input type="file" name="files[]" id="files" accept="application/msword,.doc,.docx,application/pdf" multiple="" required>
                   </div>
                 </div>
                 <div class="form-group">

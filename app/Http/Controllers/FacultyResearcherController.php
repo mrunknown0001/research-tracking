@@ -299,23 +299,58 @@ class FacultyResearcherController extends Controller
     // method use to save progress report
     public function postSendProgressReport(Request $request)
     {
+        // return $request;
+
         $request->validate([
             'files.*' => 'required|file|mimes:pdf,doc,docx|max:20000'
         ]);
 
+        $research_id = $request['research_id'];
+        $files = $request['files'];
+
+        $research = Research::findorfail($research_id);
+
         // get request files
-        
 
         // save files to folder
+        $filenames = [];
+
+        foreach($files as $file) {
+
+            // posible rename and/or upload file to folder
+            // move to entry folder
+            $renamed = Auth::user()->id_number . '.' . time().'.'.$file->getClientOriginalExtension();
+
+            /*
+            talk the select file and move it public directory and make avatars
+            folder if doesn't exsit then give it that unique name.
+            */
+            $file->move(public_path('uploads/files'), $renamed);
+
+            $filenames[] = [
+                'original_filename' => $file->getClientOriginalName(),
+                'unique_filename' => $renamed
+            ];
+
+        }
 
 
-        // rename
+        // save filenames in database for download
+        $uploaded_files = [];
 
-        // save original names for display as reference for admin to view
+        foreach($filenames as $f) {
+            $uploaded_files[] = [
+                'research_id' => $research->id,
+                'original_filename' => $f['original_filename'],
+                'unique_filename' => $f['unique_filename']
+            ];
+        }
 
-        // save with log
+        if(DB::table('research_progress_reports')->insert($uploaded_files)) {
+            return redirect()->route('fr.dashboard')->with('success', 'Report Progress Submitted!');
+        }
 
-        // return redirect
+        
     }
 
 

@@ -34,4 +34,9 @@ class Research extends Model
     {
         return $this->hasOne('App\ResearchIncentive', 'research_id');
     }
+
+    public function progress_reports()
+    {
+        return $this->hasMany('App\ResearchProgressReport', 'research_id');
+    }
 }
