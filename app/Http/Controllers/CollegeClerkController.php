@@ -227,7 +227,7 @@ class CollegeClerkController extends Controller
         // check id_number ais used
         $check_id_number = User::where('id_number', $id_number)->first();
 
-        if(count($check_id_number) > 0 && $check_id_number->id != $user->id) {
+        if(!empty($check_id_number) && $check_id_number->id != $user->id) {
             return redirect()->back()->with('error', 'ID Number already used');
         }
 
@@ -255,7 +255,7 @@ class CollegeClerkController extends Controller
             // check if there is assign drc to the department
             $check_drc_assign = DrcAssignment::where('department_id', $dept->id)->first();
 
-            if(count($check_drc_assign) > 0 && $check_drc_assign->drc->active == 1 && $check_drc_assign->drc->id != $user->id) {
+            if(!empty($check_drc_assign) && $check_drc_assign->drc->active == 1 && $check_drc_assign->drc->id != $user->id) {
                 return redirect()->back()->with('error', ucwords($dept->name) . ' Department Already has Chairperson');
             }
             else {
