@@ -133,7 +133,7 @@ class CollegeClerkController extends Controller
             // check if there is assign drc to the department
             $check_drc_assign = DrcAssignment::where('department_id', $dept->id)->first();
 
-            if(count($check_drc_assign) > 0 && $check_drc_assign->drc->active == 1) {
+            if(!empty($check_drc_assign) && $check_drc_assign->drc->active == 1) {
                 return redirect()->back()->with('error', ucwords($dept->name) . ' Department Already has Chairperson');
             }
             else if(count($check_drc_assign) > 0 && $check_drc_assign->drc->active == 0) {
