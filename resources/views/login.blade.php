@@ -28,13 +28,13 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">ID Number</label>
+                          <label for="id_number" class="bmd-label-floating">ID Number</label>
                           <input type="text" name="id_number" id="id_number" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Password</label>
+                          <label for="password" class="bmd-label-floating">Password</label>
                           <input type="password" name="password" id="password" class="form-control" required>
                         </div>
                       </div>
