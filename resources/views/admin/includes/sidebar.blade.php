@@ -43,6 +43,12 @@
               <p>Accounts</p>
             </a>
           </li>
+          <li class="nav-item {{ route('admin.settings') == url()->current() ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.settings') }}">
+              <i class="material-icons">settings_applications</i>
+              <p>Settings</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

@@ -108,6 +108,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to go to accounts
 	Route::get('/accounts', 'AdminController@accounts')->name('admin.accounts');
 
+
+	// route to settings
+	Route::get('/settings', 'AdminController@settings')->name('admin.settings');
+
 	Route::get('/logout', 'AdminController@logout')->name('admin.logout');
 });
 

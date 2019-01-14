@@ -23,7 +23,23 @@ class CollegeDepartmentsTableSeeder extends Seeder
         	[
         		'college_id' => 1,
         		'name' => 'Computer Science'
-        	]
+        	],
+            [
+                'college_id' => 4,
+                'name' => 'Mechanical Engineering',
+            ],
+            [
+                'college_id' => 4,
+                'name' => 'Civil Engineering'
+            ],
+            [
+                'college_id' => 2,
+                'name' => 'AB English'
+            ],
+            [
+                'college_id' => 2,
+                'name' => 'Mass Comm'
+            ]
         ]);
     }
 }

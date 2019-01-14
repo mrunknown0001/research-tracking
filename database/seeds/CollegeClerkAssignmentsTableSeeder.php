@@ -15,7 +15,15 @@ class CollegeClerkAssignmentsTableSeeder extends Seeder
         	[
         		'clerk_id' => 6,
         		'college_id' => 1
-        	]
+        	],
+            [
+                'clerk_id' => 11,
+                'college_id' => 4
+            ],
+            [
+                'cler_id' => 12,
+                'college_id' => 2
+            ]
         ]);
     }
 }

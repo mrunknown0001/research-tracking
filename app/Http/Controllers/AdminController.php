@@ -399,6 +399,14 @@ class AdminController extends Controller
 	}
 
 
+	// method use to access settings
+	public function settings()
+	{
+		return 'settings';
+	}
+
+
+
 	public function logout()
 	{
 		$action = 'Logout';
