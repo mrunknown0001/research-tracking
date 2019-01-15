@@ -18,6 +18,7 @@ class CreateCollegeDepartmentsTable extends Migration
             $table->integer('college_id')->unsigned();
             $table->foreign('college_id')->references('id')->on('colleges');
             $table->string('name', 40);
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

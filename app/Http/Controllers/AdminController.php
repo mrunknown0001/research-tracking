@@ -402,9 +402,102 @@ class AdminController extends Controller
 	// method use to access settings
 	public function settings()
 	{
-		return 'settings';
+		return view('admin.settings');
 	}
 
+
+	// method to access college management
+	public function colleges()
+	{
+		$colleges = College::where('active', 1)->orderBy('name')->get();
+
+		return view('admin.colleges', ['colleges' => $colleges]);
+	}
+
+
+
+	public function addCollege()
+	{
+		return view('admin.college-add', ['college' => null]);
+	}
+
+
+	public function storeCollege(Request $request)
+	{
+		$request->validate([
+			'name' => 'required',
+			'code' => 'required'
+		]);
+
+		$name = $request['name'];
+		$code = $request['code'];
+
+		$college_id = $request['college_id'];
+
+		if($college_id == null) {
+			$college = new College();
+			$message = 'Added New College';
+
+		}
+		else {
+			$college = College::findorfail($college_id);
+			$message = 'Updated College';
+		}
+
+		$college->name = $name;
+		$college->code = $code;
+
+		if($college->save()) {
+			GeneralController::log($message);
+			return redirect()->route('admin.add.college')->with('success', $message);
+		}
+
+		return redirect()->route('admin.add.college')->with('error', 'Error! Please Try Again Later.');
+
+	}
+
+
+
+	public function updateCollege($id)
+	{
+		$college = College::findorfail($id);
+
+		return view('admin.college-add', ['college' => $college]);
+	}
+
+
+	public function deleteCollege($id)
+	{
+		$college = College::findorfail($id);
+		$college->active = 0;
+
+		if($college->save()) {
+			GeneralController::log('Removed College');
+			return redirect()->route('admin.colleges')->with('success', 'College Removed');
+
+		}
+
+		return redirect()->route('admin.colleges')->with('error', 'Please Try Again Later');
+	}
+
+
+
+	// departments
+	public function departments()
+	{
+		$departments = CollegeDepartment::where('active', 1)->get();
+
+		return view('admin.departments', ['departments' => $departments]);
+	}
+
+
+	// COLLEGE CLERKS
+	public function collegeClerks()
+	{
+		$clerks = User::where('user_type', 6)->where('active', 1)->orderBy('lastname', 'asc')->get();
+
+		return view('admin.college-clerks', ['clerks' => $clerks]);
+	}
 
 
 	public function logout()

@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 80);
             $table->tinyInteger('agreed')->default(0);
             $table->tinyInteger('password_changed')->default(0);
-            $table->tinyInteger('active')->default(1);
+            $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -12,6 +12,6 @@ class College extends Model
 
     public function departments()
     {
-    	return $this->hasMany('App\CollegeDepartment', 'college_id', 'id');
+    	return $this->hasMany('App\CollegeDepartment', 'college_id', 'id')->whereActive(1);
     }
 }

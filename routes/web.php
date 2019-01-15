@@ -112,6 +112,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to settings
 	Route::get('/settings', 'AdminController@settings')->name('admin.settings');
 
+
+	// route to college management
+	Route::get('/colleges', 'AdminController@colleges')->name('admin.colleges');
+
+	Route::get('/college/add', 'AdminController@addCollege')->name('admin.add.college');
+
+	Route::post('/college/add', 'AdminController@storeCollege')->name('admin.store.college');
+
+	Route::get('/college/update/{id}', 'AdminController@updateCollege')->name('admin.update.college');
+
+	Route::get('/college/delete/{id}', 'AdminController@deleteCollege')->name('admin.remove.college');
+
+	// route to department management
+	Route::get('/departments', 'AdminController@departments')->name('admin.departments');
+
+	// route to college clerk management
+	Route::get('/college/clerks', 'AdminController@collegeClerks')->name('admin.college.clerks');
+
 	Route::get('/logout', 'AdminController@logout')->name('admin.logout');
 });
 
