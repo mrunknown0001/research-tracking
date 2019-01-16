@@ -138,6 +138,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to college clerk management
 	Route::get('/college/clerks', 'AdminController@collegeClerks')->name('admin.college.clerks');
 
+	Route::get('/college/clerk/add', 'AdminController@addCollegeClerk')->name('admin.add.college.clerk');
+
+	Route::post('/college/clerk/add', 'AdminController@storeCollegeClerk')->name('admin.store.college.clerk');
+
 	Route::get('/logout', 'AdminController@logout')->name('admin.logout');
 });
 

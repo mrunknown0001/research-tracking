@@ -573,6 +573,19 @@ class AdminController extends Controller
 	}
 
 
+	public function addCollegeClerk()
+	{
+		$colleges = College::where('active', 1)->orderBy('name', 'asc')->get();
+
+		return view('admin.college-clerk-add', ['clerk' => null, 'colleges' => $colleges]);
+	}
+
+
+	public function storeCollegeClerk(Request $request)
+	{
+		return $request;
+	}
+
 	public function logout()
 	{
 		$action = 'Logout';
