@@ -38,14 +38,14 @@
                             <option value="">Select College</option>
                             @if(count($colleges) > 0)
                               @foreach($colleges as $c)
-                                <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                <option value="{{ $c->id }}" {{ $department != null ? $department->college_id == $c->id ? 'selected' : '' : '' }}>{{ $c->name }}</option>
                               @endforeach
                             @endif
                           </select>
                         </div>
                         <div class="form-group">
                           <label for="name" class="bmd-label-floating">Department Name</label>
-                          <input type="text" name="name" id="name" value="" class="form-control"  required>
+                          <input type="text" name="name" id="name" value="{{ $department != null ? $department->name : '' }}" class="form-control"  required>
                         </div>
                         <div class="form-group">
                           <button type="submit" class="btn btn-primary">{{ $department != null ? 'Update Department' : 'Add Department' }}</button>

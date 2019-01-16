@@ -39,8 +39,8 @@
                             <td>{{ $d->name }}</td>
                             <td>{{ $d->college->name }}</td>
                             <td>
-                              <a href="" class="btn btn-primary">Update</a>
-                              <a href="" class="btn btn-danger">Remove</a>
+                              <a href="{{ route('admin.update.department', ['id' => encrypt($d->id)]) }}" class="btn btn-primary">Update</a>
+                              <a href="{{ route('admin.remove.department', ['id' => encrypt($d->id)]) }}" class="btn btn-danger">Remove</a>
                             </td>
                           </tr>
                         @endforeach

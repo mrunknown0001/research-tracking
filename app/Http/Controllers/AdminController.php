@@ -536,6 +536,34 @@ class AdminController extends Controller
 	}
 
 
+	public function updateDepartment($id)
+	{
+		$id = decrypt($id);
+
+		$department = CollegeDepartment::findorfail($id);
+		$colleges = College::where('active', 1)->orderBy('name', 'asc')->get();
+
+
+		return view('admin.department-add', ['department' => $department, 'colleges' => $colleges]);
+	}
+
+
+	public function removeDepartment($id)
+	{
+		$id = decrypt($id);
+
+		$department = CollegeDepartment::findorfail($id);
+
+		$department->active = 0;
+
+		if($department->save()) {
+			$message = 'College Department Removed';
+			GeneralController::log($message);
+			return redirect()->route('admin.departments')->with('success', $message);
+		}
+	}
+
+
 	// COLLEGE CLERKS
 	public function collegeClerks()
 	{
