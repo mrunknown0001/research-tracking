@@ -127,6 +127,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 	// route to department management
 	Route::get('/departments', 'AdminController@departments')->name('admin.departments');
 
+	Route::get('/department/add', 'AdminController@addDepartment')->name('admin.add.department');
+
+	Route::post('/department/add', 'AdminController@storeDepartment')->name('admin.store.department');
+
 	// route to college clerk management
 	Route::get('/college/clerks', 'AdminController@collegeClerks')->name('admin.college.clerks');
 

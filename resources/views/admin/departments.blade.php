@@ -24,7 +24,7 @@
               <div class="row">
                 <div class="col-md-12 table-responsive">
                   <p>
-                    <a href="" class="btn btn-primary">Add College Departments</a>
+                    <a href="{{ route('admin.add.department') }}" class="btn btn-primary">Add College Departments</a>
                   </p>
                   @if(count($departments) > 0)
                     <table class="table">

@@ -491,6 +491,51 @@ class AdminController extends Controller
 	}
 
 
+	// add department
+	public function addDepartment()
+	{
+		$colleges = College::where('active', 1)->orderBy('name', 'asc')->get();
+
+		return view('admin.department-add', ['department' => null, 'colleges' => $colleges]);
+	}
+
+
+	public function storeDepartment(Request $request)
+	{
+		$request->validate([
+			'name' => 'required',
+			'college' => 'required'
+		]);
+
+		$department_id = $request['department_id'];
+		$name = $request['name'];
+		$college_id = $request['college'];
+
+		$college = College::findorfail($college_id);
+
+		if($department_id == null) {
+			// create
+			$department = new CollegeDepartment();
+			$message = 'Department Created!';
+		}
+		else {
+			// update
+			$department = CollegeDepartment::findorfail($department_id);
+			$message = 'Department Updated!';
+		}
+
+		$department->name = $name;
+		$department->college_id = $college_id;
+
+		if($department->save()) {
+			GeneralController::log($message);
+			return redirect()->route('admin.add.department')->with('success', $message);
+		}
+
+		return redirect()->back()->with('error', 'Error Occured! Please Try Again Later!');
+	}
+
+
 	// COLLEGE CLERKS
 	public function collegeClerks()
 	{
