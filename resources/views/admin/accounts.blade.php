@@ -46,7 +46,7 @@
                           @elseif($a->user_type == 7)
                             {{ ucwords($a->drcAssignment->college->name) }}
                           @elseif($a->user_type == 6)
-                            {{ ucwords($a->collegeClerkAssignment->college->name) }}
+                            {{ $a->collegeClerkAssignment != null ? ucwords($a->collegeClerkAssignment->college->name) : 'N/A' }}
                           @else
                             N/A
                           @endif

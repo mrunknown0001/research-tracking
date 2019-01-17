@@ -36,14 +36,16 @@
                       </thead>
                       <tbody>
                         @foreach($clerks as $c)
+                          @if($c->collegeClerkAssignment != null)
                           <tr>
                             <td>{{ $c->lastname }}</td>
                             <td>{{ $c->firstname }}</td>
                             <td>{{ $c->collegeClerkAssignment->college->name }}</td>
                             <td>
-                              <a href="" class="btn btn-danger">Remove College Clerk</a>
+                              <a href="{{ route('admin.remove.college.clerk', ['id' => encrypt($c->id)]) }}" class="btn btn-danger">Remove College Clerk</a>
                             </td>
                           </tr>
+                          @endif
                         @endforeach
                       </tbody>
                     </table>

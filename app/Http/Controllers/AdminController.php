@@ -610,6 +610,8 @@ class AdminController extends Controller
 			$user->middlename = $middlename;
 			$user->lastname = $lastname;
 			$user->id_number = $id_number;
+			$user->user_type = 6;
+			$user->password = bcrypt('password');
 			$user->save();
 
 			$clerk = new CollegeClerkAssignment();
@@ -620,6 +622,18 @@ class AdminController extends Controller
 
 		return redirect()->back()->with('warning', 'The College has a Clerk.');
 	}
+
+
+	public function removeCollegeClerk($id)
+	{
+		$id = decrypt($id);
+
+		$clerkAssign = CollegeClerkAssignment::where('clerk_id', $id)->first();
+		$clerkAssign->delete();
+
+		return redirect()->route('admin.college.clerks')->with('success', 'Clerk Assignment Removed!');
+	}
+
 
 	public function logout()
 	{

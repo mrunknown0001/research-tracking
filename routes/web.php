@@ -142,6 +142,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['check.admin', 'prevent.back
 
 	Route::post('/college/clerk/add', 'AdminController@storeCollegeClerk')->name('admin.store.college.clerk');
 
+	Route::get('/college/clerk/remove/{id}', 'AdminController@removeCollegeClerk')->name('admin.remove.college.clerk');
+
 	Route::get('/logout', 'AdminController@logout')->name('admin.logout');
 });
 
