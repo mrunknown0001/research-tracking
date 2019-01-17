@@ -41,7 +41,6 @@
                             <td>{{ $c->firstname }}</td>
                             <td>{{ $c->collegeClerkAssignment->college->name }}</td>
                             <td>
-                              <button class="btn btn-primary">Update</button>
                               <a href="" class="btn btn-danger">Remove College Clerk</a>
                             </td>
                           </tr>

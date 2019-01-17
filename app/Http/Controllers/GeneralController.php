@@ -11,6 +11,7 @@ use App\AuditTrail;
 use App\Research;
 use App\FormRequest;
 use App\Notification;
+use App\CollegeClerkAssignment;
 
 class GeneralController extends Controller
 {
@@ -279,6 +280,21 @@ class GeneralController extends Controller
         $notification->save();
 
         return redirect()->route($notification->url);
+    }
+
+
+    // CHECK COLLEGE CLERK 
+    public static function checkClerk($id, $college_id)
+    {
+        $clerk = CollegeClerkAssignment::whereCollegeId($id)->first();
+
+        if(!empty($clerk)) {
+            if($clerk->clerk_id != $id) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

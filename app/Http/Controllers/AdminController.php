@@ -14,6 +14,7 @@ use App\Research;
 use App\Agenda;
 use App\FormRequest;
 use App\CollegeDepartment;
+use App\CollegeClerkAssignment;
 
 class AdminController extends Controller
 {
@@ -583,7 +584,41 @@ class AdminController extends Controller
 
 	public function storeCollegeClerk(Request $request)
 	{
-		return $request;
+		$request->validate([
+			'college' => 'required',
+			'firstname' => 'required',
+			'middlename' => 'required',
+			'lastname' => 'required'
+		]);
+
+		$clerk_id = $request['clerk_id'];
+		$college_id = $request['college'];
+		$id_number = $request['id_number'];
+		$firstname = $request['firstname'];
+		$middlename = $request['middlename'];
+		$lastname = $request['lastname'];
+
+		$check_user = User::where('id_number', $id_number)->first();
+
+		if(!empty($check_user)) {
+			return redirect()->back()->with('error', 'ID Number Already Used!');
+		}
+
+		if(GeneralController::checkClerk($clerk_id, $college_id)) {
+			$user = new User();
+			$user->firstname = $firstname;
+			$user->middlename = $middlename;
+			$user->lastname = $lastname;
+			$user->id_number = $id_number;
+			$user->save();
+
+			$clerk = new CollegeClerkAssignment();
+			$clerk->clerk_id = $user->id;
+			$clerk->college_id = $college_id;
+			$clerk->save();
+		}
+
+		return redirect()->back()->with('warning', 'The College has a Clerk.');
 	}
 
 	public function logout()

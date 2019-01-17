@@ -29,7 +29,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="id_number" class="bmd-label-floating">ID Number</label>
-                          <input type="text" name="id_number" id="id_number" class="form-control" required>
+                          <input type="text" name="id_number" id="id_number" class="form-control" required autofocus="">
                         </div>
                       </div>
                       <div class="col-md-12">

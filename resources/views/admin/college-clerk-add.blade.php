@@ -43,6 +43,11 @@
                           </select>
                         </div>
                         <div class="form-group">
+                          <label for="id_number" class="bmd-label-floating">Enter ID Number</label>
+                          <input type="text" name="id_number" id="id_number" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
                           <label for="firstname" class="bmd-label-floating">Enter Firstname</label>
                           <input type="text" name="firstname" id="firstname" class="form-control" required>
                         </div>

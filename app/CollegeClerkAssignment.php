@@ -10,4 +10,9 @@ class CollegeClerkAssignment extends Model
     {
     	return $this->belongsTo('App\College', 'college_id')->whereActive(1);
     }
+
+    public function clerk()
+    {
+    	return $this->belongsTo('App\User', 'clerk_id')->whereActive(1);
+    }
 }
