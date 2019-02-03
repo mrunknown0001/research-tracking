@@ -2,7 +2,17 @@
 
       <div class="logo">
         <a href="javascript:void(0)" class="simple-text logo-normal">
-          Office Clerk
+          @if(Auth::user()->user_type == 2)
+            CREC
+          @elseif(Auth::user()->user_type == 3)
+            UREC
+          @elseif(Auth::user()->user_type == 4)
+            RERC
+          @elseif(Auth::user()->user_type == 5)
+            OUP
+          @else
+            Office Clerk
+          @endif
         </a>
       </div>
       <div class="sidebar-wrapper">
