@@ -63,20 +63,25 @@
                 <hr>
                 <div class="col-md-3">
                   <label class="text-warning">Incentive in Publication</label>
+                  <p>{{ $research->incentive != null ? $research->incentive->publication_incentive : 'N/A' }}</p>
                 </div>
                 <div class="col-md-3">
                   <label class="text-warning">Incentive in Presentation</label>
+                  <p>{{ $research->incentive != null ? $research->incentive->presentation_incentive : 'N/A' }}</p>
                 </div>
                 <div class="col-md-3">
                   <label class="text-warning">Incentive in Citation</label>
+                  <p>{{ $research->incentive != null ? $research->incentive->citation_incentive : 'N/A' }}</p>
                 </div>
                 <div class="col-md-3">
                   <label class="text-warning">Incentive in Competition</label>
+                  <p>{{ $research->incentive != null ? $research->incentive->competition_incentive : 'N/A' }}</p>
                 </div>
 
                 <hr>
                 <div class="col-md-3">
                   <label class="text-warning">Incentive in Completed Research</label>
+                  <p>{{ $research->incentive != null ? $research->incentive->completed_research_incentive : 'N/A' }}</p>
                 </div>
               </div>
               
