@@ -15,6 +15,7 @@ use App\Agenda;
 use App\FormRequest;
 use App\CollegeDepartment;
 use App\CollegeClerkAssignment;
+use App\ResearchProgressReport;
 
 class AdminController extends Controller
 {
@@ -656,5 +657,21 @@ class AdminController extends Controller
 		GeneralController::log($action);
 
 		return response()->download(public_path("uploads/fillable/{$filename}"));
+	}
+
+
+	// method use to download progress report
+	public function downloadProgressReport($id)
+	{
+		$pr = ResearchProgressReport::findorfail($id);
+
+		// return $pr;
+		$filename = $pr->unique_filename;
+
+		$action = 'Progress Report Download ' . $filename;
+		GeneralController::log($action);
+
+
+		return response()->download(public_path("uploads/files/{$filename}"));
 	}
 }

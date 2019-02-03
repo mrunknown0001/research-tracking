@@ -38,7 +38,7 @@
                           {{ $p->created_at != null ? date('F j, Y h:i a', strtotime($p->created_at)) : 'N/A' }}
                         </td>
                         <td>
-                          <a href="javascript:void(0)"><i class="material-icons">save_alt</i></a>
+                          <a href="{{ route('admin.download.progress.report', ['id' => $p->id]) }}"><i class="material-icons">save_alt</i></a>
                         </td>
                       </tr>
                       @endforeach

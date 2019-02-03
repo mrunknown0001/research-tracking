@@ -388,6 +388,9 @@ Route::get('/research/{id}/download/zipped', 'GeneralController@downloadResearch
 // route to download form request
 Route::get('/form/request/{id}/download', 'GeneralController@downloadFormRequest')->name('download.form.request');
 
+// route to download progress report
+Route::get('/research/progress-report/{id}/download', 'AdminController@downloadProgressReport')->name('admin.download.progress.report');
+
 
 
 // route to add notification in notification div

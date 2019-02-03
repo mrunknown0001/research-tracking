@@ -342,7 +342,8 @@ class FacultyResearcherController extends Controller
             $uploaded_files[] = [
                 'research_id' => $research->id,
                 'original_filename' => $f['original_filename'],
-                'unique_filename' => $f['unique_filename']
+                'unique_filename' => $f['unique_filename'],
+                'created_at' => now()
             ];
         }
 
