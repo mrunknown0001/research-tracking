@@ -21,7 +21,7 @@ class AdminController extends Controller
     // method use to go to admin dashboard
 	public function dashboard()
 	{
-		$logs = AuditTrail::orderBy('created_at', 'desc')->paginate(10);
+		$logs = AuditTrail::orderBy('created_at', 'desc')->paginate(4);
 
 		$form_requests = FormRequest::orderBy('created_at', 'desc')->orderBy('approved', 'asc')->get();
 
