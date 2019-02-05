@@ -315,16 +315,16 @@
                         </tbody>
                       </table>
 
-                      <table class="table">
+                      {{-- <table class="table">
                         <thead class="text-warning">
                           <th>Comments</h>
                           <th></th>
                         </thead>
                         <tbody>
-                          <td>{{ $research->step_10_comment }}</td>
+                          <td>{{ $research->step_9_comment }}</td>
                           <td></td>
                         </tbody>
-                      </table>
+                      </table> --}}
 
                     </div>
                   </div>
@@ -402,7 +402,7 @@
                         </tbody>
                       </table>
 
-                      <table class="table">
+                      {{-- <table class="table">
                         <thead class="text-warning">
                           <th>Comments</h>
                           <th></th>
@@ -411,7 +411,7 @@
                           <td>{{ $research->step_11_comment }}</td>
                           <td></td>
                         </tbody>
-                      </table>
+                      </table> --}}
 
                     </div>
                   </div>
@@ -578,7 +578,7 @@
                         </tbody>
                       </table>
 
-                      <table class="table">
+                      {{-- <table class="table">
                         <thead class="text-warning">
                           <th>Comments</h>
                           <th></th>
@@ -587,7 +587,7 @@
                           <td>{{ $research->step_15_comment }}</td>
                           <td></td>
                         </tbody>
-                      </table>
+                      </table> --}}
 
                     </div>
                   </div>
