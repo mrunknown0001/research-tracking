@@ -234,6 +234,15 @@ class DrcController extends Controller
     }
 
 
+    // method use to view research details
+    public function researchDetails($id)
+    {
+        $research = Research::findorfail($id);
+
+        return view('drc.research-details', ['research' => $research]);
+    }
+
+
     // method use to view forms
     public function forms()
     {

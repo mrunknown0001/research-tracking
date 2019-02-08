@@ -121,12 +121,12 @@
                         <thead class="text-warning">
                           <th>Time Posted</th>
                           <th>Time Released</th>
-                          <th>Status</th>
+                          {{-- <th>Status</th> --}}
                         </thead>
                         <tbody>
                           <td>{{ $research->step_2_date_proceeded }}</td>
                           <td>{{ $research->created_at }}</td>
-                          <td></td>
+                          {{-- <td></td> --}}
                         </tbody>
                       </table>
 

@@ -40,7 +40,7 @@
                             <td class="text-center">{{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}</td>
                             <td class="text-center">
                               <a href="{{ route('drc.track.research.document', ['id' => $r->id]) }}"><i class="material-icons">visibility</i></a>
-                              <a href="#"><i class="material-icons">assignment</i></a>
+                              <a href="{{ route('drc.research.details', ['id' => $r->id]) }}"><i class="material-icons">assignment</i></a>
                             </td>
                             <td class="text-center">
                               <a href="{{ route('download.research.zip', ['id' => $r->id]) }}"><i class="material-icons">save_alt</i></a>

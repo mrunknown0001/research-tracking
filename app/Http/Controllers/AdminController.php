@@ -163,12 +163,13 @@ class AdminController extends Controller
 	{
 		$request->validate([
 			'grade' => 'required|numeric',
-			'agenda' => 'required'
+			'agenda' => 'required',
 		]);
 
 		$id = $request['research_id'];
 		$grade = $request['grade'];
 		$agenda_id = $request['agenda'];
+		$comment = $request['comment'];
 
 		$research = Research::findorfail($id);
 
@@ -179,6 +180,7 @@ class AdminController extends Controller
 		$research->agenda_id = $agenda->id;
 		$research->urec_grade = $grade;
 		$research->step_8_proceeded = 1;
+		$research->step_8_comment = $comment;
 		$research->step_8_date_proceeded = now();
 		$research->save();
 
