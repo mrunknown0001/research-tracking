@@ -252,6 +252,7 @@ class AdminController extends Controller
 		$research->funding_type = $funding_type;
 		$research->step_14_proceeded = 1;
 		$research->step_14_date_proceeded = now();
+		$research->step_14_comment = $comment;
 		$research->save();
 
 
