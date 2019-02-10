@@ -15,8 +15,10 @@ class CreateFormRequestsTable extends Migration
     {
         Schema::create('form_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('researcher_id')->unsigned();
+            $table->integer('researcher_id')->unsigned()->nullable();
             $table->foreign('researcher_id')->references('id')->on('users');
+            $table->integer('drc_id')->unsigned()->nullable();
+            $table->foreign('drc_id')->references('id')->on('users');
             $table->integer('form_id')->unsigned();
             $table->foreign('form_id')->references('id')->on('forms');
             $table->string('comment', 120)->nullable();

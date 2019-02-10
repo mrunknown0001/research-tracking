@@ -75,6 +75,50 @@ class AdminController extends Controller
 	}
 
 
+	// method use to update profile
+	public function updateProfile()
+	{
+		return view('admin.profile-update');
+	}
+
+
+	// method use to update profile
+	public function postUpdateProfile(Request $request)
+	{
+		$request->validate([
+			'firstname' => 'required',
+			'middlename' => 'nullable',
+			'lastname' => 'required',
+			'id_number' => 'required',
+			'contact_number' => 'required',
+			'email' => 'required|email',
+		]);
+
+		$firstname = $request['firstname'];
+		$middlename = $request['middlename'];
+		$lastname = $request['lastname'];
+		$id_number = $request['id_number'];
+		$contact_number = $request['contact_number'];
+		$email = $request['email'];
+
+		$user = Auth::user();
+
+		$user->firstname = $firstname;
+		$user->middlename = $middlename;
+		$user->lastname = $lastname;
+		$user->id_number = $id_number;
+		$user->contact_number = $contact_number;
+		$user->email = $email;
+		$user->save();
+
+		// add to activity log
+		$action = 'Updated Profile';
+		GeneralController::log($action);
+
+		return redirect()->back()->with('success', $action);
+	}
+
+
 	// method use to show incoming research page
 	public function incomingResearch()
 	{

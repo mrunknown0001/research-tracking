@@ -158,6 +158,13 @@ Route::group(['prefix' => 'oc', 'middleware' => ['check.oc', 'prevent.back.histo
 	Route::get('/profile', 'OfficeClerkController@profile')->name('oc.profile');
 
 
+	// route to udpate profile
+	Route::get('/profile/update', 'OfficeClerkController@updateProfile')->name('oc.profile.udpate');
+
+	// route to post update profile
+	Route::post('/profile/update', 'OfficeClerkController@postUpdateProfile')->name('oc.update.profile.post');
+
+
 	// route to change password
 	Route::get('/password', 'OfficeClerkController@changePassword')->name('oc.change.password');
 
@@ -210,6 +217,12 @@ Route::group(['prefix' => 'clerk', 'middleware' => ['check.cc', 'prevent.back.hi
 	// route to access profile of college clerk
 	Route::get('/profile', 'CollegeClerkController@profile')->name('cc.profile');
 
+	// route to udpate profile
+	Route::get('/profile/update', 'CollegeClerkController@updateProfile')->name('cc.profile.udpate');
+
+	// route to post update profile
+	Route::post('/profile/update', 'CollegeClerkController@postUpdateProfile')->name('cc.update.profile.post');
+
 	// route to change password
 	Route::get('/password', 'CollegeClerkController@changePassword')->name('cc.change.password');
 	Route::post('/password', 'CollegeClerkController@postChangePassword')->name('cc.change.password.post');
@@ -251,6 +264,12 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 
 	// route to access profile of drc
 	Route::get('/profile', 'DrcController@profile')->name('drc.profile');
+
+	// route to udpate profile
+	Route::get('/profile/update', 'DrcController@updateProfile')->name('drc.profile.udpate');
+
+	// route to post update profile
+	Route::post('/profile/update', 'DrcController@postUpdateProfile')->name('drc.update.profile.post');
 
 
 	// route to change password
@@ -298,6 +317,9 @@ Route::group(['prefix' => 'drc', 'middleware' => ['check.drc', 'prevent.back.his
 	// route to access send request forms
 	Route::get('/form/send', 'DrcController@sendRequestForm')->name('drc.send.request.form');
 
+	// route to send request forms
+	Route::post('/form/send', 'DrcController@postSendRequestForm')->name('drc.send.request.form.post');
+
 	// route to logout fr
 	Route::get('/logout', 'DrcController@logout')->name('drc.logout');
 });
@@ -308,6 +330,12 @@ Route::group(['prefix' => 'fr', 'middleware' => ['check.fr', 'prevent.back.histo
 
 	// route to access profile
 	Route::get('/profile', 'FacultyResearcherController@profile')->name('fr.profile');
+
+	// route to udpate profile
+	Route::get('/profile/update', 'FacultyResearcherController@updateProfile')->name('fr.profile.udpate');
+
+	// route to post update profile
+	Route::post('/profile/update', 'FacultyResearcherController@postUpdateProfile')->name('fr.update.profile.post');
 
 	// route to change password
 	Route::get('/password', 'FacultyResearcherController@changePassword')->name('fr.change.password');

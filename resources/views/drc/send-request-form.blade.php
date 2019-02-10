@@ -22,7 +22,8 @@
             </div>
             <div class="card-body">
 
-							<form action="#" method="POST" enctype="multipart/form-data">
+							<form action="{{ route('drc.send.request.form.post') }}" method="POST" enctype="multipart/form-data">
+								{{ csrf_field() }}
 								<div class="form-group">
 									<label class="bmd-label-floating">Comment</label>
                   <input type="text" name="comment" id="comment" class="form-control" required>
@@ -39,7 +40,7 @@
 										</div>
 									</div>
 									<div class="col-md-4">
-										<input type="file" name="file" id="file">
+										<input type="file" name="file" id="file" class="" accept="application/pdf" required>
 									</div>
 								</div>
 								<div class="form-group">

@@ -73,7 +73,14 @@
                           <tr>
                             <td class="text-center">{{ $r->tracking_number }}</td>
                             <td class="text-center">{{ ucwords($r->title) }}</td>
-                            <td class="text-center">{{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}</td>
+                            <td class="text-center">
+                              {{ ucwords($r->author->firstname . ' ' . $r->author->lastname) }}
+                              @if(count($r->co_author) > 0)
+                                @foreach($r->co_author as $ca)
+                                  , {{ ucwords($ca->researcher->firstname . ' ' . $ca->researcher->lastname) }}
+                                @endforeach
+                              @endif
+                            </td>
                             <td class="text-center">
                               <a href="{{ route('fr.track.research.document', ['id' => $r->id]) }}"><i class="material-icons">visibility</i></a>
                               <a href="{{ route('fr.research.details', ['id' => $r->id]) }}"><i class="material-icons">assignment</i></a>
@@ -91,7 +98,12 @@
                           <tr>
                             <td class="text-center">{{ $r->research->tracking_number }}</td>
                             <td class="text-center">{{ ucwords($r->research->title) }}</td>
-                            <td class="text-center">{{ ucwords($r->researcher->firstname . ' ' . $r->researcher->lastname) }}</td>
+                            <td class="text-center">
+                              {{ ucwords($r->research->author->firstname . ' ' . $r->research->author->lastname) }}
+                              @if(!empty($r->researcher) )
+                                  , {{ ucwords($r->researcher->firstname . ' ' . $r->researcher->lastname) }}
+                              @endif
+                            </td>
                             <td class="text-center">
                               <a href="{{ route('fr.track.research.document', ['id' => $r->research->id]) }}"><i class="material-icons">visibility</i></a>
                               <a href="{{ route('fr.research.details', ['id' => $r->research->id]) }}"><i class="material-icons">assignment</i></a>

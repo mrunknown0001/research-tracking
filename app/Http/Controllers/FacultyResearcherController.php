@@ -24,6 +24,50 @@ class FacultyResearcherController extends Controller
     }
 
 
+    // method use to update profile
+    public function updateProfile()
+    {
+        return view('fr.profile-update');
+    }
+
+
+    // method use to update profile
+    public function postUpdateProfile(Request $request)
+    {
+        $request->validate([
+            'firstname' => 'required',
+            'middlename' => 'nullable',
+            'lastname' => 'required',
+            'id_number' => 'required',
+            'contact_number' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $firstname = $request['firstname'];
+        $middlename = $request['middlename'];
+        $lastname = $request['lastname'];
+        $id_number = $request['id_number'];
+        $contact_number = $request['contact_number'];
+        $email = $request['email'];
+
+        $user = Auth::user();
+
+        $user->firstname = $firstname;
+        $user->middlename = $middlename;
+        $user->lastname = $lastname;
+        $user->id_number = $id_number;
+        $user->contact_number = $contact_number;
+        $user->email = $email;
+        $user->save();
+
+        // add to activity log
+        $action = 'Updated Profile';
+        GeneralController::log($action);
+
+        return redirect()->back()->with('success', $action);
+    }
+
+
     // method use to change password
     public function changePassword()
     {
@@ -213,7 +257,7 @@ class FacultyResearcherController extends Controller
         $action = 'Submitted Research';
         GeneralController::log($action);
 
-        return redirect()->back()->with('success', 'Research Submitted!');
+        return redirect()->route('fr.dashboard')->with('success', 'Research Submitted!');
 
     }
 
@@ -256,7 +300,11 @@ class FacultyResearcherController extends Controller
 
         $fr = Auth::user();
 
-        if($research->author_id != $fr->id) {
+        $co_author = ResearchCoauthor::where('research_id', $research->id)
+                        ->where('co_author_id', $fr->id)
+                        ->first();
+
+        if($research->author_id != $fr->id && empty($co_author)) {
             return redirect()->back()->with('error', 'Please Try Again Later!');
         }
 
@@ -542,9 +590,10 @@ class FacultyResearcherController extends Controller
         // save 
         $research->save();
 
-
-        // add to notification
-        GeneralController::create_notification($id, $url, $message);
+        $url = 'admin.dashboard';
+        $message = 'DRC Form Request';
+        // add notification
+        GeneralController::create_notification($req->id, $url, $message);
 
 
         // add to activity logs
@@ -563,7 +612,11 @@ class FacultyResearcherController extends Controller
 
         $research = Research::findorfail($id);
 
-        if($research->author_id != $researcher->id) {
+        $co_author = ResearchCoauthor::where('research_id', $research->id)
+                        ->where('co_author_id', $researcher->id)
+                        ->first();
+
+        if($research->author_id != $researcher->id && empty($co_author)) {
             return redirect()->back()->with('error', 'Please Try Again');
         }
 
@@ -613,6 +666,9 @@ class FacultyResearcherController extends Controller
         // add to activity log
         $action = 'Requested Form';
         GeneralController::log($action);
+
+        // add notification
+        // GeneralController::create_notification($id, $url, $message);
 
         // return redirect back
         return redirect()->back()->with('success', 'Form Request Submitted');

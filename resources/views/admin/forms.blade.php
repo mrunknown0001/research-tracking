@@ -65,7 +65,7 @@
                 
                 <table class="table">
                   <thead class="text-primary">
-                    <th>From Name</th>
+                    <th>Form Name</th>
                     <th class="text-center">Action</th>
                   </thead>
                   <tbody>

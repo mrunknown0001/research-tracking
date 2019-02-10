@@ -78,7 +78,7 @@
                   <table class="table">
                     <thead>
                       <th class="text-center">Form Name</th>
-                      <th class="text-center">Researcher</th>
+                      <th class="text-center">Researcher/DRC</th>
                       <th class="text-center">Action</th>
                     </thead>
                     <tbody>
@@ -86,7 +86,11 @@
                         <tr>
                           <td class="text-center">{{ $f->form->name }}</td>
                           <td class="text-center">
-                            {{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
+                            @if($f->researcher_id != null)
+                              {{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
+                            @else
+                              {{ ucwords($f->drc->firstname . ' ' . $f->drc->lastname) }}
+                            @endif
                           </td>
                           <td class="text-center">
                             <a href="{{ route('download.form.request', ['id' => $f->id]) }}"><i class="material-icons">save_alt</i></a>

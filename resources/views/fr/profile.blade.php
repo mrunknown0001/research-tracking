@@ -26,6 +26,7 @@
               <p>Contact Number: <strong>{{ Auth::user()->contact_number }}</strong></p>
               <p>Email: <strong>{{ strtolower(Auth::user()->email) }}</strong></p>
               <p>
+                <a href="{{ route('fr.profile.udpate') }}" class="btn btn-success">Update Profile</a>
                 <a href="{{ route('fr.change.password') }}" class="btn btn-success">Change Password</a>
               </p>
             </div>

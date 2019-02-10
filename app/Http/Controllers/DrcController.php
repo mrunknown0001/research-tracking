@@ -11,6 +11,7 @@ use Zipper;
 use App\User;
 use App\Form;
 use App\Research;
+use App\FormRequest;
 
 class DrcController extends Controller
 {
@@ -31,6 +32,51 @@ class DrcController extends Controller
     public function profile()
     {
         return view('drc.profile');
+    }
+
+
+
+    // method use to update profile
+    public function updateProfile()
+    {
+        return view('drc.profile-update');
+    }
+
+
+    // method use to update profile
+    public function postUpdateProfile(Request $request)
+    {
+        $request->validate([
+            'firstname' => 'required',
+            'middlename' => 'nullable',
+            'lastname' => 'required',
+            'id_number' => 'required',
+            'contact_number' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $firstname = $request['firstname'];
+        $middlename = $request['middlename'];
+        $lastname = $request['lastname'];
+        $id_number = $request['id_number'];
+        $contact_number = $request['contact_number'];
+        $email = $request['email'];
+
+        $user = Auth::user();
+
+        $user->firstname = $firstname;
+        $user->middlename = $middlename;
+        $user->lastname = $lastname;
+        $user->id_number = $id_number;
+        $user->contact_number = $contact_number;
+        $user->email = $email;
+        $user->save();
+
+        // add to activity log
+        $action = 'Updated Profile';
+        GeneralController::log($action);
+
+        return redirect()->back()->with('success', $action);
     }
 
 
@@ -258,6 +304,50 @@ class DrcController extends Controller
         $forms = Form::get();
 
         return view('drc.send-request-form', ['forms' => $forms]);
+    }
+
+    // method use to send form request
+    public function postSendRequestForm(Request $request)
+    {
+        $request->validate([
+            'form' => 'required',
+            'file' => 'required|file|mimes:pdf'
+        ]);
+
+        $id = $request['form'];
+        $file = $request['file'];
+        $comment = $request['comment'];
+
+        $form = Form::findorfail($id);
+
+        // generate file name
+        $renamed = Auth::user()->id_number . '.' . time().'.'.$file->getClientOriginalExtension();
+
+        // upload form request
+        $file->move(public_path('/uploads/form_requests'), $renamed);
+
+        // new form  request upload
+        $req = new FormRequest();
+        $req->drc_id = Auth::user()->id;
+        $req->form_id = $form->id;
+        $req->comment = $comment;
+        $req->original_filename = $file->getClientOriginalName();
+        $req->unique_filename = $renamed;
+        $req->save();
+
+
+
+        // add to activity log
+        $action = 'Requested Form';
+        GeneralController::log($action);
+        
+        $url = 'admin.dashboard';
+        $message = 'DRC Form Request';
+        // add notification
+        GeneralController::create_notification($req->id, $url, $message);
+
+        // return redirect back
+        return redirect()->back()->with('success', 'Form Request Submitted');
     }
 
 
