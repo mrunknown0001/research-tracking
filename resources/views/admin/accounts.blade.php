@@ -46,12 +46,12 @@
                           @elseif($a->user_type == 7)
                             {{ ucwords($a->drcAssignment->college->name) }}
                           @elseif($a->user_type == 6)
-                            {{ !empty($a->collegeClerkAssignment) ? ucwords($a->collegeClerkAssignment->college->name) : 'N/A' }}
+                            {{-- !empty($a->collegeClerkAssignment) ? ucwords($a->collegeClerkAssignment->college->name) : 'N/A' --}}
                           @else
                             N/A
                           @endif
                         </td>
-                        <td class="text-center">{{ strtolower($a->email) }}</td>
+                        {{-- <td class="text-center">{{ strtolower($a->email) }}</td> --}}
                         <td class="text-center">{{ $a->contact_number }}</td>
                       </tr>
                     @endforeach
