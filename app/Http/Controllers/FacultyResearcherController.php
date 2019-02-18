@@ -593,7 +593,7 @@ class FacultyResearcherController extends Controller
         $url = 'admin.dashboard';
         $message = 'DRC Form Request';
         // add notification
-        GeneralController::create_notification($req->id, $url, $message);
+        GeneralController::create_notification($research->id, $url, $message);
 
 
         // add to activity logs
