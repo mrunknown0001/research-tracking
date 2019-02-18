@@ -666,6 +666,8 @@ class AdminController extends Controller
 			$clerk->clerk_id = $user->id;
 			$clerk->college_id = $college_id;
 			$clerk->save();
+
+			return redirect()->back()->with('success', 'College Clerk Added.');
 		}
 
 		return redirect()->back()->with('warning', 'The College has a Clerk.');
