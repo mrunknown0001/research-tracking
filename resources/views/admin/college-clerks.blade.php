@@ -40,7 +40,11 @@
                           <tr>
                             <td>{{ $c->lastname }}</td>
                             <td>{{ $c->firstname }}</td>
-                            <td>{{ $c->collegeClerkAssignment->college->name }}</td>
+                            <td>
+                              @if(!empty($c->collegeClerkAssignment->college))
+                                {{ $c->collegeClerkAssignment->college->name }}
+                              @endif
+                            </td>
                             <td>
                               <a href="{{ route('admin.remove.college.clerk', ['id' => encrypt($c->id)]) }}" class="btn btn-danger">Remove College Clerk</a>
                             </td>
