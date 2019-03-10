@@ -10,7 +10,7 @@
           <li class="nav-item {{ route('drc.dashboard') == url()->current() ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('drc.dashboard') }}">
               <i class="material-icons">work</i>
-              <p>Reserach</p>
+              <p>Research</p>
             </a>
           </li>
           <li class="nav-item {{ route('drc.incoming.research') == url()->current() ? 'active' : '' }}">

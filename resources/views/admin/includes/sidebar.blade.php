@@ -10,7 +10,7 @@
           <li class="nav-item {{ route('admin.dashboard') == url()->current() ? 'active' : '' }} ">
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <p>Research</p>
             </a>
           </li>
           <li class="nav-item {{ route('admin.incoming.research') == url()->current() ? 'active' : '' }}">
