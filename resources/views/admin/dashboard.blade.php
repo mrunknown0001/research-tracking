@@ -14,6 +14,48 @@
 
       <div class="content">
         <div class="container-fluid">
+
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Ingoing Request Forms/Forms From Researchers</h4>
+              <p class="card-category">  </p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+
+                @if(count($form_requests) > 0)
+                  <table class="table">
+                    <thead>
+                      <th class="text-center">Form Name</th>
+                      <th class="text-center">Researcher/DRC</th>
+                      <th class="text-center">Action</th>
+                    </thead>
+                    <tbody>
+                      @foreach($form_requests as $f)
+                        <tr>
+                          <td class="text-center">{{ $f->form->name }}</td>
+                          <td class="text-center">
+                            @if($f->researcher_id != null)
+                              {{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
+                            @else
+                              {{ ucwords($f->drc->firstname . ' ' . $f->drc->lastname) }}
+                            @endif
+                          </td>
+                          <td class="text-center">
+                            <a href="{{ route('download.form.request', ['id' => $f->id]) }}"><i class="material-icons">save_alt</i></a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                @else
+                  <p class="text-center">No Form Requests</p>
+                @endif
+
+              </div>
+            </div>
+          </div>
+          
           <div class="card">
             <div class="card-header card-header-primary">
               <h4 class="card-title ">Audit Trail</h4>
@@ -62,47 +104,6 @@
                   </tbody>
                 </table>
                 <div class="text-primary text-center">{{ $logs->links() }}</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title ">Ingoing Request Forms/Forms From Researchers</h4>
-              <p class="card-category">  </p>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-
-                @if(count($form_requests) > 0)
-                  <table class="table">
-                    <thead>
-                      <th class="text-center">Form Name</th>
-                      <th class="text-center">Researcher/DRC</th>
-                      <th class="text-center">Action</th>
-                    </thead>
-                    <tbody>
-                      @foreach($form_requests as $f)
-                        <tr>
-                          <td class="text-center">{{ $f->form->name }}</td>
-                          <td class="text-center">
-                            @if($f->researcher_id != null)
-                              {{ ucwords($f->researcher->firstname . ' ' . $f->researcher->lastname) }}
-                            @else
-                              {{ ucwords($f->drc->firstname . ' ' . $f->drc->lastname) }}
-                            @endif
-                          </td>
-                          <td class="text-center">
-                            <a href="{{ route('download.form.request', ['id' => $f->id]) }}"><i class="material-icons">save_alt</i></a>
-                          </td>
-                        </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-                @else
-                  <p class="text-center">No Form Requests</p>
-                @endif
-
               </div>
             </div>
           </div>
