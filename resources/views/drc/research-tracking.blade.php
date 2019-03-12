@@ -14,7 +14,7 @@
 
       <div class="content">
         <div class="container-fluid">
-
+          <a href="{{ route('drc.dashboard') }}" class="btn btn-primary">Go Back</a>
           <div class="card">
             <div class="card-header card-header-primary">
               <h4 class="card-title ">  Research Tracking: {{ ucwords($research->title) }}</h4>
